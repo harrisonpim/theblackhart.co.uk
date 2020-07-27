@@ -1,0 +1,29 @@
+pre {
+  white-space: pre-wrap;
+}
+
+@font-face {
+  font-family: "Crimson";
+  src: url("/assets/fonts/CrimsonText-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Crimson";
+  src: url("/assets/fonts/CrimsonText-SemiBold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Crimson";
+  src: url("/assets/fonts/CrimsonText-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+.crimson {
+  font-family: "Crimson", Georgia, serif;
+}
+
