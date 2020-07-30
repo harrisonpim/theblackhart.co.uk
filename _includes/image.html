@@ -1,6 +1,6 @@
-<picture class="{{ include.class }}">
-    <source media="(min-width:650px)" type="image/webp" srcset="{{ include.path }}_large.webp">
-    <source media="(min-width:465px)" type="image/webp" srcset="{{ include.path }}_little.webp">
-    <source media="(min-width:465px)" srcset="{{ include.path }}_large.{{ include.ext }}">
+<picture>
+    <source media="(min-width:900px)" type="image/webp" srcset="{{ include.path }}_large.webp">
+    <source media="(max-width:900px)" type="image/webp" srcset="{{ include.path }}_little.webp">
+    <source media="(min-width:900px)" srcset="{{ include.path }}_large.{{ include.ext }}">
     <img src="{{ include.path }}_little.{{ include.ext }}" alt="{{ include.alt }}" />
 </picture>
