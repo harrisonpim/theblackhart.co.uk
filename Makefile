@@ -7,4 +7,4 @@ build: process-images
 serve:
 	bundle exec jekyll serve
 
-.PHONY: build process-images
+.PHONY: build serve process-images

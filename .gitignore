@@ -4,4 +4,4 @@ _site
 .jekyll-metadata
 vendor
 
-assets/processed_images
+assets/raw_images
