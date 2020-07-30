@@ -1,10 +1,13 @@
-
 title: The Black Hart
 email: hello@theblackhart.co.uk
 url: theblackhart.co.uk
 
-plugins:
-  - jekyll-redirect-from
+# plugins:
+#   - jekyll-redirect-from
 
 exclude:
   - README.md
+  - assets/raw_images
+  - build
+  - Makefile
+  - Gemfile*
