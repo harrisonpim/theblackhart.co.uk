@@ -1,29 +1,17 @@
-pre {
-  white-space: pre-wrap;
+@import "scale";
+@import "type";
+@import "breakpoints";
+@import "home";
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%
 }
 
-@font-face {
-  font-family: "Crimson";
-  src: url("/assets/fonts/CrimsonText-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+body {
+    margin: 0
 }
 
-@font-face {
-  font-family: "Crimson";
-  src: url("/assets/fonts/CrimsonText-SemiBold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
+img {
+    max-width: 100%
 }
-
-@font-face {
-  font-family: "Crimson";
-  src: url("/assets/fonts/CrimsonText-Italic.ttf") format("truetype");
-  font-weight: normal;
-  font-style: italic;
-}
-
-.crimson {
-  font-family: "Crimson", Georgia, serif;
-}
-
