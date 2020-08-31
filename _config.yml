@@ -7,7 +7,9 @@ plugins:
 
 exclude:
   - README.md
-  # - assets/raw_images
+  - assets/raw_images
   - build
   - Makefile
   - Gemfile*
+
+# variables

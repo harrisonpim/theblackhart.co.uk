@@ -54,7 +54,7 @@
 
     div {
         vertical-align: middle;
-        background-size: cover !important;
+
         background-repeat: no-repeat;
         background-position: center;
         display: table-cell;
@@ -100,5 +100,29 @@
                 font-size: $f5;
             }
         }
+    }
+
+    &-1 {
+        @extend .landing-block;
+        background: url("/assets/images/onhands.jpg");
+        background-size: cover !important;
+    }
+
+    &-2 {
+        @extend .landing-block;
+        background: url("/assets/images/sketch.png");
+        background-size: cover !important;
+    }
+
+    &-3 {
+        @extend .landing-block;
+        background: url("/assets/images/snake.jpg");
+        background-size: cover !important;
+    }
+
+    &-4 {
+        @extend .landing-block;
+        background: url("/assets/images/jess.png");
+        background-size: cover !important;
     }
 }
