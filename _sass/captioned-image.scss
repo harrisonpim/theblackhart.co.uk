@@ -1,0 +1,32 @@
+@import "colour";
+@import "scale";
+
+.captioned-image {
+    padding-top: $spacing-small;
+
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+
+        @include little {
+            max-width: 100%;
+        }
+
+        @include large {
+            max-width: 80%;
+        }
+
+    }
+
+    div {
+        padding-top: $spacing-small;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 80%;
+        font-size: $f5;
+        color: $silver;
+    }
+}

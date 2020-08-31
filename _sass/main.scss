@@ -1,17 +1,65 @@
 @import "scale";
+@import "colour";
 @import "type";
 @import "breakpoints";
-@import "home";
+@import "landing";
+@import "footer";
+@import "header";
+@import "glyph";
+@import "captioned-image";
+@import "post-list";
+
+// * {
+//     border: .1px solid yellow;
+// }
+
+:root {
+    color: $white;
+    background-color: $black-90;
+}
+
+body {
+    margin: 0;
+}
 
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%
 }
 
-body {
-    margin: 0
+a {
+    color: $white;
+    text-decoration: underline;
 }
 
-img {
-    max-width: 100%
+.default {
+    min-height: 100vh;
+    position: relative;
+    font-size: $f4;
+    margin: auto;
+    // margin-top: $spacing-large;
+
+    @include little {
+        padding-left: $spacing-large;
+        padding-right: $spacing-large;
+    }
+
+    @include large {
+        width: 70%;
+    }
+
+    @include really-large {
+        width: 50%;
+    }
+
+    #content-wrap {
+
+        @include large {
+            padding-bottom: $spacing-extra-large;
+        }
+
+        @include little {
+            padding-bottom: $spacing-extra-extra-large;
+        }
+    }
 }
