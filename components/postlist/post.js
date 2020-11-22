@@ -18,11 +18,11 @@ export default function Post({ post }) {
   return (
     <div>
       <NextLink as={linkResolver(post)} href={linkResolver(post)}>
-        <a className="no-underline">
-          <h2>{title}</h2>
+        <a className="no-underline pb-none">
+          <h2 className="pb-none">{title}</h2>
         </a>
       </NextLink>
-      <div className="text-sm text-silver">{date}</div>
+      <div className="text-sm text-silver pb-3">{date}</div>
       <Lead sliceZone={post.data.body1} textLimit={300} />
     </div>
   );
