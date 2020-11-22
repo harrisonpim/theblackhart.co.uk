@@ -1,14 +1,30 @@
 # :skull: theblackhart.co.uk
 
-Static landing page, store, and research blog for The Black Hart.
+Jamstack site for [The Black Hart](theblackhart.co.uk), including a research blog and an ecommerce store.
 
-## How does it all fit together?
+Built and deployed with:
 
-Site is built on [Jekyll](https://jekyllrb.com/), allowing Jess to just write content in markdown and render it nicely on the blog etc.
+- [next.js](https://nextjs.org/) for structuring the content
+- [tailwind css](https://tailwindcss.com/) for styling the content
+- [prismic](https://prismic.io/) for writing and managing the content
+- [square](https://squareup.com/gb/en) for managing the product catalogue and handling payments (likely switching to [stripe](https://stripe.com/) in the near future)
+- [netlify](https://www.netlify.com/) for hosting the site
 
-It's continuously built, tested, and deployed from the master branch this repo via [Netlify](https://www.netlify.com/). We test for accessibility with [pa11y](https://pa11y.org/), broken links, etc.
+## Developing
 
-Product catalogue is exported from [Square](https://squareup.com/). We let Square handle orders and payments securely, off site, using [online checkout links](https://squareup.com/online-checkout).  
-This set up might switched for Stripe eventually, to shave off another 1% in fees.
+First, you'll need to populate `blank.env.local` with the relevant environment variables and rename it `env.local`.
 
-For the time being, this gets us close enough to the dream Jamstack website.
+Run `make serve` to install the relevant packages etc, build an optimised production version of the site, and serve it locally at `localhost:3000`.
+
+To serve a live-updating development version of the site, run `make dev`
+
+## Deploying
+
+The site is rebuilt and deployed automatically on netlify whenever:
+
+- there's a change to the content in prismic (Ideally, changes are bundled together into a release)
+- there's a new commit to the master branch of this repo (new PRs will generate a build which is deployed to a preview URL)
+
+As changes on either side are relatively infrequent compared to the build time, we have no problem rebuilding the site from scratch on each change.
+
+Tests are run as part of the build, ensuring that we never deploy a broken site.

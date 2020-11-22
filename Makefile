@@ -1,10 +1,14 @@
-process-images:
-	bash build/process-images
+clean:
+	rm -rf .next node_modules
 
-build: #process-images
-	bundle exec jekyll build
+install: clean
+	yarn install
 
-serve:
-	bundle exec jekyll serve
+build: install
+	yarn build
 
-.PHONY: build serve process-images
+serve: build
+	yarn start
+
+dev: install
+	yarn dev
