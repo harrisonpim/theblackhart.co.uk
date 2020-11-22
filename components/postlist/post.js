@@ -5,11 +5,16 @@ import { RichText } from "prismic-reactjs";
 import Lead from "./lead";
 import { linkResolver } from "../../prismic-configuration";
 
+const formatDate = (dateString) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+};
+
 export default function Post({ post }) {
   const title = RichText.asText(post.data.title)
     ? RichText.asText(post.data.title)
     : "Untitled";
-
+  const date = formatDate(post.data.date);
   return (
     <div>
       <NextLink as={linkResolver(post)} href={linkResolver(post)}>
@@ -17,6 +22,7 @@ export default function Post({ post }) {
           <h2>{title}</h2>
         </a>
       </NextLink>
+      <div className="text-sm text-silver">{date}</div>
       <Lead sliceZone={post.data.body1} textLimit={300} />
     </div>
   );
