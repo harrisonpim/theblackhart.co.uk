@@ -11,7 +11,7 @@ const Page = ({ page }) => {
     const title = RichText.asText(page.data.title);
 
     return (
-      <DefaultLayout parent_href="/" parent_text="Home">
+      <DefaultLayout parentHref="/" parentText="Home">
         <Head>
           <title>{title}</title>
         </Head>
