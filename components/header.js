@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Header({ parent_href, parent_text }) {
+export default function Header({ parentHref, parentText }) {
   return (
     <header className="pt-8 pb-4">
       <Link
@@ -16,9 +16,9 @@ export default function Header({ parent_href, parent_text }) {
         </a>
       </Link>
 
-      <Link href={parent_href}>
+      <Link href={parentHref}>
         <a className="no-underline inline-block text-xl align-middle">
-          {parent_text}
+          {parentText}
         </a>
       </Link>
     </header>

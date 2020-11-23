@@ -18,7 +18,7 @@ const Post = ({ post }) => {
     const title = RichText.asText(post.data.title);
 
     return (
-      <DefaultLayout parent_href="/research-blog" parent_text="Blog">
+      <DefaultLayout parentHref="/research-blog" parentText="Blog">
         <Head>
           <title>{title}</title>
         </Head>
