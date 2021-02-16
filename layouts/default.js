@@ -6,12 +6,17 @@ export default function DefaultLayout({
   parentText,
   parentHref,
   includeFooter = true,
+  includeHeader = true,
 }) {
   return (
-    <div className="container min-h-screen lg:w-3/4 xl:w-7/12 px-8 lg:px-0 mx-auto relative">
-      <Header parentHref={parentHref} parentText={parentText} />
-      <main className="pb-32 lg:pb-12 prose">{children}</main>
-      {includeFooter ? <Footer /> : null}
+    <div className="lg:w-3/4 xl:w-7/12 px-8 lg:px-0 mx-auto">
+      <div className="min-h-screen relative">
+        {includeHeader ? (
+          <Header parentHref={parentHref} parentText={parentText} />
+        ) : null}
+        <main className="prose pb-40 lg:pb-32">{children}</main>
+        {includeFooter ? <Footer /> : null}
+      </div>
     </div>
   );
 }
