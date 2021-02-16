@@ -1,3 +1,4 @@
+import Post from "./post";
 
 export default function PostList({ posts }) {
   return (

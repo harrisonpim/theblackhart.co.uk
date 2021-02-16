@@ -4,11 +4,7 @@ import { queryRepeatableDocuments } from "../../utils/queries";
 import DefaultLayout from "../../layouts/default";
 import SliceZone from "../../components/slicezone";
 import { Client } from "../../utils/prismic-helpers";
-
-const formatDate = (dateString) => {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return new Date(dateString).toLocaleDateString(undefined, options);
-};
+import { formatDate } from "../../components/date";
 
 const Post = ({ post }) => {
   if (post && post.data) {

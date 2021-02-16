@@ -20,7 +20,7 @@ module.exports = {
       maxWidth: {
         measure: "34em",
       },
-      textColor: {
+      colors: {
         silver: "#bbb",
       },
     },

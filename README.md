@@ -12,11 +12,9 @@ Built and deployed with:
 
 ## Developing
 
-First, you'll need to populate `blank.env.local` with the relevant environment variables and rename it `env.local`.
+run `make install` to install all of the relevant dependencies through yarn.
 
-Run `make serve` to install the relevant packages etc, build an optimised production version of the site, and serve it locally at `localhost:3000`.
-
-To serve a live-updating development version of the site, run `make dev`
+you'll need to populate a 
 
 ## Deploying
 

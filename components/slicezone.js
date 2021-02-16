@@ -6,16 +6,21 @@ import { linkResolver } from "../prismic-configuration";
 
 export default function SliceZone({ sliceZone }) {
   return sliceZone.map((slice) => {
+    console.log(slice.slice_type);
     switch (slice.slice_type) {
+      case "image_with_caption":
+        return <ImageWithCaption slice={slice} />;
       case "img":
         return <ImageWithCaption slice={slice} />;
       case "text":
         return (
-          <RichText
-            render={slice.primary.text}
-            linkResolver={linkResolver}
-            serializeHyperlink={customLink}
-          />
+          <div className="prose">
+            <RichText
+              render={slice.primary.text}
+              linkResolver={linkResolver}
+              serializeHyperlink={customLink}
+            />
+          </div>
         );
       case "glyph":
         return <Glyph slice={slice} />;

@@ -9,16 +9,16 @@ export default function Footer() {
         Instagram
       </a>
       <a
+        href="https://www.tiktok.com/@tbh_jewellery"
+        className="no-underline pr-2 lg:inline-block hover:text-white"
+      >
+        TikTok
+      </a>
+      <a
         href="https://www.youtube.com/channel/UCfUqXisYyNzQcRDPxP_SizQ"
         className="no-underline pr-2 lg:inline-block hover:text-white"
       >
         YouTube
-      </a>
-      <a
-        href="https://www.twitter.com/tbh_jewellery/"
-        className="no-underline pr-2 lg:inline-block hover:text-white"
-      >
-        Twitter
       </a>
       <a
         href="mailto:hello@theblackhart.co.uk"
