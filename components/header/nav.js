@@ -2,16 +2,16 @@ export default function Nav(props) {
   return (
     <div {...props}>
       <div className="flex space-x-4 justify-center">
-        <a className="capitalize no-underline text-sm" href="/shop">
+        <a className="uppercase no-underline" href="/shop">
           Shop
         </a>
-        <a className="capitalize no-underline text-sm" href="/commissions">
+        <a className="uppercase no-underline" href="/bespoke">
           Commissions
         </a>
-        <a className="capitalize no-underline text-sm" href="/blog">
+        <a className="uppercase no-underline" href="/blog">
           Blog
         </a>
-        <a className="capitalize no-underline text-sm" href="/faq">
+        <a className="uppercase no-underline" href="/faq">
           FAQ
         </a>
       </div>

@@ -13,7 +13,7 @@ export default function Header() {
           />
         </a>
       </Link>
-      <Nav className="mx-auto" />
+      <Nav className="mx-auto text-xs" />
     </header>
   );
 }
