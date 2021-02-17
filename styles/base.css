@@ -8,25 +8,31 @@
   font-size: 20px;
 }
 
-/* a {@apply underline;}
-h1 {@apply text-3xl;}
-h2 {@apply text-2xl;}
-h3 {@apply text-xl;}
-ul {@apply list-disc pl-4;} */
+@font-face {
+  font-family: "thornletter";
+  src: url("/thornletter.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.thornletter {
+  @apply font-thornletter;
+  @apply tracking-tightest;
+}
 
 a {
-  text-decoration: underline;
+  @apply underline;
 }
 h1 {
-  font-size: 1.875rem;
+  @apply text-3xl;
 }
 h2 {
-  font-size: 1.5rem;
+  @apply text-2xl;
 }
 h3 {
-  font-size: 1.25rem;
+  @apply text-xl;
 }
 ul {
-  list-style-type: disc;
-  padding-left: 1rem;
+  @apply list-disc;
+  @apply pl-4;
 }
