@@ -7,7 +7,7 @@ import { Client } from "../../utils/prismic-helpers";
 
 const Blog = ({ index, posts }) => {
   return (
-    <DefaultLayout parentHref="/" parentText="Home">
+    <DefaultLayout>
       <Head>
         <title>{RichText.asText(index.data.title)}</title>
         <meta
@@ -15,7 +15,6 @@ const Blog = ({ index, posts }) => {
           content={RichText.asText(index.data.description)}
         />
       </Head>
-      <div>{RichText.asText(index.data.description)}</div>
       <div className="pt-4">
         <PostList posts={posts} />
       </div>
