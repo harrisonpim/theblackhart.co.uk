@@ -3,7 +3,7 @@ export default function FooterBreak(props) {
     <div {...props}>
       <div className=" flex items-center">
         <div className="flex-grow border-t border-white" />
-        <img src="/icons/tbh_white.png" className="h-8 px-3" alt="TBH" />
+        <img src="/icons/tbh.png" className="h-6 px-2" alt="TBH" />
         <div className="flex-grow border-t border-white" />
       </div>
     </div>
