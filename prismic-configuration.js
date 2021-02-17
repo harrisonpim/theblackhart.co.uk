@@ -27,7 +27,7 @@ const resolver = (doc, uid) => {
     return `/${uid}`;
   }
   if (doc.type === "blog-post") {
-    return `research-blog/${uid}`;
+    return `blog/${uid}`;
   }
   if (doc.type === "product") {
     return `shop/${uid}`;
@@ -36,7 +36,7 @@ const resolver = (doc, uid) => {
     return "shop";
   }
   if (doc.type === "blog-home") {
-    return "research-blog";
+    return "blog";
   }
   return "/";
 };

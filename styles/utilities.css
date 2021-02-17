@@ -1,0 +1,4 @@
+.debug * {
+  @apply border;
+  @apply border-yellow-500;
+}

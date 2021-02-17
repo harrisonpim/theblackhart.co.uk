@@ -1,24 +1,38 @@
 @import url(https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap);
 
 :root {
-    font-family: "Crimson Text", Georgia, serif;
-    color: white;
-    background-color: rgba(0,0,0,0.9);
-    line-height: 1.15;
-    font-size: 20px;
+  font-family: "Crimson Text", Georgia, serif;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.9);
+  line-height: 1.15;
+  font-size: 20px;
 }
 
-/* a {@apply underline;}
-h1 {@apply text-3xl;}
-h2 {@apply text-2xl;}
-h3 {@apply text-xl;}
-ul {@apply list-disc pl-4;} */
+@font-face {
+  font-family: "thornletter";
+  src: url("/thornletter.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+}
 
-a {text-decoration: underline;}
-h1 {font-size: 1.875rem;}
-h2 {font-size: 1.5rem;}
-h3 {font-size: 1.25rem;}
+.thornletter {
+  @apply font-thornletter;
+  @apply tracking-tightest;
+}
+
+a {
+  @apply underline;
+}
+h1 {
+  @apply text-3xl;
+}
+h2 {
+  @apply text-2xl;
+}
+h3 {
+  @apply text-xl;
+}
 ul {
-    list-style-type: disc;
-    padding-left: 1rem;
-;}
+  @apply list-disc;
+  @apply pl-4;
+}

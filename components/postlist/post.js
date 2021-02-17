@@ -11,13 +11,15 @@ export default function Post({ post }) {
   const date = formatDate(post.data.date);
   return (
     <div>
-      <Link as={linkResolver(post)} href={linkResolver(post)}>
-        <a className="no-underline pb-none">
-          <h2 className="pb-none">{title}</h2>
+      <NextLink as={linkResolver(post)} href={linkResolver(post)}>
+        <a className="no-underline">
+          <h2>{title}</h2>
         </a>
-      </Link>
-      <div className="text-sm text-silver pb-3">{date}</div>
-      <Lead sliceZone={post.data.body1} textLimit={300} />
+      </NextLink>
+      <div className="text-sm">
+        <div className="text-silver">{date}</div>
+        <Lead sliceZone={post.data.body1} textLimit={300} />
+      </div>
     </div>
   );
 }
