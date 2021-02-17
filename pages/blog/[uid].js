@@ -18,13 +18,13 @@ const Post = ({ post }) => {
     const title = RichText.asText(post.data.title);
 
     return (
-      <DefaultLayout parentHref="/research-blog" parentText="Blog">
+      <DefaultLayout>
         <Head>
           <title>{title}</title>
         </Head>
         <div>
-          <div className="mx-auto w-full">
-            <img className="mx-auto" src={titleImageURL} alt={title} />
+          <div className="mx-auto w-full pt-3">
+            <h1 className="thornletter text-6xl -mb-3">{title}</h1>
             <div className="text-sm text-silver pb-4">{date}</div>
           </div>
           <SliceZone sliceZone={post.data.body1} />
@@ -58,7 +58,7 @@ export async function getStaticPaths() {
     (doc) => doc.type === "blog-post"
   );
   return {
-    paths: documents.map((doc) => `/research-blog/${doc.uid}`),
+    paths: documents.map((doc) => `/blog/${doc.uid}`),
     fallback: false,
   };
 }

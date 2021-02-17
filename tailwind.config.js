@@ -10,18 +10,21 @@ module.exports = {
       lg: "800px",
       xl: "1200px",
     },
-    fontSize: {
-      base: ["20px", "28px"],
-    },
     fontWeight: {
       bold: 600,
     },
     extend: {
+      fontFamily: {
+        thornletter: ["thornletter", "serif"],
+      },
       maxWidth: {
         measure: "34em",
       },
       textColor: {
         silver: "#bbb",
+      },
+      letterSpacing: {
+        tightest: "-.25rem",
       },
     },
   },

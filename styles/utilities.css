@@ -1,1 +1,4 @@
-.debug * {outline: 1px solid gold; }
+.debug * {
+  @apply border;
+  @apply border-yellow-500;
+}
