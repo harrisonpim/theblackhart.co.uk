@@ -15,7 +15,7 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.ico" type="image/png" />
         </Head>
-        <body>
+        <body className="">
           <Main />
           <NextScript />
           <PrismicScript />

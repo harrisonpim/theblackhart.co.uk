@@ -9,7 +9,7 @@ export default function Header({ parentHref, parentText }) {
       >
         <a>
           <img
-            src="/assets/tbh_white.png"
+            src="/icons/tbh_white.png"
             alt="TBH"
             className="inline-block h-12 pr-4"
           />
