@@ -4,7 +4,9 @@ export default function PostList({ posts }) {
   return (
     <div>
       {posts.map((post) => (
-        <Post post={post} />
+        <div className="pb-4">
+          <Post post={post} />
+        </div>
       ))}
     </div>
   );

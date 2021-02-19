@@ -15,7 +15,6 @@ const Shop = ({ index, products }) => {
           content={RichText.asText(index.data.description)}
         />
       </Head>
-      <div>{RichText.asText(index.data.description)}</div>
       <div className="pt-4">
         <ProductList products={products} />
       </div>
@@ -24,8 +23,7 @@ const Shop = ({ index, products }) => {
 };
 
 export async function getStaticProps() {
-  const client = Client();
-  const index = await client.getSingle("shop");
+  const index = await Client().getSingle("shop");
   const products = await queryRepeatableDocuments(
     (doc) => doc.type === "product"
   );

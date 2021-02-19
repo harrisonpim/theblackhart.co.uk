@@ -5,10 +5,10 @@ import DefaultLayout from "../../layouts/default";
 import Product from "../../components/product";
 import { Client } from "../../utils/prismic-helpers";
 
-const ProductPage = ({ product }) => {
-  const title = RichText.asText(product.data.product_name)
+const ProductPage = ({ product, details }) => {
+  const title = RichText.asText(product.data.product_name);
   return (
-    <DefaultLayout parentHref="/shop" parentText="Shop">
+    <DefaultLayout>
       <Head>
         <title>{title}</title>
         <meta
@@ -16,24 +16,19 @@ const ProductPage = ({ product }) => {
           content={RichText.asText(product.data.description)}
         />
       </Head>
-      <Product data={product.data} />
+      <Product product={product.data} details={details.data} />
     </DefaultLayout>
   );
 };
 
-export async function getStaticProps({
-  params,
-  preview = null,
-  previewData = {},
-}) {
-  const { ref } = previewData;
-  const product =
-    (await Client().getByUID("product", params.uid, ref ? { ref } : null)) ||
-    {};
+export async function getStaticProps({ params }) {
+  const product = (await Client().getByUID("product", params.uid)) || {};
+  const details = await Client().getSingle("additional_information");
+
   return {
     props: {
-      preview,
       product,
+      details,
     },
   };
 }

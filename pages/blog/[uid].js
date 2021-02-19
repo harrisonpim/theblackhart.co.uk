@@ -17,7 +17,7 @@ const Post = ({ post }) => {
         <Head>
           <title>{title}</title>
         </Head>
-        <div>
+        <div className="">
           <div className="mx-auto w-full pt-3">
             <h1 className="thornletter text-6xl -mb-3">{title}</h1>
             <div className="text-sm text-silver pb-4">{date}</div>

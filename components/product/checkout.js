@@ -6,7 +6,8 @@ export default function CheckoutButton({ price, shipping }) {
   const displayTotal = formatPrice(total);
   return (
     <button className="w-full py-3 rounded-sm border border-solid border-white hover:text-black hover:bg-white hover:text-black transition duration-200 ease-in-out">
-      Pay {displayTotal}
+      {/* {displayTotal} */}
+      Add to basket
     </button>
   );
 }

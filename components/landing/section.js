@@ -5,8 +5,8 @@ import { customLink } from "../../utils/prismic-helpers";
 export default function Section({ slice }) {
   return (
     <div
-      class="h-screen w-full table bg-no-repeat bg-cover bg-center"
-      style={{backgroundImage: `url(${slice.background_image.url})`}}
+      className="h-screen w-full table bg-no-repeat bg-cover bg-center"
+      style={{ backgroundImage: `url(${slice.background_image.url})` }}
     >
       <div className="table-cell align-middle text-left leading-tight bg-center bg-no-repeat px-16 lg:px-32">
         <h2 className="max-w-measure uppercase font-bold pb-2">
