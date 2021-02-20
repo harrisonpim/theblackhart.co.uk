@@ -29,3 +29,21 @@
   @apply lowercase;
   @apply text-6xl;
 }
+
+button {
+  @apply w-full;
+  @apply py-3;
+  @apply rounded-sm;
+  @apply border;
+  @apply border-solid;
+  @apply border-white;
+  @apply transition;
+  @apply duration-200;
+  @apply ease-in-out;
+}
+
+button:hover {
+  @apply text-black;
+  @apply bg-white;
+  @apply text-black;
+}

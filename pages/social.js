@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { RichText } from "prismic-reactjs";
-import Layout from "../layouts/default";
+import Layout from "../components/layouts/default";
 import { Client } from "../prismic.config";
 
 const Linktree = ({ data }) => {

@@ -1,6 +1,6 @@
 import { RichText } from "prismic-reactjs";
 import { queryRepeatableDocuments } from "../../utils/queries";
-import Layout from "../../layouts/default";
+import Layout from "../../components/layouts/default";
 import SliceZone from "../../components/slicezone";
 import { Client } from "../../prismic.config";
 import { formatDate } from "../../components/date";

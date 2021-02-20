@@ -1,5 +1,5 @@
 import { RichText } from "prismic-reactjs";
-import Layout from "../../layouts/default";
+import Layout from "../../components/layouts/default";
 import ProductList from "../../components/productList";
 import { queryRepeatableDocuments } from "../../utils/queries";
 import { Client } from "../../prismic.config";

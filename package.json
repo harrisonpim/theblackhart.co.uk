@@ -18,7 +18,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "stripe": "^8.126.0",
-    "tailwindcss": "^1.9.0"
+    "tailwindcss": "^1.9.0",
+    "use-shopping-cart": "^2.4.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.30",

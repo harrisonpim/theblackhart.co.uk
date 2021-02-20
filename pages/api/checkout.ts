@@ -16,9 +16,10 @@ export default async function handler(
       const inventory = await queryRepeatableDocuments(
         (doc) => doc.type === "product"
       );
+      const products = Object.values(req.body);
 
-      const lineItems = req.body.products.map(({ uid, quantity }) => {
-        const product = inventory.find((p) => p.uid === uid);
+      const lineItems = products.map(({ id, quantity }) => {
+        const product = inventory.find((p) => p.uid === id);
         return {
           price_data: {
             unit_amount: product.data.price,
@@ -29,7 +30,7 @@ export default async function handler(
               images: [product.data.body[0].items[0].image.url],
             },
           },
-          quantity: quantity,
+          quantity,
         };
       });
 
@@ -38,7 +39,7 @@ export default async function handler(
           mode: "payment",
           payment_method_types: ["card"],
           shipping_address_collection: {
-            allowed_countries: ["GB", "IE", "US", "CA", "FR", "DE"],
+            allowed_countries: ["GB"],
           },
           billing_address_collection: "auto",
           success_url: `${req.headers.origin}/success`,
@@ -47,10 +48,7 @@ export default async function handler(
         }
       );
 
-      res.status(200).json({
-        sessionId: session.id,
-        publishableKey: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
-      });
+      res.status(200).json({ sessionId: session.id });
     } catch (err) {
       console.log(err.message);
       res.status(500).json({ statusCode: 500, message: err.message });
