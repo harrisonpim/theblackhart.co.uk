@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { queryRepeatableDocuments } from "../../utils/queries";
 import Stripe from "stripe";
+import { queryRepeatableDocuments } from "../../utils/queries";
 import { RichText } from "prismic-reactjs";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2020-08-27",
 });
 

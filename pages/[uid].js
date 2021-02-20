@@ -1,7 +1,7 @@
 import { RichText } from "prismic-reactjs";
 import { queryRepeatableDocuments } from "../utils/queries";
 import Layout from "../layouts/default";
-import Client from "../utils/prismic";
+import { Client } from "../prismic.config";
 import SliceZone from "../components/slicezone";
 
 const Page = ({ page }) => {

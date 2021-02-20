@@ -1,6 +1,5 @@
 import { RichText } from "prismic-reactjs";
-import { linkResolver } from "../../prismic.config";
-import { customLink } from "../../utils/prismic";
+import { linkResolver, customLink } from "../../prismic.config";
 
 export default function Section({ slice }) {
   return (

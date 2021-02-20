@@ -1,7 +1,6 @@
 import { RichText } from "prismic-reactjs";
-import { linkResolver } from "../../prismic.config";
-import { customLink } from "../../utils/prismic";
-import Nav from "../header/nav";
+import { linkResolver, customLink } from "../../prismic.config";
+import Nav from "../nav";
 import Image from "next/image";
 
 export default function Header({ slice }) {

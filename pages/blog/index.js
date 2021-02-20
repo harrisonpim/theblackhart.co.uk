@@ -2,9 +2,9 @@ import { RichText } from "prismic-reactjs";
 import Layout from "../../layouts/default";
 import PostList from "../../components/postlist";
 import { queryRepeatableDocuments } from "../../utils/queries";
-import { Client } from "../../utils/prismic";
+import { Client } from "../../prismic.config";
 
-const Blog = ({ index, posts }) => {
+export default function Blog({ index, posts }) {
   return (
     <Layout
       title={RichText.asText(index.data.title)}
@@ -15,11 +15,10 @@ const Blog = ({ index, posts }) => {
       </div>
     </Layout>
   );
-};
+}
 
 export async function getStaticProps() {
-  const client = Client();
-  const index = await client.getSingle("blog-home");
+  const index = await Client().getSingle("blog-home");
   const posts = await queryRepeatableDocuments(
     (doc) => doc.type === "blog-post"
   );
@@ -31,5 +30,3 @@ export async function getStaticProps() {
     },
   };
 }
-
-export default Blog;

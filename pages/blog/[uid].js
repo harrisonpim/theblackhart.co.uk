@@ -2,12 +2,11 @@ import { RichText } from "prismic-reactjs";
 import { queryRepeatableDocuments } from "../../utils/queries";
 import Layout from "../../layouts/default";
 import SliceZone from "../../components/slicezone";
-import { Client } from "../../utils/prismic";
+import { Client } from "../../prismic.config";
 import { formatDate } from "../../components/date";
 
-const Post = ({ post }) => {
+export default function Post({ post }) {
   if (post && post.data) {
-    const titleImageURL = post.data["title-image"].url;
     const date = formatDate(post.data.date);
     const title = RichText.asText(post.data.title);
 
@@ -25,7 +24,7 @@ const Post = ({ post }) => {
   }
 
   return null;
-};
+}
 
 export async function getStaticProps({
   params,
@@ -53,5 +52,3 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-
-export default Post;

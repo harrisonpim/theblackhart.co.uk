@@ -17,3 +17,15 @@
 .prose dd {
   @apply mb-2;
 }
+
+.prose ul {
+  @apply list-disc;
+  @apply pl-4;
+}
+
+.thornletter {
+  @apply font-thornletter;
+  @apply tracking-tightest;
+  @apply lowercase;
+  @apply text-6xl;
+}

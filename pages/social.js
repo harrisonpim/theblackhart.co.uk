@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { RichText } from "prismic-reactjs";
 import Layout from "../layouts/default";
-import { Client } from "../utils/prismic";
+import { Client } from "../prismic.config";
 
 const Linktree = ({ data }) => {
   const title = RichText.asText(data.title);
@@ -11,11 +11,11 @@ const Linktree = ({ data }) => {
     <Layout includeFooter={false} title={title} description={description}>
       <div className="text-center thornletter">
         {data.body.map((link) => (
-          <h1 className="align-middle py-6">
+          <div className="align-middle py-6">
             <Link href={link.primary.url.url}>
               <a className="no-underline">{link.primary.text[0].text}</a>
             </Link>
-          </h1>
+          </div>
         ))}
       </div>
     </Layout>

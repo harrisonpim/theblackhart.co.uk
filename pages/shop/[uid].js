@@ -3,11 +3,9 @@ import { queryRepeatableDocuments } from "../../utils/queries";
 import Layout from "../../layouts/default";
 import Details from "../../components/product/details";
 import ImageGallery from "../../components/product/imageGallery";
-import { Client, customLink } from "../../utils/prismic";
-import { loadStripe } from "@stripe/stripe-js";
 import formatPrice from "../../components/price";
-import { linkResolver } from "../../prismic.config";
-import { fetchPostJSON } from "../../utils/api";
+import { linkResolver, Client, customLink } from "../../prismic.config";
+import CheckoutButton from "../../components/checkoutButton";
 
 export default function ProductPage({ product, details, uid }) {
   const title = RichText.asText(product.data.name);
@@ -15,16 +13,6 @@ export default function ProductPage({ product, details, uid }) {
   const productName = RichText.asText(product.data.name);
   const displayPrice = formatPrice(product.data.price);
   const description = RichText.asText(product.data.description);
-  async function handleClick() {
-    const { sessionId, publishableKey } = await fetchPostJSON("/api/checkout", {
-      products: [{ uid, quantity: "1" }],
-    });
-
-    console.log(sessionId, publishableKey);
-    const stripe = await loadStripe(publishableKey);
-    const { error } = await stripe.redirectToCheckout({ sessionId });
-  }
-
   return (
     <Layout title={title} description={description}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -43,13 +31,7 @@ export default function ProductPage({ product, details, uid }) {
               <Details data={details.data} />
             ) : null}
           </div>
-          <button
-            role="link"
-            className="w-full py-3 rounded-sm border border-solid border-white hover:text-black hover:bg-white hover:text-black transition duration-200 ease-in-out"
-            onClick={handleClick}
-          >
-            Checkout
-          </button>
+          <CheckoutButton products={[{ uid, quantity: "1" }]} />
         </div>
       </div>
     </Layout>
@@ -57,8 +39,9 @@ export default function ProductPage({ product, details, uid }) {
 }
 
 export async function getStaticProps({ params }) {
-  const product = (await Client().getByUID("product", params.uid)) || {};
-  const details = await Client().getSingle("additional_information");
+  const client = Client();
+  const product = (await client.getByUID("product", params.uid)) || {};
+  const details = await client.getSingle("additional_information");
 
   return {
     props: {

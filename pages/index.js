@@ -1,6 +1,6 @@
 import Head from "next/head";
 import SliceZone from "../components/landing";
-import { Client } from "../utils/prismic";
+import { Client } from "../prismic.config";
 import { RichText } from "prismic-reactjs";
 
 const Index = ({ index }) => {

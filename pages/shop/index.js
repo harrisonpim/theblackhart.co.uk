@@ -2,7 +2,7 @@ import { RichText } from "prismic-reactjs";
 import Layout from "../../layouts/default";
 import ProductList from "../../components/productList";
 import { queryRepeatableDocuments } from "../../utils/queries";
-import { Client } from "../../utils/prismic";
+import { Client } from "../../prismic.config";
 
 const Shop = ({ index, products }) => {
   return (

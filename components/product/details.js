@@ -1,5 +1,4 @@
-import { linkResolver } from "../../prismic.config";
-import { customLink } from "../../utils/prismic";
+import { linkResolver, customLink } from "../../prismic.config";
 import { RichText } from "prismic-reactjs";
 
 export default function Details({ data }) {
