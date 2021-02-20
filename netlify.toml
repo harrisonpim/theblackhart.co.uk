@@ -1,15 +1,15 @@
 [build]
   command = "make build"
   publish = "out"
-  functions = "functions"
+  functions = "pages/api"
 
 [dev]
   publish = "out"
-  functions = "functions"
+  functions = "pages/api"
 
 [template.environment]
   NODE_ENV=""
   PRISMIC_REPO_NAME=""
   PRISMIC_ACCESS_TOKEN=""
-  STRIPE_PUBLISHABLE_KEY=""
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=""
   STRIPE_SECRET_KEY=""

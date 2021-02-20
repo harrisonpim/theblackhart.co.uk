@@ -1,11 +1,11 @@
 import { RichText } from "prismic-reactjs";
-import { formatPrice } from "../price";
+import formatPrice from "../price";
 import Link from "next/link";
-import { linkResolver } from "../../prismic-configuration";
+import { linkResolver } from "../../prismic.config";
 
 export default function Product({ product }) {
   const image = product.data.body[0].items[0].image;
-  const productName = RichText.asText(product.data.product_name);
+  const productName = RichText.asText(product.data.name);
   const displayPrice = formatPrice(product.data.price);
   return (
     <Link as={linkResolver(product)} href={linkResolver(product)}>

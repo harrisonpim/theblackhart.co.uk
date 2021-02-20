@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { RichText } from "prismic-reactjs";
 import Lead from "./lead";
-import { linkResolver } from "../../prismic-configuration";
+import { linkResolver } from "../../prismic.config";
 import { formatDate } from "../date";
 
 export default function Post({ post }) {

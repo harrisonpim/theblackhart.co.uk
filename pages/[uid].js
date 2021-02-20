@@ -1,8 +1,7 @@
-import Head from "next/head";
 import { RichText } from "prismic-reactjs";
 import { queryRepeatableDocuments } from "../utils/queries";
-import DefaultLayout from "../layouts/default";
-import Client from "../utils/prismic-helpers";
+import Layout from "../layouts/default";
+import Client from "../utils/prismic";
 import SliceZone from "../components/slicezone";
 
 const Page = ({ page }) => {
@@ -10,15 +9,12 @@ const Page = ({ page }) => {
     const title = RichText.asText(page.data.title);
 
     return (
-      <DefaultLayout>
-        <Head>
-          <title>{title}</title>
-        </Head>
+      <Layout title={title}>
         <div>
           <h1>{title}</h1>
           <SliceZone sliceZone={page.data.body} />
         </div>
-      </DefaultLayout>
+      </Layout>
     );
   }
   return null;

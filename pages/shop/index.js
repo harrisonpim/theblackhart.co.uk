@@ -1,24 +1,19 @@
-import Head from "next/head";
 import { RichText } from "prismic-reactjs";
-import DefaultLayout from "../../layouts/default";
+import Layout from "../../layouts/default";
 import ProductList from "../../components/productList";
 import { queryRepeatableDocuments } from "../../utils/queries";
-import { Client } from "../../utils/prismic-helpers";
+import { Client } from "../../utils/prismic";
 
 const Shop = ({ index, products }) => {
   return (
-    <DefaultLayout parentHref="/" parentText="Home">
-      <Head>
-        <title>{RichText.asText(index.data.title)}</title>
-        <meta
-          name="description"
-          content={RichText.asText(index.data.description)}
-        />
-      </Head>
+    <Layout
+      description={RichText.asText(index.data.description)}
+      title={RichText.asText(index.data.title)}
+    >
       <div className="pt-4">
         <ProductList products={products} />
       </div>
-    </DefaultLayout>
+    </Layout>
   );
 };
 

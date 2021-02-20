@@ -14,11 +14,12 @@ module.exports = {
       bold: 600,
     },
     extend: {
+      visibility: ["hover"],
       fontFamily: {
         thornletter: ["thornletter", "serif"],
       },
       maxWidth: {
-        measure: "34em",
+        measure: "34rem",
       },
       colors: {
         silver: "#bbb",

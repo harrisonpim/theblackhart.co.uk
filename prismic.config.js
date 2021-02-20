@@ -27,16 +27,16 @@ const resolver = (doc, uid) => {
     return `/${uid}`;
   }
   if (doc.type === "blog-post") {
-    return `blog/${uid}`;
+    return `/blog/${uid}`;
   }
   if (doc.type === "product") {
-    return `shop/${uid}`;
+    return `/shop/${uid}`;
   }
   if (doc.type === "shop") {
-    return "shop";
+    return "/shop";
   }
   if (doc.type === "blog-home") {
-    return "blog";
+    return "/blog";
   }
   return "/";
 };

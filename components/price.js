@@ -1,4 +1,4 @@
-export const formatPrice = (price) => {
+export default function formatPrice(price) {
   if (price && price > 0) {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -9,4 +9,4 @@ export const formatPrice = (price) => {
   } else {
     return "free";
   }
-};
+}

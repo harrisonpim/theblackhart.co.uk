@@ -1,6 +1,6 @@
 import { RichText } from "prismic-reactjs";
-import { linkResolver } from "../../prismic-configuration";
-import { customLink } from "../../utils/prismic-helpers";
+import { linkResolver } from "../../prismic.config";
+import { customLink } from "../../utils/prismic";
 import Nav from "../header/nav";
 import Image from "next/image";
 

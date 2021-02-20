@@ -1,18 +1,18 @@
 import Head from "next/head";
 import SliceZone from "../components/landing";
-import { Client } from "../utils/prismic-helpers";
+import { Client } from "../utils/prismic";
 import { RichText } from "prismic-reactjs";
 
 const Index = ({ index }) => {
   if (index && index.data) {
-    const title = RichText.asText(index.data.title);
-    const description = RichText.asText(index.data.description);
-
     return (
       <div>
         <Head>
-          <title>{title}</title>
-          <meta name="Description" content={description} />
+          <title>{RichText.asText(index.data.title)}</title>
+          <meta
+            name="description"
+            content={RichText.asText(index.data.description)}
+          />
         </Head>
 
         <SliceZone sliceZone={index.data.body} />

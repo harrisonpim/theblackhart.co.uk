@@ -1,24 +1,19 @@
-import Head from "next/head";
 import { RichText } from "prismic-reactjs";
-import DefaultLayout from "../../layouts/default";
+import Layout from "../../layouts/default";
 import PostList from "../../components/postlist";
 import { queryRepeatableDocuments } from "../../utils/queries";
-import { Client } from "../../utils/prismic-helpers";
+import { Client } from "../../utils/prismic";
 
 const Blog = ({ index, posts }) => {
   return (
-    <DefaultLayout>
-      <Head>
-        <title>{RichText.asText(index.data.title)}</title>
-        <meta
-          name="description"
-          content={RichText.asText(index.data.description)}
-        />
-      </Head>
+    <Layout
+      title={RichText.asText(index.data.title)}
+      description={RichText.asText(index.data.description)}
+    >
       <div className="pt-4">
         <PostList posts={posts} />
       </div>
-    </DefaultLayout>
+    </Layout>
   );
 };
 

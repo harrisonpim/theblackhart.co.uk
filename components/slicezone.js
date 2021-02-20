@@ -1,8 +1,8 @@
 import { RichText } from "prismic-reactjs";
 import ImageWithCaption from "./imageWithCaption";
 import Glyph from "./glyph";
-import { customLink } from "../utils/prismic-helpers";
-import { linkResolver } from "../prismic-configuration";
+import { customLink } from "../utils/prismic";
+import { linkResolver } from "../prismic.config";
 
 export default function SliceZone({ sliceZone }) {
   return (

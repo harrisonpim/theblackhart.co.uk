@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { linkResolver } from "../../prismic.config";
+
 export default function Nav(props) {
   return (
     <div {...props}>
@@ -13,6 +16,9 @@ export default function Nav(props) {
         </a>
         <a className="uppercase no-underline" href="/faq">
           FAQ
+        </a>
+        <a className="uppercase no-underline" href="/shop/basket">
+          Basket
         </a>
       </div>
     </div>

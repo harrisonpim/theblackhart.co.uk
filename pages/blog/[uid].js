@@ -1,9 +1,8 @@
-import Head from "next/head";
 import { RichText } from "prismic-reactjs";
 import { queryRepeatableDocuments } from "../../utils/queries";
-import DefaultLayout from "../../layouts/default";
+import Layout from "../../layouts/default";
 import SliceZone from "../../components/slicezone";
-import { Client } from "../../utils/prismic-helpers";
+import { Client } from "../../utils/prismic";
 import { formatDate } from "../../components/date";
 
 const Post = ({ post }) => {
@@ -13,18 +12,15 @@ const Post = ({ post }) => {
     const title = RichText.asText(post.data.title);
 
     return (
-      <DefaultLayout>
-        <Head>
-          <title>{title}</title>
-        </Head>
+      <Layout title={title}>
         <div className="">
           <div className="mx-auto w-full pt-3">
-            <h1 className="thornletter text-6xl -mb-3">{title}</h1>
+            <h1 className="thornletter -mb-2">{title}</h1>
             <div className="text-sm text-silver pb-4">{date}</div>
           </div>
           <SliceZone sliceZone={post.data.body1} />
         </div>
-      </DefaultLayout>
+      </Layout>
     );
   }
 

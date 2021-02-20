@@ -1,4 +1,4 @@
-import { repoName } from "../prismic-configuration";
+import { repoName } from "../prismic.config";
 
 export default function PrismicScript() {
   return (
