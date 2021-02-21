@@ -8,7 +8,7 @@ export default function Nav(props) {
           </a>
         </li>
         <li key="commissions">
-          <a className="no-underline" href="/bespoke">
+          <a className="no-underline" href="/commissions">
             Commissions
           </a>
         </li>
