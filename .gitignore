@@ -1,4 +1,5 @@
 yarn.lock
+package-lock.json
 
 .DS_Store
 
@@ -38,3 +39,4 @@ yarn-error.log*
 # vercel
 .vercel
 .netlify
+

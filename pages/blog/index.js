@@ -10,9 +10,7 @@ export default function Blog({ index, posts }) {
       title={RichText.asText(index.data.title)}
       description={RichText.asText(index.data.description)}
     >
-      <div className="pt-4">
-        <PostList posts={posts} />
-      </div>
+      <PostList posts={posts} />
     </Layout>
   );
 }

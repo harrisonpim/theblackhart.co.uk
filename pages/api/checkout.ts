@@ -18,8 +18,11 @@ export default async function handler(
       );
       const products = Object.values(req.body);
 
-      const lineItems = products.map(({ id, quantity }) => {
-        const product = inventory.find((p) => p.uid === id);
+      const validatedProducts = products.map(({ sku, quantity }) => {
+        return { quantity, ...inventory.find((p) => p.uid === sku) };
+      });
+
+      const lineItems = validatedProducts.map((product) => {
         return {
           price_data: {
             unit_amount: product.data.price,
@@ -30,9 +33,28 @@ export default async function handler(
               images: [product.data.body[0].items[0].image.url],
             },
           },
-          quantity,
+          quantity: product.quantity,
         };
       });
+
+      const containsSilver = validatedProducts.some(
+        (product) => product.data.type == "silver"
+      );
+
+      if (containsSilver === true) {
+        lineItems.push({
+          price_data: {
+            unit_amount: 670,
+            currency: "gbp",
+            product_data: {
+              name: "Shipping cost",
+              description: "Royal Mail Special Delivery Guaranteed by 1pm",
+              images: [],
+            },
+          },
+          quantity: 1,
+        });
+      }
 
       const session: Stripe.Checkout.Session = await stripe.checkout.sessions.create(
         {
@@ -50,7 +72,6 @@ export default async function handler(
 
       res.status(200).json({ sessionId: session.id });
     } catch (err) {
-      console.log(err.message);
       res.status(500).json({ statusCode: 500, message: err.message });
     }
   } else {

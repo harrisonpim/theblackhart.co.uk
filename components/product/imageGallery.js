@@ -4,5 +4,5 @@
 
 export default function ImageGallery({ images }) {
   const image = images[0].image;
-  return <img src={image.url} alt={image.alt} />;
+  return <img className="rounded-sm" src={image.url} alt={image.alt} />;
 }

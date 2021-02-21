@@ -3,15 +3,17 @@ import { RichText } from "prismic-reactjs";
 
 export default function Details({ data }) {
   return (
-    <details>
+    <details className="pb-3">
       <summary className="font-bold pb-2">
         {RichText.asText(data.title)}
       </summary>
-      <RichText
-        render={data.text}
-        linkResolver={linkResolver}
-        serializeHyperlink={customLink}
-      />
+      <div className="text-sm ">
+        <RichText
+          render={data.text}
+          linkResolver={linkResolver}
+          serializeHyperlink={customLink}
+        />
+      </div>
     </details>
   );
 }
