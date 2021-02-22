@@ -1,7 +1,5 @@
-import React from "react";
 import { RichText } from "prismic-reactjs";
-import { customLink } from "../../utils/prismic-helpers";
-import { linkResolver } from "../../prismic-configuration";
+import { linkResolver, customLink } from "../prismic.config";
 
 export default function Caption({ caption }) {
   if (RichText.asText(caption) !== "") {

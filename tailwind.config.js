@@ -2,7 +2,6 @@ module.exports = {
   future: {},
   purge: [
     "./components/**/*.{html,js,ts,jsx,tsx}",
-    "./layouts/**/*.{html,js,ts,jsx,tsx}",
     "./pages/**/*.{html,js,ts,jsx,tsx}",
   ],
   theme: {
@@ -14,13 +13,14 @@ module.exports = {
       bold: 600,
     },
     extend: {
+      visibility: ["hover"],
       fontFamily: {
         thornletter: ["thornletter", "serif"],
       },
       maxWidth: {
-        measure: "34em",
+        measure: "34rem",
       },
-      textColor: {
+      colors: {
         silver: "#bbb",
       },
       letterSpacing: {

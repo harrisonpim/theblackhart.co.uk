@@ -4,19 +4,17 @@ Jamstack site for [The Black Hart](theblackhart.co.uk), including a research blo
 
 Built and deployed with:
 
-- [next.js](https://nextjs.org/) for structuring the content
+- [next.js](https://nextjs.org/) and [typescript](https://www.typescriptlang.org/) for structuring the content
 - [tailwind css](https://tailwindcss.com/) for styling the content
 - [prismic](https://prismic.io/) for writing and managing the content
-- [square](https://squareup.com/gb/en) for managing the product catalogue and handling payments (likely switching to [stripe](https://stripe.com/) in the near future)
-- [netlify](https://www.netlify.com/) for hosting the site
+- [stripe](https://stripe.com/) for handling payments
+- [netlify](https://www.netlify.com/) for hosting the site (possibly switching to [vercel](https://vercel.com/) in the near future)
 
 ## Developing
 
-First, you'll need to populate `blank.env.local` with the relevant environment variables and rename it `env.local`.
+I use `netlify-cli` for local development. Run `yarn add netlify-cli -g` to install it.
 
-Run `make serve` to install the relevant packages etc, build an optimised production version of the site, and serve it locally at `localhost:3000`.
-
-To serve a live-updating development version of the site, run `make dev`
+Then run `ntl dev` to get a local version of the site running. Environment variables for prismic etc will be pulled directly from netlify, assuming you have the correct access permissions.
 
 ## Deploying
 

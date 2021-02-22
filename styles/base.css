@@ -15,11 +15,6 @@
   font-style: normal;
 }
 
-.thornletter {
-  @apply font-thornletter;
-  @apply tracking-tightest;
-}
-
 a {
   @apply underline;
 }
@@ -31,8 +26,4 @@ h2 {
 }
 h3 {
   @apply text-xl;
-}
-ul {
-  @apply list-disc;
-  @apply pl-4;
 }

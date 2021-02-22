@@ -1,30 +1,24 @@
 import Link from "next/link";
-import Head from "next/head";
 import { RichText } from "prismic-reactjs";
-import DefaultLayout from "../layouts/default";
-import { Client } from "../utils/prismic-helpers";
-import Social from "../components/social";
+import Layout from "../components/layouts/default";
+import { Client } from "../prismic.config";
 
 const Linktree = ({ data }) => {
   const title = RichText.asText(data.title);
   const description = RichText.asText(data.description);
 
   return (
-    <DefaultLayout includeFooter={false}>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-      </Head>
+    <Layout includeFooter={false} title={title} description={description}>
       <div className="text-center thornletter">
         {data.body.map((link) => (
-          <h1 className="align-middle py-6 text-6xl">
+          <div className="align-middle py-6">
             <Link href={link.primary.url.url}>
               <a className="no-underline">{link.primary.text[0].text}</a>
             </Link>
-          </h1>
+          </div>
         ))}
       </div>
-    </DefaultLayout>
+    </Layout>
   );
 };
 

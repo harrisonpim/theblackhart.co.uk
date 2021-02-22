@@ -1,12 +1,15 @@
 clean:
-	rm -rf .next node_modules out
+	rm -rf .next \
+	node_modules \
+	out \
+	package-lock.json \
+	yarn.lock
 
 install: clean
 	yarn install
 
 build: install
-	yarn export
-	cp ./_redirects ./out/_redirects
+	yarn build
 
 serve: build
 	yarn start

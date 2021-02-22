@@ -1,26 +1,19 @@
 import Link from "next/link";
+import Nav from "./nav";
 
-export default function Header({ parentHref, parentText }) {
+export default function Header() {
   return (
-    <header className="pt-8 pb-4">
-      <Link
-        href="/"
-        className="inline-block align-middle mr-4 no-underline h-16"
-      >
+    <header className="pt-2 pb-3 lg:py-4 ">
+      <Link href="/">
         <a>
           <img
-            src="/icons/tbh_white.png"
-            alt="TBH"
-            className="inline-block h-12 pr-4"
+            src="/icons/the_black_hart.png"
+            alt="The Black Hart"
+            className="h-12 mx-auto"
           />
         </a>
       </Link>
-
-      <Link href={parentHref}>
-        <a className="no-underline inline-block text-xl align-middle">
-          {parentText}
-        </a>
-      </Link>
+      <Nav className="mx-auto text-xs" />
     </header>
   );
 }
