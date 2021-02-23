@@ -15,7 +15,7 @@ module.exports = {
     extend: {
       visibility: ["hover"],
       fontFamily: {
-        thornletter: ["thornletter", "serif"],
+        thornletter: ["thornletter", "Crimson Text", "serif"],
       },
       maxWidth: {
         measure: "34rem",
