@@ -12,17 +12,21 @@ Built and deployed with:
 
 ## Developing
 
-I use `netlify-cli` for local development. Run `yarn add netlify-cli -g` to install it.
+I use [the vercel cli](https://vercel.com/docs/cli) for local development. Run `npm install --include=dev` to install it along with the other dependencies.
 
-Then run `ntl dev` to get a local version of the site running. Environment variables for prismic etc will be pulled directly from netlify, assuming you have the correct access permissions.
+Then run `vercel dev` to get a local version of the site running. Environment variables for prismic, stripe, etc should be stored in a `.env.local` file.
+
+## Testing
+
+Run `npm run test` to run the tests.
+
+The tests are also run as a github action for each PR, ensuring that we never deploy a broken site.
 
 ## Deploying
 
-The site is rebuilt and deployed automatically on netlify whenever:
+The site is rebuilt and deployed automatically on vercel whenever:
 
 - there's a change to the content in prismic (Ideally, changes are bundled together into a release)
-- there's a new commit to the master branch of this repo (new PRs will generate a build which is deployed to a preview URL)
+- there's a new commit to the master branch of this repo. New PRs will generate a preview build which is deployed to a secondary URL.
 
 As changes on either side are relatively infrequent compared to the build time, we have no problem rebuilding the site from scratch on each change.
-
-Tests are run as part of the build, ensuring that we never deploy a broken site.
