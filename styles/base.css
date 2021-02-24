@@ -10,7 +10,13 @@
 
 @font-face {
   font-family: "thornletter";
-  src: url("/thornletter.otf") format("otf");
+  src: url("/fonts/thornletter/thornletter.eot");
+  src: url("/fonts/thornletter/thornletter.eot?#iefix")
+      format("embedded-opentype"),
+    url("/fonts/thornletter/thornletter.woff2") format("woff2"),
+    url("/fonts/thornletter/thornletter.woff") format("woff"),
+    url("/fonts/thornletter/thornletter.ttf") format("truetype"),
+    url("/fonts/thornletter/thornletter.svg#svgFontName") format("svg");
   font-weight: normal;
   font-style: normal;
 }
