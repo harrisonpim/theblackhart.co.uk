@@ -41,7 +41,7 @@ export default function ProductPage({ product, details, uid }) {
 
 export async function getStaticProps({ params }) {
   const client = Client();
-  const product = (await client.getByUID("product", params.uid)) || {};
+  const product = await client.getByUID("product", params.uid);
   const details = await client.getSingle("additional_information");
 
   return {

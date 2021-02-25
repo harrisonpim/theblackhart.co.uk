@@ -1,17 +1,6 @@
 import Prismic from "@prismicio/client";
 import { Link } from "next/link";
 
-export function PrismicScript() {
-  return (
-    <script
-      async
-      defer
-      src={`https://static.cdn.prismic.io/prismic.min.js?repo=${process.env.PRISMIC_REPO_NAME}&new=true`}
-    />
-  );
-}
-
-// Client method to query documents from the Prismic repo
 export const Client = (req = null) =>
   Prismic.client(
     `https://${process.env.PRISMIC_REPO_NAME}.cdn.prismic.io/api/v2`,
@@ -59,8 +48,7 @@ export const hrefResolver = (doc) => {
   return resolver(doc, "[uid]");
 };
 
-// Helper function to convert Prismic Rich Text links to Next/Link components
-export function customLink(type, element, content, children, index) {
+export const customLink = (type, element, content, children, index) => {
   <Link
     key={index}
     href={hrefResolver(element.data)}
@@ -69,4 +57,4 @@ export function customLink(type, element, content, children, index) {
   >
     <a>{content}</a>
   </Link>;
-}
+};

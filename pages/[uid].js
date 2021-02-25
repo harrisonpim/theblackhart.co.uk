@@ -21,7 +21,7 @@ const Page = ({ page }) => {
 };
 
 export async function getStaticProps({ params }) {
-  const page = (await Client().getByUID("page", params.uid)) || {};
+  const page = await Client().getByUID("page", params.uid);
   return {
     props: {
       page,
