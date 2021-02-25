@@ -18,18 +18,18 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
   };
 };
 
-const resolver = (doc, uid) => {
+export const linkResolver = (doc) => {
   if (doc.link_type === "Web") {
     return doc.url;
   }
   if (doc.type === "page") {
-    return `/${uid}`;
+    return `/${doc.uid}`;
   }
   if (doc.type === "blog-post") {
-    return `/blog/${uid}`;
+    return `/blog/${doc.uid}`;
   }
   if (doc.type === "product") {
-    return `/shop/${uid}`;
+    return `/shop/${doc.uid}`;
   }
   if (doc.type === "shop") {
     return "/shop";
@@ -38,12 +38,4 @@ const resolver = (doc, uid) => {
     return "/blog";
   }
   return "/";
-};
-
-export const linkResolver = (doc) => {
-  return resolver(doc, doc.uid);
-};
-
-export const hrefResolver = (doc) => {
-  return resolver(doc, "[uid]");
 };
