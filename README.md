@@ -8,7 +8,7 @@ Built and deployed with:
 - [tailwind css](https://tailwindcss.com/) for styling the content
 - [prismic](https://prismic.io/) for writing and managing the content
 - [stripe](https://stripe.com/) for handling payments
-- [netlify](https://www.netlify.com/) for hosting the site (possibly switching to [vercel](https://vercel.com/) in the near future)
+-  [vercel](https://vercel.com/) for deploying and hosting the site
 
 ## Developing
 
