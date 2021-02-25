@@ -19,13 +19,13 @@ const Shop = ({ index, products }) => {
               Merch
             </a>
           </li>
-          <li>
+          <li key="silver">
             <a href="/shop?category=silver" className="no-underline">
               Silver
             </a>
           </li> */}
         </div>
-        <li className="mx-0 text-right">
+        <li className="mx-0 text-right" key="basket">
           <a className="no-underline" href="/shop/basket">
             Basket
           </a>

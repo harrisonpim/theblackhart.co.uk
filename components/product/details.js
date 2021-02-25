@@ -1,4 +1,4 @@
-import { linkResolver, customLink } from "../../prismic.config";
+import { linkResolver } from "../../prismic.config";
 import { RichText } from "prismic-reactjs";
 
 export default function Details({ data }) {
@@ -8,11 +8,7 @@ export default function Details({ data }) {
         {RichText.asText(data.title)}
       </summary>
       <div className="text-sm ">
-        <RichText
-          render={data.text}
-          linkResolver={linkResolver}
-          serializeHyperlink={customLink}
-        />
+        <RichText render={data.text} linkResolver={linkResolver} />
       </div>
     </details>
   );

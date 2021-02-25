@@ -3,7 +3,7 @@ import { queryRepeatableDocuments } from "@/lib/queries";
 import Layout from "@/components/layouts/default";
 import Details from "@/components/product/details";
 import ImageGallery from "@/components/product/imageGallery";
-import { linkResolver, Client, customLink } from "../../prismic.config";
+import { linkResolver, Client } from "../../prismic.config";
 import AddToBasket from "@/components/basket/addToBasket";
 import { formatCurrencyString } from "use-shopping-cart";
 
@@ -26,7 +26,6 @@ export default function ProductPage({ product, details, uid }) {
             <RichText
               render={product.data.description}
               linkResolver={linkResolver}
-              serializeHyperlink={customLink}
             />
             {product.data.type === "silver" ? (
               <Details data={details.data} />

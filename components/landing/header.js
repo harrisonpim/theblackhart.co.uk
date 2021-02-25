@@ -1,5 +1,5 @@
 import { RichText } from "prismic-reactjs";
-import { linkResolver, customLink } from "../../prismic.config";
+import { linkResolver } from "../../prismic.config";
 import Nav from "../nav";
 import Image from "next/image";
 
@@ -20,11 +20,7 @@ export default function Header({ slice }) {
           />
         </h1>
         <p className="uppercase font-bold lg:text-xl leading-none">
-          <RichText
-            render={slice.description}
-            linkResolver={linkResolver}
-            serializeHyperlink={customLink}
-          />
+          <RichText render={slice.description} linkResolver={linkResolver} />
         </p>
       </div>
     </header>

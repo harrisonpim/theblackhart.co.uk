@@ -1,7 +1,7 @@
 import { RichText } from "prismic-reactjs";
 import ImageWithCaption from "./imageWithCaption";
 import Glyph from "./glyph";
-import { linkResolver, customLink } from "../prismic.config";
+import { linkResolver } from "../prismic.config";
 
 export default function SliceZone({ sliceZone }) {
   return (
@@ -15,7 +15,6 @@ export default function SliceZone({ sliceZone }) {
               <RichText
                 render={slice.primary.text}
                 linkResolver={linkResolver}
-                serializeHyperlink={customLink}
               />
             );
           case "glyph":

@@ -47,14 +47,3 @@ export const linkResolver = (doc) => {
 export const hrefResolver = (doc) => {
   return resolver(doc, "[uid]");
 };
-
-export const customLink = (type, element, content, children, index) => {
-  <Link
-    key={index}
-    href={hrefResolver(element.data)}
-    as={linkResolver(element.data)}
-    passHref
-  >
-    <a>{content}</a>
-  </Link>;
-};
