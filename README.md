@@ -8,13 +8,13 @@ Built and deployed with:
 - [tailwind css](https://tailwindcss.com/) for styling the content
 - [prismic](https://prismic.io/) for writing and managing the content
 - [stripe](https://stripe.com/) for handling payments
--  [vercel](https://vercel.com/) for deploying and hosting the site
+- [vercel](https://vercel.com/) for deploying and hosting the site
 
 ## Developing
 
 I use [the vercel cli](https://vercel.com/docs/cli) for local development. Run `npm install --include=dev` to install it along with the other dependencies.
 
-Then run `vercel dev` to get a local version of the site running. Environment variables for prismic, stripe, etc should be stored in a `.env.local` file.
+Then run `npm run dev` to get a local version of the site running. Environment variables for prismic, stripe, etc should be stored in a `.env.local` file.
 
 ## Testing
 
