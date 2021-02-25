@@ -1,7 +1,7 @@
-import Head from "next/head";
-import SliceZone from "@/components/landing";
 import { Client } from "../prismic.config";
 import { RichText } from "prismic-reactjs";
+import Head from "next/head";
+import SliceZone from "@/components/landing";
 import Footer from "@/components/footer";
 
 export default function Index({ index }) {
