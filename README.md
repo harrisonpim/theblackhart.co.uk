@@ -14,7 +14,7 @@ Built and deployed with:
 
 I use [the vercel cli](https://vercel.com/docs/cli) for local development. Run `npm install --include=dev` to install it along with the other dependencies.
 
-Then run `vercel dev` to get a local version of the site running. Environment variables for prismic, stripe, etc should be stored in a `.env.local` file.
+Then run `npm run dev` to get a local version of the site running. Environment variables for prismic, stripe, etc should be stored in a `.env.local` file.
 
 ## Testing
 
