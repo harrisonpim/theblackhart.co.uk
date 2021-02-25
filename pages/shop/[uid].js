@@ -1,10 +1,10 @@
 import { RichText } from "prismic-reactjs";
-import { queryRepeatableDocuments } from "../../utils/queries";
-import Layout from "../../components/layouts/default";
-import Details from "../../components/product/details";
-import ImageGallery from "../../components/product/imageGallery";
+import { queryRepeatableDocuments } from "@/lib/queries";
+import Layout from "@/components/layouts/default";
+import Details from "@/components/product/details";
+import ImageGallery from "@/components/product/imageGallery";
 import { linkResolver, Client, customLink } from "../../prismic.config";
-import AddToBasket from "../../components/basket/addToBasket";
+import AddToBasket from "@/components/basket/addToBasket";
 import { formatCurrencyString } from "use-shopping-cart";
 
 export default function ProductPage({ product, details, uid }) {

@@ -1,4 +1,4 @@
-import Layout from "../components/layouts/default";
+import Layout from "@/components/layouts/default";
 
 export default function Success() {
   return (

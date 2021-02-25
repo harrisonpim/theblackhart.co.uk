@@ -1,6 +1,6 @@
-# :skull: theblackhart.co.uk
+# :skull: The Black Hart
 
-Jamstack site for [The Black Hart](theblackhart.co.uk), including a research blog and an ecommerce store.
+Jamstack site for [The Black Hart](https://theblackhart.co.uk/), including a research blog and an ecommerce store.
 
 Built and deployed with:
 

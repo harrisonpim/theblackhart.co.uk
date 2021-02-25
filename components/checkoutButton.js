@@ -1,5 +1,5 @@
-import getStripe from "../utils/stripe";
-import { fetchPostJSON } from "../utils/api";
+import getStripe from "@/lib/stripe";
+import { fetchPostJSON } from "@/lib/api";
 
 export default function CheckoutButton({ products }) {
   async function handleClick() {

@@ -1,7 +1,7 @@
-import Layout from "../../components/layouts/default";
+import Layout from "@/components/layouts/default";
 import { FormEventHandler, useState, useEffect } from "react";
 import { useShoppingCart } from "use-shopping-cart";
-import { fetchPostJSON } from "../../utils/api";
+import { fetchPostJSON } from "../../lib/api";
 
 export default function Basket() {
   const [cartEmpty, setCartEmpty] = useState(true);
