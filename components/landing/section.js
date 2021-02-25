@@ -1,5 +1,5 @@
 import { RichText } from "prismic-reactjs";
-import { linkResolver, customLink } from "../../prismic.config";
+import { linkResolver } from "../../prismic.config";
 
 export default function Section({ slice }) {
   return (
@@ -9,18 +9,10 @@ export default function Section({ slice }) {
     >
       <div className="table-cell align-middle text-left leading-tight bg-center bg-no-repeat px-16 lg:px-32">
         <h2 className="max-w-measure uppercase font-bold pb-2">
-          <RichText
-            render={slice.title}
-            linkResolver={linkResolver}
-            serializeHyperlink={customLink}
-          />
+          <RichText render={slice.title} linkResolver={linkResolver} />
         </h2>
         <p className="max-w-measure prose">
-          <RichText
-            render={slice.description}
-            linkResolver={linkResolver}
-            serializeHyperlink={customLink}
-          />
+          <RichText render={slice.description} linkResolver={linkResolver} />
         </p>
       </div>
     </div>

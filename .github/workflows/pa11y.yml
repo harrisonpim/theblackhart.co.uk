@@ -1,4 +1,4 @@
-name: Run tests
+name: Run pa11y integration tests
 
 on:
   push:
@@ -16,4 +16,4 @@ jobs:
         with:
           node-version: 14.x
       - run: npm install --include=dev
-      - run: npm test
+      - run: npm run pa11y

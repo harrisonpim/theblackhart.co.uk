@@ -26,18 +26,10 @@ export default function Post({ post }) {
   return null;
 }
 
-export async function getStaticProps({
-  params,
-  preview = null,
-  previewData = {},
-}) {
-  const { ref } = previewData;
-  const post =
-    (await Client().getByUID("blog-post", params.uid, ref ? { ref } : null)) ||
-    {};
+export async function getStaticProps({ params }) {
+  const post = await Client().getByUID("blog-post", params.uid);
   return {
     props: {
-      preview,
       post,
     },
   };

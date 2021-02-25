@@ -13,19 +13,19 @@ const Shop = ({ index, products }) => {
       title={RichText.asText(index.data.title)}
     >
       <ul className="grid grid-cols-2 row-gap-2 border-b border-t py-1 uppercase text-xs">
-        <div className="flex gap-3 mx-0 lg:text-left">
+        <div className="flex gap-3 mx-0 lg:text-left" key="categories">
           {/* <li key="merch">
             <a href="/shop?category=merch" className="no-underline">
               Merch
             </a>
           </li>
-          <li>
+          <li key="silver">
             <a href="/shop?category=silver" className="no-underline">
               Silver
             </a>
           </li> */}
         </div>
-        <li className="mx-0 text-right">
+        <li className="mx-0 text-right" key="basket">
           <a className="no-underline" href="/shop/basket">
             Basket
           </a>
@@ -33,7 +33,11 @@ const Shop = ({ index, products }) => {
       </ul>
       <div className="grid gap-3 grid-cols-2 lg:grid-cols-4 pt-4">
         {products.map((product) => (
-          <Link as={linkResolver(product)} href={linkResolver(product)}>
+          <Link
+            as={linkResolver(product)}
+            href={linkResolver(product)}
+            key={product.data.name}
+          >
             <a className="no-underline">
               <img
                 className="w-full h-40 object-cover pb-1 rounded-sm"
