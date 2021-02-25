@@ -1,7 +1,7 @@
 import { RichText } from "prismic-reactjs";
-import Layout from "../../components/layouts/default";
-import PostList from "../../components/postlist";
-import { queryRepeatableDocuments } from "../../utils/queries";
+import Layout from "@/components/layouts/default";
+import PostList from "@/components/postlist";
+import { queryRepeatableDocuments } from "@/lib/queries";
 import { Client } from "../../prismic.config";
 
 export default function Blog({ index, posts }) {

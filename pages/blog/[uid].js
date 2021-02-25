@@ -1,9 +1,9 @@
 import { RichText } from "prismic-reactjs";
-import { queryRepeatableDocuments } from "../../utils/queries";
-import Layout from "../../components/layouts/default";
-import SliceZone from "../../components/slicezone";
+import { queryRepeatableDocuments } from "../../lib/queries";
+import Layout from "@/components/layouts/default";
+import SliceZone from "@/components/slicezone";
 import { Client } from "../../prismic.config";
-import { formatDate } from "../../components/date";
+import { formatDate } from "@/components/date";
 
 export default function Post({ post }) {
   if (post && post.data) {

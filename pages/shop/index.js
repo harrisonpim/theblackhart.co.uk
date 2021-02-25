@@ -1,9 +1,9 @@
 import { RichText } from "prismic-reactjs";
-import Layout from "../../components/layouts/default";
+import Layout from "@/components/layouts/default";
 import Link from "next/link";
 import { linkResolver } from "../../prismic.config";
 import { formatCurrencyString } from "use-shopping-cart";
-import { queryRepeatableDocuments } from "../../utils/queries";
+import { queryRepeatableDocuments } from "@/lib/queries";
 import { Client } from "../../prismic.config";
 
 const Shop = ({ index, products }) => {
