@@ -4,7 +4,7 @@ We want to build a site that works well for everyone, following performance and 
 
 ## Accessibility
 
-We run pa11y-ci on every PR, and merging is blocked until the suite passes.
+We run our own tests and [pa11y-ci](https://github.com/pa11y/pa11y-ci) on every PR, and merging is blocked until both sets of tests go green.
 
 ## Third party tracking, cookies, etc
 
