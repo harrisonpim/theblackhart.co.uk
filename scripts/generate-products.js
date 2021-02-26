@@ -28,5 +28,5 @@ async function queryRepeatableDocuments(filter) {
     (doc) => doc.type === "product"
   );
 
-  fs.writeFileSync("data/products.json", JSON.stringify(inventory));
+  fs.writeFileSync("pages/api/products.json", JSON.stringify(inventory));
 })();
