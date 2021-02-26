@@ -1,11 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
-import { queryRepeatableDocuments } from "../../lib/queries";
 import { RichText } from "prismic-reactjs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2020-08-27",
 });
+
+const inventory = require(`./products.json`);
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,11 +14,7 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     try {
-      const inventory = await queryRepeatableDocuments(
-        (doc) => doc.type === "product"
-      );
       const products = Object.values(req.body);
-
       const validatedProducts = products.map(({ sku, quantity }) => {
         return { quantity, ...inventory.find((p) => p.uid === sku) };
       });

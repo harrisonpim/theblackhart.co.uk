@@ -16,7 +16,7 @@ jobs:
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 60
+          max_timeout: 120
   tests:
     name: Tests
     runs-on: ubuntu-latest

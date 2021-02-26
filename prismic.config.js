@@ -1,5 +1,4 @@
 import Prismic from "@prismicio/client";
-import { Link } from "next/link";
 
 export const Client = (req = null) =>
   Prismic.client(
