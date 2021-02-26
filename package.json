@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "sitemap": "node scripts/generate-sitemap.js",
-    "pa11y": "pa11y-ci --sitemap https://theblackhart.co.uk/sitemap.xml"
+    "pa11y": "pa11y-ci --sitemap http://localhost:3000/sitemap.xml"
   },
   "dependencies": {
     "@prismicio/client": "^4.0.0",

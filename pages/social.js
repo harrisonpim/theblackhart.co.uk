@@ -11,7 +11,7 @@ const Linktree = ({ data }) => {
     <Layout includeFooter={false} title={title} description={description}>
       <div className="text-center thornletter">
         {data.body.map((link) => (
-          <div className="align-middle py-6">
+          <div className="align-middle py-6" key={link.primary.text[0].text}>
             <Link href={link.primary.url.url}>
               <a className="no-underline">{link.primary.text[0].text}</a>
             </Link>

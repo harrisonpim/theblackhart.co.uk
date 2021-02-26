@@ -1,13 +1,10 @@
-name: Run pa11y integration tests
+name: Run pa11y-ci on preview URLs
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+on: [deployment_status]
 
 jobs:
-  build:
+  pa11y:
+    if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,4 +13,4 @@ jobs:
         with:
           node-version: 14.x
       - run: npm install --include=dev
-      - run: npm run pa11y
+      - run: pa11y-ci --sitemap ${{ github.event.deployment_status.target_url }}/sitemap.xml
