@@ -60,6 +60,7 @@ export default async function handler(
           shipping_address_collection: {
             allowed_countries: ["GB"],
           },
+          allow_promotion_codes: true,
           billing_address_collection: "auto",
           success_url: `${req.headers.origin}/success`,
           cancel_url: `${req.headers.origin}/shop/basket`,
