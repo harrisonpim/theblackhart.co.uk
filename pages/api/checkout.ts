@@ -34,11 +34,11 @@ export default async function handler(
         };
       });
 
-      const containsSilver = validatedProducts.some(
-        (product) => product.data.type == "silver"
+      const needsShipping = validatedProducts.some((product) =>
+        ["silver", "ring"].includes(product.data.type)
       );
 
-      if (containsSilver === true) {
+      if (needsShipping === true) {
         lineItems.push({
           price_data: {
             unit_amount: 670,
