@@ -15,8 +15,12 @@ export default async function handler(
   if (req.method === "POST") {
     try {
       const products = Object.values(req.body);
-      const validatedProducts = products.map(({ sku, quantity }) => {
-        return { quantity, ...inventory.find((p) => p.uid === sku) };
+      const validatedProducts = products.map(({ quantity, name, sku }) => {
+        return {
+          quantity,
+          name,
+          ...inventory.find((p) => p.uid === sku),
+        };
       });
 
       const lineItems = validatedProducts.map((product) => {
@@ -25,7 +29,7 @@ export default async function handler(
             unit_amount: product.data.price,
             currency: "gbp",
             product_data: {
-              name: RichText.asText(product.data.name),
+              name: product.name, // for now, we take the unvalidated product name to allow for size variations
               description: RichText.asText(product.data.description),
               images: [product.data.body[0].items[0].image.url],
             },
@@ -34,11 +38,11 @@ export default async function handler(
         };
       });
 
-      const containsSilver = validatedProducts.some(
-        (product) => product.data.type == "silver"
+      const needsShipping = validatedProducts.some((product) =>
+        ["silver", "ring"].includes(product.data.type)
       );
 
-      if (containsSilver === true) {
+      if (needsShipping === true) {
         lineItems.push({
           price_data: {
             unit_amount: 670,
