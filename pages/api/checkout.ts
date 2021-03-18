@@ -15,8 +15,12 @@ export default async function handler(
   if (req.method === "POST") {
     try {
       const products = Object.values(req.body);
-      const validatedProducts = products.map(({ sku, quantity }) => {
-        return { quantity, ...inventory.find((p) => p.uid === sku) };
+      const validatedProducts = products.map(({ quantity, name, sku }) => {
+        return {
+          quantity,
+          name,
+          ...inventory.find((p) => p.uid === sku),
+        };
       });
 
       const lineItems = validatedProducts.map((product) => {
@@ -25,7 +29,7 @@ export default async function handler(
             unit_amount: product.data.price,
             currency: "gbp",
             product_data: {
-              name: RichText.asText(product.data.name),
+              name: product.name, // for now, we take the unvalidated product name to allow for size variations
               description: RichText.asText(product.data.description),
               images: [product.data.body[0].items[0].image.url],
             },
@@ -60,6 +64,7 @@ export default async function handler(
           shipping_address_collection: {
             allowed_countries: ["GB"],
           },
+          allow_promotion_codes: true,
           billing_address_collection: "auto",
           success_url: `${req.headers.origin}/success`,
           cancel_url: `${req.headers.origin}/shop/basket`,
