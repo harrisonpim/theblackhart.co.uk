@@ -38,6 +38,8 @@ export default function ProductPage({ product, details, sizes, uid }) {
                   className="w-20 mb-3 text-black"
                   name="sizes"
                   id="sizes"
+                  title="sizes"
+                  aria-label="sizes"
                   onChange={(e) => setSize(e.target.value)}
                 >
                   <option key={sizes[0]} value={sizes[0]} selected>
