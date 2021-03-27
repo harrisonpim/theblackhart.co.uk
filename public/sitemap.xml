@@ -13,6 +13,9 @@
     <loc>http://localhost:3000/success</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/ring-sizing</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/commissions</loc>
   </url>
   <url>
@@ -28,9 +31,6 @@
     <loc>http://localhost:3000/example-emails</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/ring-sizing</loc>
-  </url>
-  <url>
     <loc>http://localhost:3000/blog/silver-and-the-moon</loc>
   </url>
   <url>
@@ -43,10 +43,10 @@
     <loc>http://localhost:3000/blog/memento-mori</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/shop/small-skull-set</loc>
+    <loc>http://localhost:3000/shop/small-skull-ring</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/shop/small-skull-ring</loc>
+    <loc>http://localhost:3000/shop/small-skull-set</loc>
   </url>
   <url>
     <loc>http://localhost:3000/shop/vinyl-sticker-set</loc>
