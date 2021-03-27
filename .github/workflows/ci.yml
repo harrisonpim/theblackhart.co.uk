@@ -18,7 +18,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 120
   tests:
-    name: Tests
+    name: End-to-end tests
     needs: wait_for_vercel
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +32,7 @@ jobs:
       - run: npm install --include=dev
       - run: npm test
   pa11y:
-    name: Pa11y
+    name: Accessibility tests
     needs: wait_for_vercel
     runs-on: ubuntu-latest
     steps:

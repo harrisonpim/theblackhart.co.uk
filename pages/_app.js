@@ -1,6 +1,7 @@
 import "@/styles/app.css";
-import getStripe from "@/lib/stripe";
+
 import { CartProvider } from "use-shopping-cart";
+import getStripe from "@lib/stripe";
 
 export default function MyApp({ Component, pageProps }) {
   return (

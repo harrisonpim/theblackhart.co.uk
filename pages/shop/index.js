@@ -1,10 +1,10 @@
-import { RichText } from "prismic-reactjs";
-import Layout from "@/components/layouts/default";
-import Link from "next/link";
-import { linkResolver } from "../../prismic.config";
-import { formatCurrencyString } from "use-shopping-cart";
-import { queryRepeatableDocuments } from "@/lib/queries";
 import { Client } from "../../prismic.config";
+import Layout from "@components/layouts/default";
+import Link from "next/link";
+import { RichText } from "prismic-reactjs";
+import { formatCurrencyString } from "use-shopping-cart";
+import { linkResolver } from "../../prismic.config";
+import { queryRepeatableDocuments } from "@lib/queries";
 
 const Shop = ({ index, products }) => {
   return (
@@ -31,32 +31,35 @@ const Shop = ({ index, products }) => {
           </a>
         </li>
       </ul>
-      <div className="grid gap-3 grid-cols-2 lg:grid-cols-4 pt-4">
+      <ul
+        className="grid gap-3 grid-cols-2 lg:grid-cols-4 pt-4"
+        aria-label="products"
+      >
         {products.map((product) => (
-          <Link
-            as={linkResolver(product)}
-            href={linkResolver(product)}
-            key={product.data.name}
-          >
-            <a className="no-underline">
-              <img
-                className="w-full h-40 object-cover pb-1 rounded-sm"
-                src={product.data.body[0].items[0].image.url}
-                alt={product.data.body[0].items[0].image.alt}
-              />
-              <div className="text-center w-11/12 mx-auto">
-                <p className="">{RichText.asText(product.data.name)}</p>
-                <p className="text-silver">
-                  {formatCurrencyString({
-                    value: product.data.price,
-                    currency: "GBP",
-                  })}
-                </p>
-              </div>
-            </a>
-          </Link>
+          <li key={product.data.name}>
+            <Link as={linkResolver(product)} href={linkResolver(product)}>
+              <a className="no-underline">
+                <img
+                  className="w-full h-40 object-cover pb-1 rounded-sm"
+                  src={product.data.body[0].items[0].image.url}
+                  alt={product.data.body[0].items[0].image.alt}
+                />
+                <div className="text-center w-11/12 mx-auto">
+                  <h2 className="text-base">
+                    {RichText.asText(product.data.name)}
+                  </h2>
+                  <p className="text-silver">
+                    {formatCurrencyString({
+                      value: product.data.price,
+                      currency: "GBP",
+                    })}
+                  </p>
+                </div>
+              </a>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </Layout>
   );
 };

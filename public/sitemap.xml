@@ -43,6 +43,12 @@
     <loc>http://localhost:3000/blog/memento-mori</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/shop/small-skull-set</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/shop/small-skull-ring</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/shop/vinyl-sticker-set</loc>
   </url>
   <url>

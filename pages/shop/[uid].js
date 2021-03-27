@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { Client, linkResolver } from "../../prismic.config";
+
+import AddToBasket from "@components/basket/addToBasket";
+import Details from "@components/product/details";
+import ImageGallery from "@components/product/imageGallery";
+import Layout from "@components/layouts/default";
 import { RichText } from "prismic-reactjs";
-import { queryRepeatableDocuments } from "@/lib/queries";
-import Layout from "@/components/layouts/default";
-import Details from "@/components/product/details";
-import ImageGallery from "@/components/product/imageGallery";
-import { linkResolver, Client } from "../../prismic.config";
-import AddToBasket from "@/components/basket/addToBasket";
 import { formatCurrencyString } from "use-shopping-cart";
+import { queryRepeatableDocuments } from "@lib/queries";
+import { useState } from "react";
 
 export default function ProductPage({ product, details, sizes, uid }) {
   const title = RichText.asText(product.data.name);
