@@ -70,7 +70,7 @@ describe("As a customer, I want to add products to my basket so that I can buy t
 });
 
 describe("As a customer, I want to clear my basket so that I can start my journey again", () => {
-  test("Can add an item to the basket", async () => {
+  test("Can add an item to the basket, then clear it", async () => {
     await page.goto(`${shopUrl}/ring-sizer`);
     await page.click("text=add to basket");
     expect(await page.url()).toBe(basketUrl);
@@ -88,4 +88,17 @@ describe("As a customer, I want to clear my basket so that I can start my journe
   });
 });
 
-describe("As a customer, I want to check out so that I can pay", () => {});
+// describe("As a customer, I want to check out so that I can pay", () => {
+//   test("Can add an item to the basket and check out", async () => {
+//     await page.goto(`${shopUrl}/ring-sizer`);
+//     await page.click("text=add to basket");
+//     await page.waitForSelector('[aria-label="basket items"] >> li', {
+//       state: "attached",
+//     });
+//     await page.click("button");
+//     expect(await page.url()).toContain("https://checkout.stripe.com/pay/");
+//     expect(await page.textContent("css=LineItem-productName >> span")).toBe(
+//       "Ring Sizer"
+//     );
+//   });
+// });
