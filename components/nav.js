@@ -1,7 +1,7 @@
 export default function Nav(props) {
   return (
-    <div {...props}>
-      <ul className="flex space-x-4 justify-center uppercase">
+    <nav {...props}>
+      <ul className="flex space-x-4 justify-center uppercase" aria-label="nav">
         <li key="shop">
           <a className="no-underline" href="/shop">
             Shop
@@ -23,6 +23,6 @@ export default function Nav(props) {
           </a>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 }

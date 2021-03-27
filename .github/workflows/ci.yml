@@ -18,17 +18,22 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 120
   tests:
-    name: Tests
+    name: End-to-end tests
+    needs: wait_for_vercel
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
+      - uses: microsoft/playwright-github-action@v1
       - run: npm install --include=dev
       - run: npm test
+        env:
+          VERCEL_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
+          VERCEL_ENV: preview
   pa11y:
-    name: Pa11y
+    name: Accessibility tests
     needs: wait_for_vercel
     runs-on: ubuntu-latest
     steps:

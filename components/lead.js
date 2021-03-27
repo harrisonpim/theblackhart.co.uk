@@ -18,7 +18,6 @@ export default function Lead({ sliceZone, textLimit = 300 }) {
 
     return <p>{limitedText}</p>;
   }
-
   // If there are no slices of type 'text', return nothing
   return null;
 }

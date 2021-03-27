@@ -4,12 +4,11 @@ const prettier = require("prettier");
 var prismic = require("@prismicio/client");
 require("dotenv").config();
 
-let url = {
+const baseUrl = {
   production: "https://theblackhart.co.uk",
-  preview: `https://${process.env.VERCEL_URL}`,
+  preview: process.env.VERCEL_URL,
   development: "http://localhost:3000",
 }[process.env.VERCEL_ENV];
-
 
 const client = prismic.client(
   `https://${process.env.PRISMIC_REPO_NAME}.cdn.prismic.io/api/v2`,
@@ -66,7 +65,7 @@ async function queryRepeatableDocuments(filter) {
         .replace(".html", "")
         .replace("/index", "");
       return `<url>
-              <loc>${url}${path}</loc>
+              <loc>${baseUrl}${path}</loc>
           </url>
       `;
     })
