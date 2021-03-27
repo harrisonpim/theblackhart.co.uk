@@ -27,11 +27,10 @@ jobs:
         with:
           node-version: 14.x
       - uses: microsoft/playwright-github-action@v1
-        env:
-          VERCEL_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
-          VERCEL_ENV: preview
       - run: npm install --include=dev
       - run: npm test
+        env:
+          VERCEL_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
   pa11y:
     name: Accessibility tests
     needs: wait_for_vercel
