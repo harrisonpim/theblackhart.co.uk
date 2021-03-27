@@ -4,7 +4,7 @@ import Link from "next/link";
 import { RichText } from "prismic-reactjs";
 import { formatCurrencyString } from "use-shopping-cart";
 import { linkResolver } from "../../prismic.config";
-import { queryRepeatableDocuments } from "@lib/queries";
+import { queryRepeatableDocuments } from "@/lib/queries";
 
 const Shop = ({ index, products }) => {
   return (

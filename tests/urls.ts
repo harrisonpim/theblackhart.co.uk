@@ -1,10 +1,11 @@
-// export const baseUrl: string = {
-//   production: "https://theblackhart.co.uk",
-//   preview: `https://${process.env.VERCEL_URL}`,
-//   development: "http://localhost:3000",
-// }[process.env.VERCEL_ENV];
+require("dotenv").config();
 
-export const baseUrl: string = process.env.VERCEL_URL;
+export const baseUrl: string = {
+  production: "https://theblackhart.co.uk",
+  preview: process.env.VERCEL_URL,
+  development: "http://localhost:3000",
+}[process.env.VERCEL_ENV];
+
 export const socialUrl: string = `${baseUrl}/social`;
 export const blogUrl: string = `${baseUrl}/blog`;
 export const shopUrl: string = `${baseUrl}/shop`;

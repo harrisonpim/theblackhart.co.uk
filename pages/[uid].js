@@ -2,7 +2,7 @@ import { Client } from "../prismic.config";
 import Layout from "@components/layouts/default";
 import { RichText } from "prismic-reactjs";
 import SliceZone from "@components/slicezone";
-import { queryRepeatableDocuments } from "@lib/queries";
+import { queryRepeatableDocuments } from "@/lib/queries";
 
 const Page = ({ page }) => {
   if (page && page.data) {

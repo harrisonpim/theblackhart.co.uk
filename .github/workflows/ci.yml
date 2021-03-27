@@ -31,6 +31,7 @@ jobs:
       - run: npm test
         env:
           VERCEL_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
+          VERCEL_ENV: preview
   pa11y:
     name: Accessibility tests
     needs: wait_for_vercel
