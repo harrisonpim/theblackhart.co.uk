@@ -19,12 +19,16 @@ jobs:
           max_timeout: 120
   tests:
     name: Tests
+    needs: wait_for_vercel
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
+      - uses: microsoft/playwright-github-action@v1
+        with:
+          VERCEL_URL: ${{ needs.wait_for_vercel.outputs.preview_url }}
       - run: npm install --include=dev
       - run: npm test
   pa11y:
