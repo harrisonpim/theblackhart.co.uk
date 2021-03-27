@@ -28,23 +28,23 @@ export default function Basket() {
     <Layout title="Basket">
       <form onSubmit={handleCheckout}>
         <div className="space-y-2">
-          <div className="border-t border-b divide-y">
+          <ul className="border-t border-b divide-y" aria-label="basket items">
             {Object.values(cartDetails).map((product) => (
-              <div className="flex py-1 space-y-2">
+              <li className="flex py-1 space-y-2" key={product.name}>
                 <img
                   className="w-20 h-20 object-cover rounded-sm pr-2"
                   src={product.image}
                 />
                 <div className="text-left ">
-                  <div>{product.name}</div>
+                  <h2 className="text-base">{product.name}</h2>
                   <div className="text-sm">
                     <div>x{product.quantity}</div>
                     <div>{product.formattedValue}</div>
                   </div>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
               <p suppressHydrationWarning>Total: {formattedTotalPrice}</p>

@@ -9,5 +9,6 @@ export const baseUrl: string = {
 export const socialUrl: string = `${baseUrl}/social`;
 export const blogUrl: string = `${baseUrl}/blog`;
 export const shopUrl: string = `${baseUrl}/shop`;
+export const basketUrl: string = `${shopUrl}/basket`;
 export const legalUrl: string = `${baseUrl}/legal`;
 export const commissionsUrl: string = `${baseUrl}/commissions`;
