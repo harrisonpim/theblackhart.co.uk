@@ -27,6 +27,6 @@ The tests are also run as a github action for each PR, ensuring that we never de
 The site is rebuilt and deployed automatically on vercel whenever:
 
 - there's a change to the content in prismic (Ideally, changes are bundled together into a release)
-- there's a new commit to the master branch of this repo. New PRs will generate a preview build which is deployed to a secondary URL.
+- there's a new commit to the `main` branch of this repo. New PRs will generate a preview build which is deployed to a secondary URL.
 
 As changes on either side are relatively infrequent compared to the build time, we have no problem rebuilding the site from scratch on each change.
