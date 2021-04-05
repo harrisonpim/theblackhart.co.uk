@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import Stripe from "stripe";
+
 import { RichText } from "prismic-reactjs";
+import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2020-08-27",
@@ -22,7 +23,6 @@ export default async function handler(
           ...inventory.find((p) => p.uid === sku),
         };
       });
-
       const lineItems = validatedProducts.map((product) => {
         return {
           price_data: {
@@ -49,7 +49,8 @@ export default async function handler(
             currency: "gbp",
             product_data: {
               name: "Shipping cost",
-              description: "Royal Mail Special Delivery Guaranteed by 1pm",
+              description:
+                "For orders within the UK, items are shipped by Royal Mail Special Delivery Guaranteed by 1pm",
               images: [],
             },
           },
@@ -62,7 +63,48 @@ export default async function handler(
           mode: "payment",
           payment_method_types: ["card"],
           shipping_address_collection: {
-            allowed_countries: ["GB"],
+            allowed_countries: [
+              "AU",
+              "AT",
+              "BE",
+              "BG",
+              "BR",
+              "CA",
+              "CY",
+              "CZ",
+              "DK",
+              "EE",
+              "FI",
+              "FR",
+              "DE",
+              "GR",
+              "HK",
+              "HU",
+              "IN",
+              "IE",
+              "IT",
+              "JP",
+              "LV",
+              "LT",
+              "LU",
+              "MY",
+              "MT",
+              "MX",
+              "NL",
+              "NZ",
+              "NO",
+              "PL",
+              "PT",
+              "RO",
+              "SG",
+              "SK",
+              "SI",
+              "ES",
+              "SE",
+              "CH",
+              "GB",
+              "US",
+            ],
           },
           allow_promotion_codes: true,
           billing_address_collection: "auto",

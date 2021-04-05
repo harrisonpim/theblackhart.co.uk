@@ -3,7 +3,7 @@ import getStripe from "@/lib/stripe";
 
 export default function CheckoutButton({ products }) {
   async function handleClick() {
-    const { sessionId, publishableKey } = await fetchPostJSON("/api/checkout", {
+    const { sessionId } = await fetchPostJSON("/api/checkout", {
       products,
     });
     const stripe = await getStripe();
