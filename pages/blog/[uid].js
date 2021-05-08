@@ -1,14 +1,14 @@
-import { Client } from "../../prismic.config";
-import Layout from "@components/layouts/default";
-import { RichText } from "prismic-reactjs";
-import SliceZone from "@components/slicezone";
-import { formatDate } from "@components/date";
-import { queryRepeatableDocuments } from "../../lib/queries";
+import { Client } from '../../prismic.config'
+import Layout from '@components/layouts/default'
+import { RichText } from 'prismic-reactjs'
+import SliceZone from '@components/slicezone'
+import { formatDate } from '@components/date'
+import { queryRepeatableDocuments } from '../../lib/queries'
 
 export default function Post({ post }) {
   if (post && post.data) {
-    const date = formatDate(post.data.date);
-    const title = RichText.asText(post.data.title);
+    const date = formatDate(post.data.date)
+    const title = RichText.asText(post.data.title)
 
     return (
       <Layout title={title}>
@@ -20,27 +20,27 @@ export default function Post({ post }) {
           <SliceZone sliceZone={post.data.body1} />
         </div>
       </Layout>
-    );
+    )
   }
 
-  return null;
+  return null
 }
 
 export async function getStaticProps({ params }) {
-  const post = await Client().getByUID("blog-post", params.uid);
+  const post = await Client().getByUID('blog-post', params.uid)
   return {
     props: {
       post,
     },
-  };
+  }
 }
 
 export async function getStaticPaths() {
   const documents = await queryRepeatableDocuments(
-    (doc) => doc.type === "blog-post"
-  );
+    (doc) => doc.type === 'blog-post'
+  )
   return {
     paths: documents.map((doc) => `/blog/${doc.uid}`),
     fallback: false,
-  };
+  }
 }

@@ -1,16 +1,16 @@
-import { Client, linkResolver } from "../../prismic.config";
+import { Client, linkResolver } from '../../prismic.config'
 
-import Layout from "@components/layouts/default";
-import Lead from "@components/lead";
-import Link from "next/link";
-import { RichText } from "prismic-reactjs";
-import { formatDate } from "@components/date";
-import { queryRepeatableDocuments } from "@/lib/queries";
+import Layout from '@components/layouts/default'
+import Lead from '@components/lead'
+import Link from 'next/link'
+import { RichText } from 'prismic-reactjs'
+import { formatDate } from '@components/date'
+import { queryRepeatableDocuments } from '@/lib/queries'
 
 export default function Blog({ index, posts }) {
-  const sortedPosts = posts.sort((a,b) => (
-    new Date(b.data.date) - new Date(a.data.date)
-  ));
+  const sortedPosts = posts.sort(
+    (a, b) => new Date(b.data.date) - new Date(a.data.date)
+  )
 
   return (
     <Layout
@@ -25,25 +25,21 @@ export default function Blog({ index, posts }) {
                 <h2>{RichText.asText(post.data.title)}</h2>
               </a>
             </Link>
-            <div>
-              <div className="text-silver">{formatDate(post.data.date)}</div>
-              <Lead sliceZone={post.data.body1} textLimit={300} />
-            </div>
+            <div className="text-silver">{formatDate(post.data.date)}</div>
           </li>
         ))}
       </ul>
     </Layout>
-  );
+  )
 }
 
 export async function getStaticProps() {
-  const index = await Client().getSingle("blog-home");
+  const index = await Client().getSingle('blog-home')
   const posts = await queryRepeatableDocuments(
-    (doc) => doc.type === "blog-post"
-  );
-  
-  
+    (doc) => doc.type === 'blog-post'
+  )
+
   return {
     props: { index, posts },
-  };
+  }
 }
