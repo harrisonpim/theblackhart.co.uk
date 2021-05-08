@@ -1,7 +1,7 @@
-import Social from "./social";
+import Social from './social'
 
 export default function Footer() {
-  const this_year = new Date().getFullYear();
+  const this_year = new Date().getFullYear()
   return (
     <footer className="absolute bottom-0 w-full text-sm">
       <div className=" flex items-center">
@@ -27,5 +27,5 @@ export default function Footer() {
       </div>
       <Social />
     </footer>
-  );
+  )
 }

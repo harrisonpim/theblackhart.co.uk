@@ -1,12 +1,12 @@
-import Header from "../header";
-import Footer from "../footer";
-import Head from "next/head";
+import Footer from './footer'
+import Head from 'next/head'
+import Header from './header'
 
 export default function Layout({
   children,
   includeFooter = true,
   includeHeader = true,
-  title = "The Black Hart",
+  title = 'The Black Hart',
   description = null,
 }) {
   return (
@@ -23,5 +23,5 @@ export default function Layout({
         </div>
       </div>
     </div>
-  );
+  )
 }

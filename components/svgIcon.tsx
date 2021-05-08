@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 export default function SvgIcon({ title, href, size }) {
   return (
@@ -12,5 +12,5 @@ export default function SvgIcon({ title, href, size }) {
         ></Image>
       </a>
     </div>
-  );
+  )
 }

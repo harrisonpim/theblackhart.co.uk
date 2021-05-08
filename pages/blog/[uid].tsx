@@ -27,7 +27,7 @@ export default function Post({ post }) {
 }
 
 export async function getStaticProps({ params }) {
-  const post = await Client().getByUID('blog-post', params.uid)
+  const post = await Client().getByUID('blog-post', params.uid, {})
   return {
     props: {
       post,

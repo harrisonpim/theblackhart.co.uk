@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 export default function Glyph({ slice }) {
   return (
@@ -10,5 +10,5 @@ export default function Glyph({ slice }) {
         width={slice.primary.image.dimensions.width}
       />
     </figure>
-  );
+  )
 }

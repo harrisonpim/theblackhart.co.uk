@@ -1,5 +1,5 @@
-import { linkResolver } from "../../prismic.config";
-import { RichText } from "prismic-reactjs";
+import { RichText } from 'prismic-reactjs'
+import { linkResolver } from '../../prismic.config'
 
 export default function Details({ data }) {
   return (
@@ -11,5 +11,5 @@ export default function Details({ data }) {
         <RichText render={data.text} linkResolver={linkResolver} />
       </div>
     </details>
-  );
+  )
 }

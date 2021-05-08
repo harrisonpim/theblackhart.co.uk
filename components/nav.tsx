@@ -24,5 +24,5 @@ export default function Nav(props) {
         </li>
       </ul>
     </nav>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import Link from "next/link";
-import Nav from "./nav";
+import Link from 'next/link'
+import Nav from './nav'
 
 export default function Header() {
   return (
@@ -15,5 +15,5 @@ export default function Header() {
       </Link>
       <Nav className="mx-auto text-xs" />
     </header>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import SvgIcon from "./svgIcon";
+import SvgIcon from './svgIcon'
 
-export default function Social({ size = "26" }) {
+export default function Social({ size = '26' }) {
   return (
     <div className="flex space-x-4 justify-center py-3">
       <SvgIcon
@@ -29,5 +29,5 @@ export default function Social({ size = "26" }) {
         size={size}
       />
     </div>
-  );
+  )
 }
