@@ -36,7 +36,6 @@ yarn-error.log*
 .netlify
 
 
-yarn.lock
+package-lock.json
 .DS_Store
-data/*
 tbh_jewellery/
