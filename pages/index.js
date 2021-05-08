@@ -40,19 +40,21 @@ export default function Index({ index }) {
               backgroundImage: `url(${slice.primary.background_image.url})`,
             }}
           >
-            <div className="table-cell align-middle text-left leading-tight bg-center bg-no-repeat px-16 lg:px-32">
-              <h2 className="max-w-measure uppercase font-bold pb-2">
-                <RichText
-                  render={slice.primary.title}
-                  linkResolver={linkResolver}
-                />
-              </h2>
-              <p className="max-w-measure prose">
-                <RichText
-                  render={slice.primary.description}
-                  linkResolver={linkResolver}
-                />
-              </p>
+            <div className="flex flex-col h-screen justify-between text-center">
+              <div className="my-auto text-left leading-tight px-16 lg:px-32">
+                <h2 className="max-w-measure uppercase font-bold pb-2">
+                  <RichText
+                    render={slice.primary.title}
+                    linkResolver={linkResolver}
+                  />
+                </h2>
+                <p className="max-w-measure prose">
+                  <RichText
+                    render={slice.primary.description}
+                    linkResolver={linkResolver}
+                  />
+                </p>
+              </div>
             </div>
           </div>
         )
