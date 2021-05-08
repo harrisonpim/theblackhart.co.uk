@@ -1,6 +1,6 @@
-# :skull: The Black Hart
+# :skull: [The Black Hart](https://theblackhart.co.uk/)
 
-Jamstack site for [The Black Hart](https://theblackhart.co.uk/), including a research blog and an ecommerce store.
+A site for The Black Hart including a store and a blog, following [jamstack](https://jamstack.org/) principles.
 
 Built and deployed with:
 
@@ -12,15 +12,18 @@ Built and deployed with:
 
 ## Developing
 
-I use [the vercel cli](https://vercel.com/docs/cli) for local development. Run `npm install --include=dev` to install it along with the other dependencies.
-
-Then run `npm run dev` to get a local version of the site running. Environment variables for prismic, stripe, etc should be stored in a `.env.local` file.
+- Clone this repo
+- Run `yarn install --include=dev` to install dependencies.
+- I use [the vercel cli](https://vercel.com/docs/cli) for local development.
+  - Run `vercel link` to link your local repo to the project on vercel
+  - Run `vercel env pull` to populate a local `.env` file with dev versions of all of the project's secrets.
+- Finally, run `vercel dev` to get a local version of the site running.
 
 ## Testing
 
-Run `npm run test` to run the tests.
+Follow the instructions above to get the site running locally. Then run `yarn test` to run integration tests, or `yarn pa11y` to run the accessibility tests.
 
-The tests are also run as a github action for each PR, ensuring that we never deploy a broken site.
+These tests are automatically run in a github action for each PR, ensuring that we never deploy a broken site.
 
 ## Deploying
 
