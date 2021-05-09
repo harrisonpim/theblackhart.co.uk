@@ -17,15 +17,10 @@
     "jsx": "preserve"
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "jest.config.js",
-    "next.config.js",
-    "prismic.config.js",
-    "postcss.config.js",
-    "tailwind.config.js",
-    "pages/blog/index.tsx"
-, "pages/404.js", "lib/queries.js"  ],
+    "**/*.js",
+    "**/*.jsx",
+  ],
   "exclude": ["node_modules"]
 }

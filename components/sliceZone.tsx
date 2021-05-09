@@ -1,9 +1,10 @@
 import Glyph from './glyph'
 import ImageWithCaption from './imageWithCaption'
+import { ReactElement } from 'react'
 import { RichText } from 'prismic-reactjs'
 import { linkResolver } from '../prismic.config'
 
-export default function SliceZone({ sliceZone }) {
+export default function SliceZone({ sliceZone }): ReactElement {
   return (
     <div className="prose">
       {sliceZone.map((slice) => {
