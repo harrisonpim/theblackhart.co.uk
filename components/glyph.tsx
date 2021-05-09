@@ -1,6 +1,8 @@
-import Image from "next/image";
+import { FC } from 'react'
+import Image from 'next/image'
+import { ImageProps } from '../lib/types'
 
-export default function Glyph({ slice }) {
+const Glyph: FC<ImageProps> = ({ slice }) => {
   return (
     <figure className="mx-auto w-24">
       <Image
@@ -10,5 +12,6 @@ export default function Glyph({ slice }) {
         width={slice.primary.image.dimensions.width}
       />
     </figure>
-  );
+  )
 }
+export default Glyph

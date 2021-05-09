@@ -1,11 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@components/*": ["components/*"],
-      "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"]
-    },
     "types": ["jest-playwright-preset", "expect-playwright", "jest"],
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -22,15 +17,10 @@
     "jsx": "preserve"
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "jest.config.js",
-    "next.config.js",
-    "prismic.config.js",
-    "postcss.config.js",
-    "tailwind.config.js",
-    "pages/blog/index.js"
+    "**/*.js",
+    "**/*.jsx",
   ],
   "exclude": ["node_modules"]
 }

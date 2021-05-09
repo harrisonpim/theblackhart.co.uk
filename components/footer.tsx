@@ -1,7 +1,7 @@
-import Social from "./social";
+import Social from './social'
 
 export default function Footer() {
-  const this_year = new Date().getFullYear();
+  const thisYear = new Date().getFullYear()
   return (
     <footer className="absolute bottom-0 w-full text-sm">
       <div className=" flex items-center">
@@ -22,10 +22,10 @@ export default function Footer() {
           </a>
         </div>
         <div className="mx-auto lg:mx-0 lg:text-right">
-          Copyright © The Black Hart {this_year}
+          Copyright © The Black Hart {thisYear}
         </div>
       </div>
       <Social />
     </footer>
-  );
+  )
 }

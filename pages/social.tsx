@@ -1,11 +1,11 @@
-import { Client } from "../prismic.config";
-import Layout from "@components/layouts/default";
-import Link from "next/link";
-import { RichText } from "prismic-reactjs";
+import { Client } from '../prismic.config'
+import Layout from '../components/layout'
+import Link from 'next/link'
+import { RichText } from 'prismic-reactjs'
 
 const Linktree = ({ data }) => {
-  const title = RichText.asText(data.title);
-  const description = RichText.asText(data.description);
+  const title = RichText.asText(data.title)
+  const description = RichText.asText(data.description)
 
   return (
     <Layout includeFooter={false} title={title} description={description}>
@@ -19,18 +19,18 @@ const Linktree = ({ data }) => {
         ))}
       </ul>
     </Layout>
-  );
-};
+  )
+}
 
 export async function getStaticProps() {
-  const response = await Client().getSingle("linktree");
-  const data = response.data;
+  const response = await Client().getSingle('linktree', {})
+  const data = response.data
 
   return {
     props: {
       data,
     },
-  };
+  }
 }
 
-export default Linktree;
+export default Linktree

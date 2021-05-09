@@ -1,33 +1,33 @@
 module.exports = {
   future: {},
   purge: [
-    "./components/**/*.{html,js,ts,jsx,tsx}",
-    "./pages/**/*.{html,js,ts,jsx,tsx}",
+    './components/**/*.{html,js,ts,jsx,tsx}',
+    './pages/**/*.{html,js,ts,jsx,tsx}',
   ],
   theme: {
     screens: {
-      lg: "800px",
-      xl: "1200px",
+      lg: '800px',
+      xl: '1200px',
     },
     fontWeight: {
       bold: 600,
     },
     extend: {
-      visibility: ["hover"],
+      visibility: ['hover'],
       fontFamily: {
-        thornletter: ["thornletter", "Crimson Text", "serif"],
+        thornletter: ['thornletter', 'Crimson Text', 'serif'],
       },
       maxWidth: {
-        measure: "34rem",
+        measure: '34rem',
       },
       colors: {
-        silver: "#bbb",
+        silver: '#bbb',
       },
       letterSpacing: {
-        tightest: "-.25rem",
+        tightest: '-.25rem',
       },
     },
   },
   variants: {},
   plugins: [],
-};
+}

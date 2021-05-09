@@ -1,4 +1,4 @@
-import Layout from "@components/layouts/default";
+import Layout from '../components/layout'
 
 export default function Success() {
   return (
@@ -9,5 +9,5 @@ export default function Success() {
         </p>
       </Layout>
     </div>
-  );
+  )
 }

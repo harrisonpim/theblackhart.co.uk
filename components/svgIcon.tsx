@@ -1,6 +1,9 @@
-import Image from "next/image";
+import { FC } from 'react'
+import Image from 'next/image'
 
-export default function SvgIcon({ title, href, size }) {
+type Props = { title: string; href: string; size: number }
+
+const SvgIcon: FC<Props> = ({ title, href, size }) => {
   return (
     <div>
       <a href={href} title={title}>
@@ -12,5 +15,6 @@ export default function SvgIcon({ title, href, size }) {
         ></Image>
       </a>
     </div>
-  );
+  )
 }
+export default SvgIcon
