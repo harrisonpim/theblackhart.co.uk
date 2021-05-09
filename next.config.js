@@ -1,24 +1,24 @@
 module.exports = {
   images: {
-    domains: ["images.prismic.io"],
+    domains: ['images.prismic.io'],
   },
   async redirects() {
     return [
       {
-        source: "/research-blog/:uid",
-        destination: "/blog/:uid",
+        source: '/research-blog/:uid',
+        destination: '/blog/:uid',
         permanent: true,
       },
       {
-        source: "/bespoke",
-        destination: "/commissions",
+        source: '/bespoke',
+        destination: '/commissions',
         permanent: true,
       },
-    ];
+    ]
   },
   webpack: (config) => {
-    require("./scripts/generate-sitemap");
-    require("./scripts/generate-products");
-    return config;
+    require('./scripts/generate-sitemap')
+    require('./scripts/generate-products')
+    return config
   },
-};
+}

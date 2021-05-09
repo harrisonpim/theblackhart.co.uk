@@ -1,8 +1,10 @@
+import { FC } from 'react'
 import Image from 'next/image'
+import { ImageProps } from '../lib/types'
 import { RichText } from 'prismic-reactjs'
 import { linkResolver } from '../prismic.config'
 
-export default function ImageWithCaption({ slice }) {
+const ImageWithCaption: FC<ImageProps> = ({ slice }) => {
   const caption = RichText.asText(slice.primary.caption) ? (
     <figcaption className="pt-1 mx-auto w-4/5 text-silver text-xs text-center">
       <RichText render={slice.primary.caption} linkResolver={linkResolver} />
@@ -23,3 +25,4 @@ export default function ImageWithCaption({ slice }) {
     </figure>
   )
 }
+export default ImageWithCaption

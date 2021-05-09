@@ -1,24 +1,22 @@
-import { Client, linkResolver } from "../../prismic.config";
+import { AddToBasket, Details, ImageGallery } from '../../components/product'
+import { Client, linkResolver } from '../../prismic.config'
 
-import AddToBasket from "@components/basket/addToBasket";
-import Details from "@components/product/details";
-import ImageGallery from "@components/product/imageGallery";
-import Layout from "@components/layouts/default";
-import { RichText } from "prismic-reactjs";
-import { formatCurrencyString } from "use-shopping-cart";
-import { queryRepeatableDocuments } from "@/lib/queries";
-import { useState } from "react";
+import Layout from '../../components/layout'
+import { RichText } from 'prismic-reactjs'
+import { formatCurrencyString } from 'use-shopping-cart'
+import { queryRepeatableDocuments } from '../../lib/queries'
+import { useState } from 'react'
 
 export default function ProductPage({ product, details, sizes, uid }) {
-  const title = RichText.asText(product.data.name);
-  const description = RichText.asText(product.data.description);
-  const images = product.data.body[0].items;
+  const title = RichText.asText(product.data.name)
+  const description = RichText.asText(product.data.description)
+  const images = product.data.body[0].items
   const displayPrice = formatCurrencyString({
     value: product.data.price,
-    currency: "GBP",
-  });
-  const isRing = product.data.type === "ring";
-  const [size, setSize] = useState(isRing ? sizes[0] : null);
+    currency: 'GBP',
+  })
+  const isRing = product.data.type === 'ring'
+  const [size, setSize] = useState(isRing ? sizes[0] : null)
   return (
     <Layout title={title} description={description}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -54,7 +52,7 @@ export default function ProductPage({ product, details, sizes, uid }) {
                 </select>
               </div>
             ) : null}
-            {["silver", "ring"].includes(product.data.type) ? (
+            {['silver', 'ring'].includes(product.data.type) ? (
               <Details data={details.data} />
             ) : null}
           </div>
@@ -63,45 +61,45 @@ export default function ProductPage({ product, details, sizes, uid }) {
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
 export async function getStaticProps({ params }) {
-  const client = Client();
-  const product = await client.getByUID("product", params.uid);
-  const details = await client.getSingle("additional_information");
+  const client = Client()
+  const product = await client.getByUID('product', params.uid, {})
+  const details = await client.getSingle('additional_information', {})
   const sizes = [
-    "G",
-    "G½",
-    "H",
-    "H½",
-    "I",
-    "I½",
-    "J",
-    "J½",
-    "K",
-    "K½",
-    "L",
-    "L½",
-    "M",
-    "M½",
-    "N",
-    "N½",
-    "O",
-    "O½",
-    "P",
-    "P½",
-    "Q",
-    "Q½",
-    "R",
-    "R½",
-    "S",
-    "S½",
-    "T",
-    "T½",
-    "U",
-    "U½",
-  ];
+    'G',
+    'G½',
+    'H',
+    'H½',
+    'I',
+    'I½',
+    'J',
+    'J½',
+    'K',
+    'K½',
+    'L',
+    'L½',
+    'M',
+    'M½',
+    'N',
+    'N½',
+    'O',
+    'O½',
+    'P',
+    'P½',
+    'Q',
+    'Q½',
+    'R',
+    'R½',
+    'S',
+    'S½',
+    'T',
+    'T½',
+    'U',
+    'U½',
+  ]
 
   return {
     props: {
@@ -110,15 +108,15 @@ export async function getStaticProps({ params }) {
       sizes,
       uid: params.uid,
     },
-  };
+  }
 }
 
 export async function getStaticPaths() {
   const documents = await queryRepeatableDocuments(
-    (doc) => doc.type === "product"
-  );
+    (doc) => doc.type === 'product'
+  )
   return {
     paths: documents.map((doc) => `/shop/${doc.uid}`),
     fallback: false,
-  };
+  }
 }

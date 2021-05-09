@@ -1,6 +1,6 @@
-import { RichText } from 'prismic-reactjs'
-import ImageWithCaption from './imageWithCaption'
 import Glyph from './glyph'
+import ImageWithCaption from './imageWithCaption'
+import { RichText } from 'prismic-reactjs'
 import { linkResolver } from '../prismic.config'
 
 export default function SliceZone({ sliceZone }) {

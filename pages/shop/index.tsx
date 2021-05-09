@@ -1,10 +1,10 @@
-import { Client } from "../../prismic.config";
-import Layout from "@components/layouts/default";
-import Link from "next/link";
-import { RichText } from "prismic-reactjs";
-import { formatCurrencyString } from "use-shopping-cart";
-import { linkResolver } from "../../prismic.config";
-import { queryRepeatableDocuments } from "@/lib/queries";
+import { Client, linkResolver } from '../../prismic.config'
+
+import Layout from '../../components/layout'
+import Link from 'next/link'
+import { RichText } from 'prismic-reactjs'
+import { formatCurrencyString } from 'use-shopping-cart'
+import { queryRepeatableDocuments } from '../../lib/queries'
 
 const Shop = ({ index, products }) => {
   return (
@@ -51,7 +51,7 @@ const Shop = ({ index, products }) => {
                   <p className="text-silver">
                     {formatCurrencyString({
                       value: product.data.price,
-                      currency: "GBP",
+                      currency: 'GBP',
                     })}
                   </p>
                 </div>
@@ -61,21 +61,21 @@ const Shop = ({ index, products }) => {
         ))}
       </ul>
     </Layout>
-  );
-};
+  )
+}
 
 export async function getStaticProps() {
-  const index = await Client().getSingle("shop");
+  const index = await Client().getSingle('shop', {})
   const products = await queryRepeatableDocuments(
-    (doc) => doc.type === "product"
-  );
+    (doc) => doc.type === 'product'
+  )
 
   return {
     props: {
       index,
       products: products,
     },
-  };
+  }
 }
 
-export default Shop;
+export default Shop

@@ -1,11 +1,11 @@
-import { FormEventHandler, useEffect, useState } from "react";
+import { FormEventHandler, useEffect, useState } from 'react'
 
-import Layout from "@components/layouts/default";
-import { fetchPostJSON } from "../../lib/api";
-import { useShoppingCart } from "use-shopping-cart";
+import Layout from '../../components/layout'
+import { fetchPostJSON } from '../../lib/api'
+import { useShoppingCart } from 'use-shopping-cart'
 
 export default function Basket() {
-  const [cartEmpty, setCartEmpty] = useState(true);
+  const [cartEmpty, setCartEmpty] = useState(true)
   const {
     formattedTotalPrice,
     cartCount,
@@ -14,15 +14,15 @@ export default function Basket() {
     clearCart,
     cartDetails,
     redirectToCheckout,
-  } = useShoppingCart();
+  } = useShoppingCart()
 
-  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
+  useEffect(() => setCartEmpty(!cartCount), [cartCount])
 
   const handleCheckout: FormEventHandler<HTMLFormElement> = async (event) => {
-    event.preventDefault();
-    const { sessionId } = await fetchPostJSON("/api/checkout", cartDetails);
-    redirectToCheckout({ sessionId });
-  };
+    event.preventDefault()
+    const { sessionId } = await fetchPostJSON('/api/checkout', cartDetails)
+    redirectToCheckout({ sessionId })
+  }
 
   return (
     <Layout title="Basket">
@@ -59,7 +59,7 @@ export default function Basket() {
             <div className="space-y-3">
               <p className="text-xs">
                 Shipping costs are added when you check out. For orders within
-                the UK, silver items are shipped by{" "}
+                the UK, silver items are shipped by{' '}
                 <span className="italic">
                   Royal Mail Special Delivery Guaranteed by 1pm
                 </span>
@@ -74,5 +74,5 @@ export default function Basket() {
         </div>
       </form>
     </Layout>
-  );
+  )
 }

@@ -1,8 +1,15 @@
 import { Product, useShoppingCart } from 'use-shopping-cart'
 
+import { FC } from 'react'
 import { RichText } from 'prismic-reactjs'
 
-export default function AddToBasket({ product, size, uid }) {
+type Props = {
+  product
+  size: string
+  uid: string
+}
+
+const AddToBasket: FC<Props> = ({ product, size, uid }) => {
   const { addItem } = useShoppingCart()
   const name = RichText.asText(product.data.name)
   const productData = {
@@ -19,3 +26,5 @@ export default function AddToBasket({ product, size, uid }) {
     </a>
   )
 }
+
+export default AddToBasket

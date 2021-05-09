@@ -1,4 +1,8 @@
-export const formatDate = (dateString) => {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' }
-  return new Date(dateString).toLocaleDateString(undefined, options)
+const formatDate = (dateString: string): string => {
+  return new Date(dateString).toLocaleDateString('en-GB', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 }
+export default formatDate

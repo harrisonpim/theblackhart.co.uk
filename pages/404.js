@@ -1,4 +1,4 @@
-import Layout from "@components/layouts/default";
+import Layout from '../components/layout'
 
 export default function Custom404() {
   return (
@@ -7,5 +7,5 @@ export default function Custom404() {
         <h1 className="thornletter">page not found</h1>
       </div>
     </Layout>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-export const ringSizes: string[] = [
+const ringSizes: string[] = [
   'G',
   'G½',
   'H',
@@ -30,3 +30,5 @@ export const ringSizes: string[] = [
   'U',
   'U½',
 ]
+
+export default ringSizes

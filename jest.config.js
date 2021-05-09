@@ -1,10 +1,9 @@
-
-const allSupportedBrowsers = ['chromium', 'firefox', 'webkit'];
-const defaultMobileDevices = ['iPhone 11'];
-const platform = process.env.platform ? process.env.platform : 'desktop';
-const debug = !!process.env.debug;
+const allSupportedBrowsers = ['chromium', 'firefox', 'webkit']
+const defaultMobileDevices = ['iPhone 11']
+const platform = process.env.platform ? process.env.platform : 'desktop'
+const debug = !!process.env.debug
 const browsers =
-  process.env.browsers === 'all' ? allSupportedBrowsers : ['chromium'];
+  process.env.browsers === 'all' ? allSupportedBrowsers : ['chromium']
 
 function getLaunchOptions() {
   const launchOptions = {
@@ -15,7 +14,7 @@ function getLaunchOptions() {
         devtools: !debug,
       },
     },
-  };
+  }
   return platform === 'mobile'
     ? {
         ...launchOptions,
@@ -24,7 +23,7 @@ function getLaunchOptions() {
           devices: defaultMobileDevices,
         },
       }
-    : launchOptions;
+    : launchOptions
 }
 
 module.exports = {
@@ -33,4 +32,4 @@ module.exports = {
     '^.+\\.ts$': 'ts-jest',
   },
   testEnvironmentOptions: getLaunchOptions(),
-};
+}

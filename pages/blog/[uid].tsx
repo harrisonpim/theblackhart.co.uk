@@ -1,8 +1,8 @@
 import { Client } from '../../prismic.config'
-import Layout from '@components/layouts/default'
+import Layout from '../../components/layout'
 import { RichText } from 'prismic-reactjs'
-import SliceZone from '@components/slicezone'
-import { formatDate } from '@components/date'
+import SliceZone from '../../components/sliceZone'
+import formatDate from '../../components/date'
 import { queryRepeatableDocuments } from '../../lib/queries'
 
 export default function Post({ post }) {

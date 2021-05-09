@@ -1,7 +1,16 @@
-import { RichText } from 'prismic-reactjs'
+import { RichText, RichTextBlock } from 'prismic-reactjs'
+
+import { FC } from 'react'
 import { linkResolver } from '../../prismic.config'
 
-export default function Details({ data }) {
+type Props = {
+  data: {
+    title: RichTextBlock[]
+    text: RichTextBlock[]
+  }
+}
+
+const Details: FC<Props> = ({ data }) => {
   return (
     <details className="pb-3">
       <summary className="font-bold pb-2">
@@ -13,3 +22,5 @@ export default function Details({ data }) {
     </details>
   )
 }
+
+export default Details

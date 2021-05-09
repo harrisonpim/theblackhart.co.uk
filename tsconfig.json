@@ -1,11 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@components/*": ["components/*"],
-      "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"]
-    },
     "types": ["jest-playwright-preset", "expect-playwright", "jest"],
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -30,7 +25,7 @@
     "prismic.config.js",
     "postcss.config.js",
     "tailwind.config.js",
-    "pages/blog/index.js"
-  ],
+    "pages/blog/index.tsx"
+, "pages/404.js", "lib/queries.js"  ],
   "exclude": ["node_modules"]
 }

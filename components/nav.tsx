@@ -1,4 +1,6 @@
-export default function Nav(props) {
+import { ReactElement } from 'react'
+
+export default function Nav(props): ReactElement {
   return (
     <nav {...props}>
       <ul className="flex space-x-4 justify-center uppercase" aria-label="nav">

@@ -1,15 +1,14 @@
 import { Client, linkResolver } from '../../prismic.config'
 
-import Layout from '@components/layouts/default'
-import Lead from '@components/lead'
+import Layout from '../../components/layout'
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
-import { formatDate } from '@components/date'
-import { queryRepeatableDocuments } from '@/lib/queries'
+import formatDate from '../../components/date'
+import { queryRepeatableDocuments } from '../../lib/queries'
 
 export default function Blog({ index, posts }) {
   const sortedPosts = posts.sort(
-    (a, b) => new Date(b.data.date) - new Date(a.data.date)
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
   )
 
   return (
@@ -34,7 +33,7 @@ export default function Blog({ index, posts }) {
 }
 
 export async function getStaticProps() {
-  const index = await Client().getSingle('blog-home')
+  const index = await Client().getSingle('blog-home', {})
   const posts = await queryRepeatableDocuments(
     (doc) => doc.type === 'blog-post'
   )
