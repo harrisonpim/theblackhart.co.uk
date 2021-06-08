@@ -5,6 +5,7 @@ import Layout from '../../components/layout'
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
 import { formatCurrencyString } from 'use-shopping-cart'
+import imageLoader from 'lib/images'
 import { queryRepeatableDocuments } from '../../lib/queries'
 
 const Shop = ({ index, products }) => {
@@ -44,6 +45,7 @@ const Shop = ({ index, products }) => {
                 <a className="no-underline">
                   <div className="relative pb-6/5">
                     <Image
+                      loader={imageLoader}
                       className="absolute w-full h-full rounded-sm"
                       src={image.url}
                       alt={image.alt}

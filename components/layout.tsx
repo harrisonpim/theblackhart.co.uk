@@ -24,7 +24,7 @@ const Layout: FC<Props> = ({
       <title>{title}</title>
       {description ? <meta name="description" content={description} /> : null}
     </Head>
-    <div className="lg:w-3/4 xl:w-7/12 px-5 lg:px-0 mx-auto">
+    <div className="lg:w-3/4 xl:w-7/12 px-5 lg:px-0 mx-auto antialiased">
       <div className="min-h-screen relative">
         {includeHeader ? <Header key="header" /> : null}
         <main className="pb-40 lg:pb-32" key="main">

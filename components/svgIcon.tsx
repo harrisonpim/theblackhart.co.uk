@@ -1,18 +1,22 @@
 import { FC } from 'react'
 import Image from 'next/image'
+import imageLoader from 'lib/images'
 
-type Props = { title: string; href: string; size: number }
+type Props = {
+  title: string
+  href: string
+}
 
-const SvgIcon: FC<Props> = ({ title, href, size }) => {
+const SvgIcon: FC<Props> = ({ title, href }) => {
   return (
     <div>
       <a href={href} title={title}>
-        <Image
-          width={size}
-          height={size}
+        <img
+          width={24}
+          height={24}
           src={`/icons/social/${title}.svg`.toLowerCase()}
           alt={title}
-        ></Image>
+        />
       </a>
     </div>
   )

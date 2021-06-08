@@ -5,6 +5,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Nav from '../components/nav'
 import { RichText } from 'prismic-reactjs'
+import imageLoader from 'lib/images'
 
 export default function Index({ index }) {
   return (
@@ -29,6 +30,7 @@ export default function Index({ index }) {
                   <div className="w-4/5 m-auto">
                     <h1>
                       <Image
+                        loader={imageLoader}
                         src={slice.primary.title_image.url}
                         alt={slice.primary.title_image.alt}
                         height={slice.primary.title_image.dimensions.height}
