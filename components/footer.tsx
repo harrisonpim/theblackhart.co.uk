@@ -18,7 +18,6 @@ export default function Footer() {
             quality={100}
           />
         </div>
-        <img />
         <div className="flex-grow border-t border-white" />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 row-gap-2 pt-1 lg:pt-0">
