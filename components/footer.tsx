@@ -1,4 +1,6 @@
+import Image from 'next/image'
 import Social from './social'
+import imageLoader from 'lib/images'
 
 export default function Footer() {
   const thisYear = new Date().getFullYear()
@@ -6,7 +8,16 @@ export default function Footer() {
     <footer className="absolute bottom-0 w-full text-sm">
       <div className=" flex items-center">
         <div className="flex-grow border-t border-white" />
-        <img src="/icons/tbh.png" className="h-6 px-2" alt="TBH" />
+        <div className="relative h-6 px-4">
+          <Image
+            loader={imageLoader}
+            src="https://images.prismic.io/theblackhart/616f657c-82b5-4bc9-ae55-c44dc45a72ba_tbh.png?auto=compress,format"
+            alt="TBH"
+            layout="fill"
+            objectFit="contain"
+            quality={100}
+          />
+        </div>
         <div className="flex-grow border-t border-white" />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 row-gap-2 pt-1 lg:pt-0">

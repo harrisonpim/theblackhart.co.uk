@@ -6,28 +6,17 @@ export default function Social() {
       <SvgIcon
         title="Spotify"
         href="https://open.spotify.com/user/zdn2g32khwupb8s82rikmb3no?si=3d0fde9abd0948ac"
-        size={26}
       />
-      <SvgIcon
-        title="TikTok"
-        href="https://www.tiktok.com/@tbh_jewellery"
-        size={26}
-      />
+      <SvgIcon title="TikTok" href="https://www.tiktok.com/@tbh_jewellery" />
       <SvgIcon
         title="Instagram"
         href="https://www.instagram.com/tbh_jewellery/"
-        size={26}
       />
       <SvgIcon
         title="YouTube"
         href="https://www.youtube.com/channel/UCfUqXisYyNzQcRDPxP_SizQ"
-        size={26}
       />
-      <SvgIcon
-        title="Twitch"
-        href="https://www.twitch.tv/tbh_jewellery"
-        size={26}
-      />
+      <SvgIcon title="Twitch" href="https://www.twitch.tv/tbh_jewellery" />
     </div>
   )
 }

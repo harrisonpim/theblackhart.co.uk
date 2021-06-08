@@ -5,10 +5,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Nav from '../components/nav'
 import { RichText } from 'prismic-reactjs'
+import imageLoader from 'lib/images'
 
 export default function Index({ index }) {
   return (
-    <div>
+    <div className="">
       <Head>
         <title>{RichText.asText(index.data.title)}</title>
         <meta
@@ -27,16 +28,16 @@ export default function Index({ index }) {
                 >
                   <Nav className="pt-2 text-xs lg:text-base" />
                   <div className="w-4/5 m-auto">
-                    <h1>
+                    <div className="relative h-24 lg:h-48">
                       <Image
+                        loader={imageLoader}
                         src={slice.primary.title_image.url}
                         alt={slice.primary.title_image.alt}
-                        height={slice.primary.title_image.dimensions.height}
-                        width={slice.primary.title_image.dimensions.width}
-                        className="max-h-full max-w-full"
+                        layout="fill"
+                        objectFit="contain"
                       />
-                    </h1>
-                    <p className="uppercase font-bold lg:text-xl leading-none">
+                    </div>
+                    <p className="uppercase font-bold lg:text-xl leading-none block">
                       <RichText
                         render={slice.primary.description}
                         linkResolver={linkResolver}

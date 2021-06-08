@@ -2,12 +2,14 @@ import { FC } from 'react'
 import Image from 'next/image'
 import { ImageProps } from '../lib/types'
 import { RichText } from 'prismic-reactjs'
+import imageLoader from 'lib/images'
 import { linkResolver } from '../prismic.config'
 
 const ImageWithCaption: FC<ImageProps> = ({ slice }) => {
   return (
     <figure className="w-full lg:w-4/5 h-auto mx-auto text-center pb">
       <Image
+        loader={imageLoader}
         className="rounded-sm"
         layout="responsive"
         src={slice.primary.image.url}
