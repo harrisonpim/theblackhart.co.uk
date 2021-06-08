@@ -10,7 +10,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta charSet="utf-8" />
           <link rel="icon" href="/icons/favicon/tbh.svg" type="image/svg+xml" />
           <link rel="icon" href="/icons/favicon/32.ico" type="image/png" />
           <link

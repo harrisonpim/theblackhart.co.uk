@@ -14,10 +14,9 @@ Built and deployed with:
 
 - Clone this repo
 - Run `yarn install --include=dev` to install dependencies.
-- I use [the vercel cli](https://vercel.com/docs/cli) for local development.
-  - Run `vercel link` to link your local repo to the project on vercel
-  - Run `vercel env pull` to populate a local `.env` file with dev versions of all of the project's secrets.
-- Finally, run `vercel dev` to get a local version of the site running.
+- Run `yarn link` to link your local repo to the project on vercel
+- Run `yarn env` to populate a local `.env` file with dev versions of all of the project's secrets.
+- Finally, run `yarn dev` to get a local version of the site running.
 
 ## Testing
 

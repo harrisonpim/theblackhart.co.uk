@@ -5,6 +5,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "link": "vercel link",
+    "env": "vercel env pull",
     "lint": "yarn eslint . --fix",
     "pa11y": "pa11y-ci --sitemap http://localhost:3000/sitemap.xml",
     "start": "next start",
