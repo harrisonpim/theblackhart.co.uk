@@ -23,7 +23,9 @@ export default function Blog({ index, posts }) {
               <a className="no-underline">
                 <p className="text-silver">{formatDate(post.data.date)}</p>
                 <h2>{RichText.asText(post.data.title)}</h2>
-                <p className="pt-1">{RichText.render(post.data.description)}</p>
+                <p className="pt-1">
+                  {RichText.render(post.data.description1)}
+                </p>
               </a>
             </Link>
           </li>
