@@ -1,4 +1,10 @@
-import { AddToBasket, Details, ImageGallery } from '../../components/product'
+import {
+  AddToBasket,
+  Details,
+  ImageGallery,
+  chainLengths,
+  ringSizes,
+} from '../../components/product'
 import { Client, linkResolver } from '../../prismic.config'
 
 import Layout from '../../components/layout'
@@ -7,7 +13,7 @@ import { formatCurrencyString } from 'use-shopping-cart'
 import { queryRepeatableDocuments } from '../../lib/queries'
 import { useState } from 'react'
 
-export default function ProductPage({ product, details, sizes, uid }) {
+export default function ProductPage({ product, details, uid }) {
   const title = RichText.asText(product.data.name)
   const description = RichText.asText(product.data.description)
   const images = product.data.body[0].items
@@ -16,7 +22,10 @@ export default function ProductPage({ product, details, sizes, uid }) {
     currency: 'GBP',
   })
   const isRing = product.data.type === 'ring'
-  const [size, setSize] = useState(isRing ? sizes[0] : null)
+  const isNecklace = product.data.type === 'necklace'
+  const sizes = isRing ? ringSizes : isNecklace ? chainLengths : null
+  const [size, setSize] = useState(isRing || isNecklace ? sizes[0] : null)
+
   return (
     <Layout title={title} description={description}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -30,7 +39,7 @@ export default function ProductPage({ product, details, sizes, uid }) {
               linkResolver={linkResolver}
             />
 
-            {isRing ? (
+            {isRing || isNecklace ? (
               <div>
                 <div className="inline-block pr-2">Size:</div>
                 <select
@@ -68,44 +77,11 @@ export async function getStaticProps({ params }) {
   const client = Client()
   const product = await client.getByUID('product', params.uid, {})
   const details = await client.getSingle('additional_information', {})
-  const sizes = [
-    'G',
-    'G½',
-    'H',
-    'H½',
-    'I',
-    'I½',
-    'J',
-    'J½',
-    'K',
-    'K½',
-    'L',
-    'L½',
-    'M',
-    'M½',
-    'N',
-    'N½',
-    'O',
-    'O½',
-    'P',
-    'P½',
-    'Q',
-    'Q½',
-    'R',
-    'R½',
-    'S',
-    'S½',
-    'T',
-    'T½',
-    'U',
-    'U½',
-  ]
 
   return {
     props: {
       product,
       details,
-      sizes,
       uid: params.uid,
     },
   }
