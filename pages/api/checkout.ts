@@ -39,7 +39,7 @@ export default async function handler(
       })
 
       const needsShipping = validatedProducts.some((product) =>
-        ['silver', 'ring'].includes(product.data.type)
+        ['silver', 'ring', 'necklace'].includes(product.data.type)
       )
 
       if (needsShipping === true) {
