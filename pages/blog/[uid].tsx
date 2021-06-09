@@ -11,7 +11,7 @@ export default function Post({ post }) {
     const title = RichText.asText(post.data.title)
 
     return (
-      <Layout title={title}>
+      <Layout title={title} description={post.data.description}>
         <div className="">
           <div className="mx-auto w-full pt-3">
             <h1 className="thornletter -mb-2">{title}</h1>
