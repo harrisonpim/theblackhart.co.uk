@@ -16,15 +16,18 @@ export default function Blog({ index, posts }) {
       title={RichText.asText(index.data.title)}
       description={RichText.asText(index.data.description)}
     >
-      <ul aria-label="posts">
+      <ul aria-label="posts" className="grid gap-8 grid-cols-1">
         {sortedPosts.map((post) => (
-          <li className="pb-6" key={RichText.asText(post.data.title)}>
+          <li key={RichText.asText(post.data.title)}>
             <Link as={linkResolver(post)} href={linkResolver(post)}>
               <a className="no-underline">
+                <p className="text-silver">{formatDate(post.data.date)}</p>
                 <h2>{RichText.asText(post.data.title)}</h2>
+                <p className="pt-1">
+                  {RichText.render(post.data.description1)}
+                </p>
               </a>
             </Link>
-            <div className="text-silver">{formatDate(post.data.date)}</div>
           </li>
         ))}
       </ul>
