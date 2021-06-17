@@ -51,6 +51,7 @@ const Shop = ({ index, products }) => {
                       alt={image.alt}
                       layout="fill"
                       objectFit="cover"
+                      placeholder="blur"
                     />
                   </div>
                   <div className="pt-1 text-center w-11/12 mx-auto">

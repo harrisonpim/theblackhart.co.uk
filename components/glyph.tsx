@@ -12,6 +12,7 @@ const Glyph: FC<ImageProps> = ({ slice }) => {
         alt={slice.primary.image.alt}
         layout="fill"
         objectFit="contain"
+        placeholder="blur"
       />
     </figure>
   )

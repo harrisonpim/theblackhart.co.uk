@@ -16,6 +16,7 @@ const ImageWithCaption: FC<ImageProps> = ({ slice }) => {
         alt={slice.primary.image.alt}
         height={slice.primary.image.dimensions.height}
         width={slice.primary.image.dimensions.width}
+        placeholder="blur"
       />
       {RichText.asText(slice.primary.caption) ? (
         <figcaption className="pt-1 mx-auto w-4/5 text-silver text-xs text-center">

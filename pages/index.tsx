@@ -35,6 +35,8 @@ export default function Index({ index }) {
                         alt={slice.primary.title_image.alt}
                         layout="fill"
                         objectFit="contain"
+                        quality={100}
+                        priority
                       />
                     </div>
                     <p className="uppercase font-bold lg:text-xl leading-none block">

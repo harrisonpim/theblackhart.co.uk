@@ -16,11 +16,12 @@ export default function Header() {
               layout="fill"
               objectFit="contain"
               quality={100}
+              priority
             />
           </div>
         </a>
       </Link>
-      <Nav className="mx-auto text-xs" />
+      <Nav className="mx-auto text-sm" />
     </header>
   )
 }

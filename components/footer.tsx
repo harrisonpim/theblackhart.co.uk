@@ -16,6 +16,7 @@ export default function Footer() {
             layout="fill"
             objectFit="contain"
             quality={100}
+            placeholder="blur"
           />
         </div>
         <div className="flex-grow border-t border-white" />
