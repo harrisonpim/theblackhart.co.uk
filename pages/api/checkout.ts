@@ -2,11 +2,13 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { RichText } from 'prismic-reactjs'
 import Stripe from 'stripe'
-import inventory from './products.json'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2020-08-27',
 })
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const inventory = require(`./products.json`)
 
 export default async function handler(
   req: NextApiRequest,
@@ -112,6 +114,7 @@ export default async function handler(
           line_items: lineItems,
         }
       )
+
       res.status(200).json({ sessionId: session.id })
     } catch (err) {
       res.status(500).json({ statusCode: 500, message: err.message })

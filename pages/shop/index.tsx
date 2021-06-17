@@ -13,7 +13,7 @@ const Shop = ({ index, products }) => {
       description={RichText.asText(index.data.description)}
       title={RichText.asText(index.data.title)}
     >
-      <ul className="grid grid-cols-2 row-gap-2 border-b border-t py-1 uppercase text-xs">
+      <ul className="grid grid-cols-2 row-gap-2 border-b border-t py-1 uppercase text-sm">
         <div className="flex gap-3 mx-0 lg:text-left" key="categories"></div>
         <li className="mx-0 text-right" key="basket">
           <a className="no-underline" href="/shop/basket">

@@ -1,6 +1,6 @@
 import Layout from '../components/layout'
 
-export default function Custom404() {
+export default function Custom404(): JSX.Element {
   return (
     <Layout>
       <div className="w-full text-center">
