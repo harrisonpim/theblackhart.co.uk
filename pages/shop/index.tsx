@@ -43,7 +43,7 @@ const Shop = ({ index, products }) => {
                     />
                   </div>
                   <div className="pt-1 text-center w-11/12 mx-auto">
-                    <h2 className="text-base">
+                    <h2 className="text-base leading-4 py-1">
                       {RichText.asText(product.data.name)}
                     </h2>
                     <p className="text-silver">
