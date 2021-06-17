@@ -13,7 +13,7 @@ Built and deployed with:
 ## Developing
 
 - Clone this repo
-- Run `yarn install --include=dev` to install dependencies.
+- Run `yarn` to install dependencies.
 - Run `yarn link` to link your local repo to the project on vercel
 - Run `yarn env` to populate a local `.env` file with dev versions of all of the project's secrets.
 - Finally, run `yarn dev` to get a local version of the site running.
