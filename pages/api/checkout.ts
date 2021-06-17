@@ -2,12 +2,11 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { RichText } from 'prismic-reactjs'
 import Stripe from 'stripe'
+import inventory from './products.json'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2020-08-27',
 })
-
-const inventory = require(`./products.json`)
 
 export default async function handler(
   req: NextApiRequest,

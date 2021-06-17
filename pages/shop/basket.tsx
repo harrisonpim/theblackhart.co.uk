@@ -4,8 +4,6 @@ import Image from 'next/image'
 import Layout from '../../components/layout'
 import Link from 'next/link'
 import { fetchPostJSON } from '../../lib/api'
-import imageLoader from 'lib/images'
-import { linkResolver } from 'prismic.config'
 import { useShoppingCart } from 'use-shopping-cart'
 
 export default function Basket() {
@@ -41,12 +39,13 @@ export default function Basket() {
                         <div className="w-20">
                           <div className="relative pb-7/5">
                             <Image
-                              loader={imageLoader}
                               className="absolute rounded-sm"
                               layout="fill"
                               objectFit="cover"
                               src={product.metadata.image.url}
                               alt={product.metadata.image.alt}
+                              placeholder="blur"
+                              blurDataURL={`${product.metadata.image.url}&w=30`}
                             />
                           </div>
                         </div>

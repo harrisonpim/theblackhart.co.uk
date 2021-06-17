@@ -5,7 +5,6 @@ import Layout from '../../components/layout'
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
 import { formatCurrencyString } from 'use-shopping-cart'
-import imageLoader from 'lib/images'
 import { queryRepeatableDocuments } from '../../lib/queries'
 
 const Shop = ({ index, products }) => {
@@ -15,18 +14,7 @@ const Shop = ({ index, products }) => {
       title={RichText.asText(index.data.title)}
     >
       <ul className="grid grid-cols-2 row-gap-2 border-b border-t py-1 uppercase text-xs">
-        <div className="flex gap-3 mx-0 lg:text-left" key="categories">
-          {/* <li key="merch">
-            <a href="/shop?category=merch" className="no-underline">
-              Merch
-            </a>
-          </li>
-          <li key="silver">
-            <a href="/shop?category=silver" className="no-underline">
-              Silver
-            </a>
-          </li> */}
-        </div>
+        <div className="flex gap-3 mx-0 lg:text-left" key="categories"></div>
         <li className="mx-0 text-right" key="basket">
           <a className="no-underline" href="/shop/basket">
             Basket
@@ -45,13 +33,13 @@ const Shop = ({ index, products }) => {
                 <a className="no-underline">
                   <div className="relative pb-6/5">
                     <Image
-                      loader={imageLoader}
                       className="absolute w-full h-full rounded-sm"
                       src={image.url}
                       alt={image.alt}
                       layout="fill"
                       objectFit="cover"
                       placeholder="blur"
+                      blurDataURL={`${image.url}&w=30`}
                     />
                   </div>
                   <div className="pt-1 text-center w-11/12 mx-auto">

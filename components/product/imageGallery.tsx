@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import Image from 'next/image'
 import { ImageType } from 'lib/types'
-import imageLoader from 'lib/images'
 
 // For now, we just return a single image.
 // Will add full gallery functionality at a later date
@@ -15,7 +14,6 @@ const ImageGallery: FC<Props> = ({ images }) => {
   const image = images[0].image
   return (
     <Image
-      loader={imageLoader}
       className="rounded-sm"
       objectFit="contain"
       src={image.url}
@@ -23,6 +21,7 @@ const ImageGallery: FC<Props> = ({ images }) => {
       height={image.dimensions.height}
       width={image.dimensions.width}
       placeholder="blur"
+      blurDataURL={`${image.url}&w=30`}
     />
   )
 }
