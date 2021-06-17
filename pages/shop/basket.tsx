@@ -76,6 +76,15 @@ export default function Basket() {
               </a>
             </div>
             <div className="space-y-3">
+              <p className="text-sm">
+                Shipping costs are added when you check out. For orders within
+                the UK, silver items are shipped by{' '}
+                <span className="italic">
+                  Royal Mail Special Delivery Guaranteed by 1pm
+                </span>
+                , at a cost of £6.70. <p></p>For merch items, the cost of
+                shipping is included in the price of the item.
+              </p>
               <button type="submit" disabled={cartEmpty}>
                 Checkout
               </button>

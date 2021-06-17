@@ -113,7 +113,6 @@ export default async function handler(
           line_items: lineItems,
         }
       )
-
       res.status(200).json({ sessionId: session.id })
     } catch (err) {
       res.status(500).json({ statusCode: 500, message: err.message })
