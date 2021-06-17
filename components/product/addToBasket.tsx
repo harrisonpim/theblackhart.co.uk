@@ -1,6 +1,7 @@
 import { Product, useShoppingCart } from 'use-shopping-cart'
 
 import { FC } from 'react'
+import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
 import { linkResolver } from 'prismic.config'
 
@@ -28,9 +29,11 @@ const AddToBasket: FC<Props> = ({ product, size, uid }) => {
     },
   } as Product
   return (
-    <a href="/shop/basket">
-      <button onClick={() => addItem(productData)}>Add to basket</button>
-    </a>
+    <Link href="/shop/basket">
+      <a>
+        <button onClick={() => addItem(productData)}>Add to basket</button>
+      </a>
+    </Link>
   )
 }
 

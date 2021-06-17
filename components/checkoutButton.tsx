@@ -3,11 +3,14 @@ import getStripe from '../lib/stripe'
 
 export default function CheckoutButton({ products }) {
   async function handleClick() {
-    const { sessionId } = await fetchPostJSON('/api/checkout', {
-      products,
-    })
+    const { sessionId }: { sessionId: string } = await fetchPostJSON(
+      '/api/checkout',
+      {
+        products,
+      }
+    )
     const stripe = await getStripe()
-    const { error } = await stripe.redirectToCheckout({ sessionId })
+    await stripe.redirectToCheckout({ sessionId })
   }
 
   return (

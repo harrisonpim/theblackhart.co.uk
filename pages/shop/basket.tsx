@@ -66,13 +66,11 @@ export default function Basket() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
               <p suppressHydrationWarning>Total: {formattedTotalPrice}</p>
-              <a
-                className="no-underline"
-                href="/shop"
-                onClick={() => clearCart()}
-              >
-                Clear basket
-              </a>
+              <Link href="/shop">
+                <a className="no-underline" onClick={() => clearCart()}>
+                  Clear basket
+                </a>
+              </Link>
             </div>
             <div className="space-y-3">
               <p className="text-sm">

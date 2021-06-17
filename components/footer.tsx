@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import Social from './social'
 
 export default function Footer() {
@@ -23,15 +24,15 @@ export default function Footer() {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 row-gap-2 pt-1 lg:pt-0">
         <div className="flex gap-5 mx-auto lg:mx-0 lg:text-left">
-          <a href="/faq" className="no-underline">
-            FAQ
-          </a>
-          <a href="/legal" className="no-underline">
-            Legal
-          </a>
-          <a href="/contact" className="no-underline">
-            Contact
-          </a>
+          <Link href="/faq">
+            <a className="no-underline">FAQ</a>
+          </Link>
+          <Link href="/legal">
+            <a className="no-underline">Legal</a>
+          </Link>
+          <Link href="/contact">
+            <a className="no-underline">Contact</a>
+          </Link>
         </div>
         <div className="mx-auto lg:mx-0 lg:text-right">
           Copyright © The Black Hart {thisYear}

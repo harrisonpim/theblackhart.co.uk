@@ -6,7 +6,7 @@ import { linkResolver } from '../prismic.config'
 
 const ImageWithCaption: FC<ImageProps> = ({ slice }) => {
   return (
-    <figure className="w-full lg:w-4/5 h-auto mx-auto text-center pb">
+    <figure className="w-full lg:w-4/5 h-auto mx-auto text-center pb-1">
       <Image
         className="rounded-sm"
         layout="responsive"
@@ -18,7 +18,7 @@ const ImageWithCaption: FC<ImageProps> = ({ slice }) => {
         blurDataURL={`${slice.primary.image.url}&w=30`}
       />
       {RichText.asText(slice.primary.caption) ? (
-        <figcaption className="pt-1 mx-auto w-4/5 text-silver text-xs text-center">
+        <figcaption className="pt-2 mx-auto w-4/5 text-silver text-center">
           <RichText
             render={slice.primary.caption}
             linkResolver={linkResolver}

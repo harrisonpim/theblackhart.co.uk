@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import Image from 'next/image'
 
 type Props = {
   title: string
@@ -8,7 +9,7 @@ type Props = {
 const SvgIcon: FC<Props> = ({ title, href }) => {
   return (
     <a href={href} title={title}>
-      <img
+      <Image
         width={24}
         height={24}
         src={`/icons/social/${title}.svg`.toLowerCase()}

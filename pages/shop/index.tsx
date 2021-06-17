@@ -16,9 +16,9 @@ const Shop = ({ index, products }) => {
       <ul className="grid grid-cols-2 row-gap-2 border-b border-t py-1 uppercase text-sm">
         <div className="flex gap-3 mx-0 lg:text-left" key="categories"></div>
         <li className="mx-0 text-right" key="basket">
-          <a className="no-underline" href="/shop/basket">
-            Basket
-          </a>
+          <Link href="/shop/basket">
+            <a className="no-underline">Basket</a>
+          </Link>
         </li>
       </ul>
       <ul
