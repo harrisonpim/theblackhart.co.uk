@@ -7,6 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2020-08-27',
 })
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const inventory = require(`./products.json`)
 
 export default async function handler(
@@ -16,11 +17,11 @@ export default async function handler(
   if (req.method === 'POST') {
     try {
       const products = Object.values(req.body)
-      const validatedProducts = products.map(({ quantity, name, sku }) => {
+      const validatedProducts = products.map(({ quantity, name, metadata }) => {
         return {
           quantity,
           name,
-          ...inventory.find((p) => p.uid === sku),
+          ...inventory.find((p) => p.uid === metadata.uid),
         }
       })
       const lineItems = validatedProducts.map((product) => {
@@ -29,7 +30,7 @@ export default async function handler(
             unit_amount: product.data.price,
             currency: 'gbp',
             product_data: {
-              name: product.name, // for now, we take the unvalidated product name to allow for size variations
+              name: product.name,
               description: RichText.asText(product.data.description),
               images: [product.data.body[0].items[0].image.url],
             },

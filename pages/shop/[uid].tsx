@@ -29,7 +29,9 @@ export default function ProductPage({ product, details, uid }) {
   return (
     <Layout title={title} description={description}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <ImageGallery images={images} />
+        <div className="top-0">
+          <ImageGallery images={images} />
+        </div>
         <div>
           <h1 className="leading-none">{title}</h1>
           <h2 className="text-silver pb-4">{displayPrice}</h2>
@@ -40,10 +42,10 @@ export default function ProductPage({ product, details, uid }) {
             />
 
             {isRing || isNecklace ? (
-              <div>
-                <div className="inline-block pr-2">Size:</div>
+              <div className="flex">
+                <div className="pr-2">Size:</div>
                 <select
-                  className="w-20 mb-3 text-black"
+                  className="w-20 mb-3 text-black text-sm"
                   name="sizes"
                   id="sizes"
                   title="sizes"
@@ -61,11 +63,10 @@ export default function ProductPage({ product, details, uid }) {
                 </select>
               </div>
             ) : null}
-            {['silver', 'ring'].includes(product.data.type) ? (
+            {['silver', 'ring', 'necklace'].includes(product.data.type) ? (
               <Details data={details.data} />
             ) : null}
           </div>
-          <div></div>
           <AddToBasket product={product} size={size} uid={uid} />
         </div>
       </div>

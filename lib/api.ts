@@ -1,4 +1,7 @@
-export async function fetchPostJSON(url: string, data?: {}) {
+export async function fetchPostJSON(
+  url: string,
+  data?: Record<string, unknown>
+) {
   try {
     const response = await fetch(url, {
       method: 'POST',

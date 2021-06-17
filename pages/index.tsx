@@ -5,7 +5,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Nav from '../components/nav'
 import { RichText } from 'prismic-reactjs'
-import imageLoader from 'lib/images'
 
 export default function Index({ index }) {
   return (
@@ -26,15 +25,16 @@ export default function Index({ index }) {
                   key={slice.primary.title_image.alt}
                   className="flex flex-col h-screen justify-between text-center"
                 >
-                  <Nav className="pt-2 text-xs lg:text-base" />
+                  <Nav className="pt-2 text-sm lg:text-base" />
                   <div className="w-4/5 m-auto">
                     <div className="relative h-24 lg:h-48">
                       <Image
-                        loader={imageLoader}
                         src={slice.primary.title_image.url}
                         alt={slice.primary.title_image.alt}
                         layout="fill"
                         objectFit="contain"
+                        quality={100}
+                        priority
                       />
                     </div>
                     <p className="uppercase font-bold lg:text-xl leading-none block">

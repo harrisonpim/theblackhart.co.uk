@@ -1,7 +1,7 @@
 module.exports = {
   images: {
-    loader: 'imgix',
-    path: '',
+    // loader: 'imgix',
+    // path: '',
     domains: ['images.prismic.io'],
   },
   async redirects() {

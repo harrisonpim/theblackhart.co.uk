@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ReactElement } from 'react'
 
 export default function Nav(props): ReactElement {
@@ -5,24 +6,24 @@ export default function Nav(props): ReactElement {
     <nav {...props}>
       <ul className="flex space-x-4 justify-center uppercase" aria-label="nav">
         <li key="shop">
-          <a className="no-underline" href="/shop">
-            Shop
-          </a>
+          <Link href="/shop">
+            <a className="no-underline">Shop</a>
+          </Link>
         </li>
         <li key="commissions">
-          <a className="no-underline" href="/commissions">
-            Commissions
-          </a>
+          <Link href="/commissions">
+            <a className="no-underline">Commissions</a>
+          </Link>
         </li>
         <li key="blog">
-          <a className="no-underline" href="/blog">
-            Blog
-          </a>
+          <Link href="/blog">
+            <a className="no-underline">Blog</a>
+          </Link>
         </li>
         <li key="faq">
-          <a className="no-underline" href="/faq">
-            FAQ
-          </a>
+          <Link href="/faq">
+            <a className="no-underline">FAQ</a>
+          </Link>
         </li>
       </ul>
     </nav>
