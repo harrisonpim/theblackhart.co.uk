@@ -41,6 +41,11 @@ const Shop = ({ index, products }) => {
                       placeholder="blur"
                       blurDataURL={`${image.url}&w=30`}
                     />
+                    {product.data.one_of_a_kind ? (
+                      <div className="text-xs bg-dark-gray -mr-2 absolute top-0 right-0 rounded p-1 transform rotate-12">
+                        One of a kind
+                      </div>
+                    ) : null}
                   </div>
                   <div className="pt-1 text-center w-11/12 mx-auto">
                     <h2 className="text-base leading-4 py-1">
