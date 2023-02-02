@@ -10,8 +10,8 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="icon" href="/icons/favicon/tbh.svg" type="image/svg+xml" />
           <link rel="icon" href="/icons/favicon/32.ico" type="image/png" />
+          <link rel="icon" href="/icons/favicon/tbh.svg" type="image/svg+xml" />
           <link
             rel="apple-touch-icon"
             href="/icons/favicon/apple-touch-icon.png"

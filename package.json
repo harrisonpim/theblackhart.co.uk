@@ -5,8 +5,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "link": "vercel link",
-    "env": "vercel env pull",
+    "env": "vercel link && vercel env pull",
     "lint": "next lint",
     "pa11y": "pa11y-ci --sitemap http://localhost:3000/sitemap.xml",
     "start": "next start",
