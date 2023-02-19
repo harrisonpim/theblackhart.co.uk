@@ -4,6 +4,7 @@ import {
   ImageGallery,
   chainLengths,
   ringSizes,
+  topSizes,
 } from '../../components/product'
 import { Client, linkResolver } from '../../prismic.config'
 
@@ -23,7 +24,14 @@ export default function ProductPage({ product, details, uid }) {
   })
   const isRing = product.data.type === 'ring'
   const isNecklace = product.data.type === 'necklace'
-  const sizes = isRing ? ringSizes : isNecklace ? chainLengths : null
+  const isTop = product.data.type === 'top'
+  const sizes = isRing
+    ? ringSizes
+    : isNecklace
+    ? chainLengths
+    : isTop
+    ? topSizes
+    : null
   const [size, setSize] = useState(isRing || isNecklace ? sizes[0] : null)
 
   return (
@@ -41,7 +49,7 @@ export default function ProductPage({ product, details, uid }) {
               linkResolver={linkResolver}
             />
 
-            {isRing || isNecklace ? (
+            {isRing || isNecklace || isTop ? (
               <div className="flex">
                 <div className="pr-2">Size:</div>
                 <select
@@ -63,6 +71,7 @@ export default function ProductPage({ product, details, uid }) {
                 </select>
               </div>
             ) : null}
+
             {['silver', 'ring', 'necklace'].includes(product.data.type) ? (
               <Details data={details.data} />
             ) : null}

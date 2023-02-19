@@ -32,3 +32,5 @@ export const ringSizes: string[] = [
 ]
 
 export const chainLengths: string[] = ['16"', '20"', '24"']
+
+export const topSizes: string[] = ['S', 'M', 'L', 'XL', '2XL', '3XL']

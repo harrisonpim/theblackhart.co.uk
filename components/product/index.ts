@@ -1,4 +1,4 @@
-import { chainLengths, ringSizes } from './sizes'
+import { chainLengths, ringSizes, topSizes } from './sizes'
 
 import AddToBasket from './addToBasket'
 import Details from './details'
@@ -12,4 +12,5 @@ export {
   ImageGallery,
   Details,
   AddToBasket,
+  topSizes,
 }
