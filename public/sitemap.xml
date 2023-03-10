@@ -3,12 +3,16 @@
   <url><loc>http://localhost:3000</loc></url
   ><url><loc>http://localhost:3000/social</loc></url
   ><url><loc>http://localhost:3000/success</loc></url
+  ><url><loc>http://localhost:3000/legal</loc></url
+  ><url><loc>http://localhost:3000/faq</loc></url
   ><url><loc>http://localhost:3000/commissions</loc></url
   ><url><loc>http://localhost:3000/ring-sizing</loc></url
-  ><url><loc>http://localhost:3000/legal</loc></url
   ><url><loc>http://localhost:3000/contact</loc></url
-  ><url><loc>http://localhost:3000/faq</loc></url
   ><url><loc>http://localhost:3000/example-emails</loc></url
+  ><url
+    ><loc
+      >http://localhost:3000/blog/witchfinding-in-early-modern-britain-was-a-complex</loc
+    ></url
   ><url><loc>http://localhost:3000/blog/silver-and-the-moon</loc></url
   ><url><loc>http://localhost:3000/blog/memento-mori</loc></url
   ><url><loc>http://localhost:3000/blog/death-and-the-maiden</loc></url
@@ -17,13 +21,10 @@
   ><url
     ><loc>http://localhost:3000/blog/a-brief-history-of-poesy-rings</loc></url
   ><url><loc>http://localhost:3000/blog/silver-and-medicine</loc></url
+  ><url><loc>http://localhost:3000/shop/the-witch-swims-t-shirt</loc></url
   ><url><loc>http://localhost:3000/shop/hanging-bat-hoops</loc></url
   ><url><loc>http://localhost:3000/shop/snakes-of-the-moon-ring</loc></url
   ><url><loc>http://localhost:3000/shop/small-skull-ring</loc></url
-  ><url
-    ><loc
-      >http://localhost:3000/shop/an-illustration-from-the-discovery-of-witches--a-study</loc
-    ></url
   ><url><loc>http://localhost:3000/shop/anatomical-heart-necklace</loc></url
   ><url><loc>http://localhost:3000/shop/bat-stud-earrings</loc></url
   ><url><loc>http://localhost:3000/shop/snake-in-hand-enamel-pin</loc></url

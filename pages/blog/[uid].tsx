@@ -17,7 +17,7 @@ export default function Post({ post }) {
       >
         <div className="">
           <div className="mx-auto w-full pt-3">
-            <h1 className="thornletter -mb-2">{title}</h1>
+            <h1 className="font-operina-romano pb-1">{title}</h1>
             <div className="text-sm text-silver pb-4">{date}</div>
           </div>
           <SliceZone sliceZone={post.data.body1} />

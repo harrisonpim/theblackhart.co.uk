@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap);
 
 :root {
-  font-family: "Crimson Text", Georgia, serif;
+  font-family: 'Crimson Text', Georgia, serif;
   color: white;
   background-color: rgba(0, 0, 0, 0.9);
   line-height: 1.15;
@@ -9,21 +9,37 @@
 }
 
 @font-face {
-  font-family: "thornletter";
-  src: url("/fonts/thornletter/thornletter.eot");
-  src: url("/fonts/thornletter/thornletter.eot?#iefix")
-      format("embedded-opentype"),
-    url("/fonts/thornletter/thornletter.woff2") format("woff2"),
-    url("/fonts/thornletter/thornletter.woff") format("woff"),
-    url("/fonts/thornletter/thornletter.ttf") format("truetype"),
-    url("/fonts/thornletter/thornletter.svg#svgFontName") format("svg");
+  font-family: 'thornletter';
+  src: url('/fonts/thornletter/thornletter.eot');
+  src: url('/fonts/thornletter/thornletter.eot?#iefix')
+      format('embedded-opentype'),
+    url('/fonts/thornletter/thornletter.woff2') format('woff2'),
+    url('/fonts/thornletter/thornletter.woff') format('woff'),
+    url('/fonts/thornletter/thornletter.ttf') format('truetype'),
+    url('/fonts/thornletter/thornletter.svg#svgFontName') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'operina-romano';
+  src: url('/fonts/operina-romano/operina-romano.eot');
+  src: url('/fonts/operina-romano/operina-romano.eot?#iefix')
+      format('embedded-opentype'),
+    url('/fonts/operina-romano/operina-romano.woff2') format('woff2'),
+    url('/fonts/operina-romano/operina-romano.woff') format('woff'),
+    url('/fonts/operina-romano/operina-romano.ttf') format('truetype'),
+    url('/fonts/operina-romano/operina-romano.svg#svgFontName') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 a {
   @apply underline;
+  @apply underline-offset-2;
+  @apply decoration-1;
 }
+
 h1 {
   @apply text-3xl;
 }
@@ -32,4 +48,10 @@ h2 {
 }
 h3 {
   @apply text-xl;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-operina-romano;
 }

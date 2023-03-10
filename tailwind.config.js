@@ -46,7 +46,9 @@ module.exports = {
       },
       visibility: ['hover'],
       fontFamily: {
+        crimson: ['Crimson Text', 'serif'],
         thornletter: ['thornletter', 'Crimson Text', 'serif'],
+        'operina-romano': ['operina-romano', 'Crimson Text', 'serif'],
       },
       maxWidth: {
         measure: '34rem',

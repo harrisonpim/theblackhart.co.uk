@@ -41,8 +41,10 @@ export default function ProductPage({ product, details, uid }) {
           <ImageGallery images={images} />
         </div>
         <div>
-          <h1 className="leading-none">{title}</h1>
-          <h2 className="text-silver pb-4">{displayPrice}</h2>
+          <h1 className="leading-none lg:pt-2">{title}</h1>
+          <h2 className="text-silver pb-4 text-lg font-crimson">
+            {displayPrice}
+          </h2>
           <div className="prose">
             <RichText
               render={product.data.description}
