@@ -10,7 +10,8 @@
     "pa11y": "pa11y-ci --sitemap http://localhost:3000/sitemap.xml",
     "start": "next start",
     "test:mobile": "platform=mobile jest",
-    "test": "jest"
+    "test": "jest",
+    "generate-products": "node scripts/generate-products.js"
   },
   "dependencies": {
     "@prismicio/client": "^4.0.0",
@@ -52,7 +53,7 @@
     "prettier": "2.2.1",
     "ts-jest": "^26.5.3",
     "ts-node": "^9.1.1",
-    "vercel": "^21.2.3"
+    "vercel": "^28.16.15"
   },
   "license": "MIT"
 }

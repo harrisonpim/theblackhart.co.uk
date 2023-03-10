@@ -20,8 +20,6 @@ const ImageGallery: FC<Props> = ({ images }) => {
       alt={image.alt}
       height={image.dimensions.height}
       width={image.dimensions.width}
-      placeholder="blur"
-      blurDataURL={`${image.url}&w=30`}
     />
   )
 }

@@ -44,8 +44,6 @@ export default function Basket() {
                               objectFit="cover"
                               src={product.metadata.image.url}
                               alt={product.metadata.image.alt}
-                              placeholder="blur"
-                              blurDataURL={`${product.metadata.image.url}&w=30`}
                             />
                           </div>
                         </div>

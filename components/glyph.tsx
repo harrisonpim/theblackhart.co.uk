@@ -10,8 +10,6 @@ const Glyph: FC<ImageProps> = ({ slice }) => {
         alt={slice.primary.image.alt}
         layout="fill"
         objectFit="contain"
-        placeholder="blur"
-        blurDataURL={`${slice.primary.image.url}&w=30`}
       />
     </figure>
   )

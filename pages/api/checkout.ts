@@ -39,11 +39,15 @@ export default async function handler(
         }
       })
 
-      const needsShipping = validatedProducts.some((product) =>
-        ['silver', 'ring', 'necklace', 'top'].includes(product.data.type)
+      const needsSilverShipping = validatedProducts.some((product) =>
+        ['silver', 'ring', 'necklace'].includes(product.data.type)
       )
 
-      if (needsShipping === true) {
+      const needsApparelShipping = validatedProducts.some((product) =>
+        ['top'].includes(product.data.type)
+      )
+
+      if (needsSilverShipping === true) {
         lineItems.push({
           price_data: {
             unit_amount: 670,
@@ -51,7 +55,21 @@ export default async function handler(
             product_data: {
               name: 'Shipping cost',
               description:
-                'For orders within the UK, items are shipped by Royal Mail Special Delivery Guaranteed by 1pm',
+                'For orders within the UK, silver items are shipped by Royal Mail Special Delivery Guaranteed by 1pm',
+              images: [],
+            },
+          },
+          quantity: 1,
+        })
+      } else if (needsApparelShipping === true) {
+        lineItems.push({
+          price_data: {
+            unit_amount: 350,
+            currency: 'gbp',
+            product_data: {
+              name: 'Shipping cost',
+              description:
+                'For orders within the UK, items are shipped by Royal Mail Tracked 48 service',
               images: [],
             },
           },

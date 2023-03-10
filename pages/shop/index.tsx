@@ -38,8 +38,6 @@ const Shop = ({ index, products }) => {
                       alt={image.alt}
                       layout="fill"
                       objectFit="cover"
-                      placeholder="blur"
-                      blurDataURL={`${image.url}&w=30`}
                     />
                     {product.data.one_of_a_kind ? (
                       <div className="text-xs bg-dark-gray -mr-2 absolute top-0 right-0 rounded p-1 transform rotate-12">
