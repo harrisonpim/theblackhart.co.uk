@@ -1,14 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { RichText } from 'prismic-reactjs'
+import { CartEntry } from 'use-shopping-cart'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2020-08-27',
 })
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const inventory = require(`./products.json`)
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,66 +13,20 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     try {
-      const products = Object.values(req.body)
-      const validatedProducts = products.map(({ quantity, name, metadata }) => {
-        return {
-          quantity,
-          name,
-          ...inventory.find((p) => p.uid === metadata.uid),
-        }
-      })
-      const lineItems = validatedProducts.map((product) => {
+      const lineItems = Object.values(req.body).map((product: CartEntry) => {
         return {
           price_data: {
-            unit_amount: product.data.price,
+            unit_amount: product.price,
             currency: 'gbp',
             product_data: {
               name: product.name,
-              description: RichText.asText(product.data.description),
-              images: [product.data.body[0].items[0].image.url],
+              description: product.description,
+              images: product.image ? [product.image] : [],
             },
           },
           quantity: product.quantity,
         }
       })
-
-      const needsSilverShipping = validatedProducts.some((product) =>
-        ['silver', 'ring', 'necklace'].includes(product.data.type)
-      )
-
-      const needsApparelShipping = validatedProducts.some((product) =>
-        ['top'].includes(product.data.type)
-      )
-
-      if (needsSilverShipping === true) {
-        lineItems.push({
-          price_data: {
-            unit_amount: 670,
-            currency: 'gbp',
-            product_data: {
-              name: 'Shipping cost',
-              description:
-                'For orders within the UK, silver items are shipped by Royal Mail Special Delivery Guaranteed by 1pm',
-              images: [],
-            },
-          },
-          quantity: 1,
-        })
-      } else if (needsApparelShipping === true) {
-        lineItems.push({
-          price_data: {
-            unit_amount: 350,
-            currency: 'gbp',
-            product_data: {
-              name: 'Shipping cost',
-              description:
-                'For orders within the UK, items are shipped by Royal Mail Tracked 48 service',
-              images: [],
-            },
-          },
-          quantity: 1,
-        })
-      }
 
       const session: Stripe.Checkout.Session = await stripe.checkout.sessions.create(
         {
@@ -132,7 +83,6 @@ export default async function handler(
           line_items: lineItems,
         }
       )
-
       res.status(200).json({ sessionId: session.id })
     } catch (err) {
       res.status(500).json({ statusCode: 500, message: err.message })

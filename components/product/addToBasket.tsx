@@ -18,24 +18,36 @@ type Props = {
 const AddToBasket: FC<Props> = ({ product, size, uid }) => {
   const { addItem } = useShoppingCart()
   const name = RichText.asText(product.data.name)
-  const sizeString = size
-    ? Object.values(size)
+  const needsSize = Object.values(size).filter((s) => s !== null).length > 0
+  const sizeString = needsSize
+    ? ' - ' +
+      Object.values(size)
         .filter((s) => s !== null)
         .join(' - ')
-    : null
+    : ''
+
+  const needsTrackedShipping =
+    product.data.category
+      .map((c) => c.id)
+      .filter((value) =>
+        ['necklaces', 'earrings', 'rings', 'sets'].includes(value)
+      ).length > 0
+
   const productData = {
-    name: size ? `${name} - ${sizeString}` : null,
+    name: `${name}${sizeString}`,
     description: RichText.asText(product.data.description),
     price: product.data.price,
     image: product.data.body[0].items[0].image.url,
     currency: 'GBP',
-    sku: size ? `${uid}-${sizeString.replace(/\s/g, '')}` : uid,
+    sku: `${uid}${sizeString ? sizeString.replace(/\s/g, '') : ''}`,
     metadata: {
       uid,
       url: linkResolver(product),
       image: product.data.body[0].items[0].image,
+      needsTrackedShipping,
     },
   } as Product
+
   return (
     <Link href="/shop/basket">
       <a>

@@ -1,16 +1,21 @@
+import {
+  CartEntry,
+  formatCurrencyString,
+  useShoppingCart,
+} from 'use-shopping-cart'
 import { FormEventHandler, useEffect, useState } from 'react'
 
 import Image from 'next/image'
 import Layout from '../../components/layout'
 import Link from 'next/link'
 import { fetchPostJSON } from '../../lib/api'
-import { useShoppingCart } from 'use-shopping-cart'
+import { useRouter } from 'next/router'
 
 export default function Basket() {
   const [cartEmpty, setCartEmpty] = useState(true)
-
+  const router = useRouter()
   const {
-    formattedTotalPrice,
+    totalPrice,
     cartCount,
     clearCart,
     cartDetails,
@@ -19,9 +24,33 @@ export default function Basket() {
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount])
 
+  const basketNeedsTrackedShipping =
+    !cartEmpty &&
+    Object.values(cartDetails).some(
+      (product) => product.metadata.needsTrackedShipping
+    )
+  const shippingCost = !cartEmpty ? (basketNeedsTrackedShipping ? 670 : 350) : 0
+
   const handleCheckout: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault()
-    const { sessionId } = await fetchPostJSON('/api/checkout', cartDetails)
+    const shippingItem: CartEntry = {
+      sku: 'shipping',
+      name: 'Shipping',
+      description: 'Shipping',
+      price: shippingCost,
+      currency: 'GBP',
+      value: shippingCost,
+      quantity: 1,
+      formattedValue: formatCurrencyString({
+        value: shippingCost,
+        currency: 'GBP',
+      }),
+    }
+
+    const { sessionId } = await fetchPostJSON('/api/checkout', {
+      ...cartDetails,
+      shipping: shippingItem,
+    })
     redirectToCheckout({ sessionId })
   }
 
@@ -65,24 +94,32 @@ export default function Basket() {
           </ul>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
-              <p suppressHydrationWarning>Total: {formattedTotalPrice}</p>
-              <Link href="/shop">
-                <a className="no-underline" onClick={() => clearCart()}>
-                  Clear basket
-                </a>
-              </Link>
+              <p>
+                Shipping:{' '}
+                {formatCurrencyString({
+                  value: shippingCost,
+                  currency: 'GBP',
+                })}
+              </p>
+              <p>
+                Total:{' '}
+                {formatCurrencyString({
+                  value: totalPrice + shippingCost,
+                  currency: 'GBP',
+                })}
+              </p>
             </div>
             <div className="space-y-3">
-              <p className="text-sm">
-                Shipping costs are added when you check out. For orders within
-                the UK, silver items are shipped by{' '}
-                <span className="italic">
-                  Royal Mail Special Delivery Guaranteed by 1pm
-                </span>
-                , at a cost of £6.70.
-              </p>
               <button type="submit" disabled={cartEmpty}>
                 Checkout
+              </button>
+              <button
+                onClick={() => {
+                  clearCart()
+                  router.push('/shop')
+                }}
+              >
+                Clear basket
               </button>
             </div>
           </div>

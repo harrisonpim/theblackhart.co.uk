@@ -11,7 +11,6 @@
     "start": "next start",
     "test:mobile": "platform=mobile jest",
     "test": "jest",
-    "generate-products": "node scripts/generate-products.js",
     "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
