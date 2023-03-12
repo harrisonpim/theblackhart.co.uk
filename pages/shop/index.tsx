@@ -14,8 +14,8 @@ const Shop = ({ index, products, categories, category }) => {
       description={RichText.asText(index.data.description)}
       title={RichText.asText(index.data.title)}
     >
-      <div className="flex justify-between border-y justify py-1 uppercase text-xs">
-        <div className="flex gap-3" key="categories">
+      <div className="flex md:justify-between flex-col md:flex-row border-y py-1 uppercase text-xs gap-y-1">
+        <div className="flex md:gap-3 justify-between" key="categories">
           {categories.map((c) => {
             return (
               <Link href={`/shop?category=${c}`} key={c}>
@@ -32,7 +32,7 @@ const Shop = ({ index, products, categories, category }) => {
         </div>
 
         <Link href="/shop/basket" key="basket">
-          <a className="no-underline ">Basket</a>
+          <a className="no-underline text-right">Basket</a>
         </Link>
       </div>
 
