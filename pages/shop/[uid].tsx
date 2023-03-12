@@ -22,17 +22,18 @@ export default function ProductPage({ product, details, uid }) {
     value: product.data.price,
     currency: 'GBP',
   })
-  const isRing = product.data.type === 'ring'
-  const isNecklace = product.data.type === 'necklace'
-  const isTop = product.data.type === 'top'
-  const sizes = isRing
-    ? ringSizes
-    : isNecklace
-    ? chainLengths
-    : isTop
-    ? topSizes
-    : null
-  const [size, setSize] = useState(isRing || isNecklace ? sizes[0] : null)
+
+  const isRing = product.data.sizing.map((size) => size.id).includes('rings')
+  const isNecklace = product.data.sizing
+    .map((size) => size.id)
+    .includes('necklaces')
+  const isTop = product.data.sizing.map((size) => size.id).includes('tops')
+
+  const [ringSize, setRingSize] = useState(isRing ? ringSizes[0] : null)
+  const [chainLength, setChainLength] = useState(
+    isNecklace ? chainLengths[0] : null
+  )
+  const [topSize, setTopSize] = useState(isTop ? topSizes[0] : null)
 
   return (
     <Layout title={title} description={description}>
@@ -51,21 +52,21 @@ export default function ProductPage({ product, details, uid }) {
               linkResolver={linkResolver}
             />
 
-            {isRing || isNecklace || isTop ? (
+            {isRing ? (
               <div className="flex">
-                <div className="pr-2">Size:</div>
+                <div className="pr-2">Ring size:</div>
                 <select
                   className="w-20 mb-3 text-black text-sm"
-                  name="sizes"
-                  id="sizes"
-                  title="sizes"
-                  aria-label="sizes"
-                  onChange={(e) => setSize(e.target.value)}
+                  name="ringSizes"
+                  id="ringSizes"
+                  title="ringSizes"
+                  aria-label="ringSizes"
+                  onChange={(e) => setRingSize(e.target.value)}
                 >
-                  <option key={sizes[0]} value={sizes[0]} selected>
-                    {sizes[0]}
+                  <option key={ringSizes[0]} value={ringSizes[0]} selected>
+                    {ringSizes[0]}
                   </option>
-                  {sizes.slice(1).map((size) => (
+                  {ringSizes.slice(1).map((size) => (
                     <option key={size} value={size}>
                       {size}
                     </option>
@@ -74,11 +75,69 @@ export default function ProductPage({ product, details, uid }) {
               </div>
             ) : null}
 
-            {['silver', 'ring', 'necklace'].includes(product.data.type) ? (
-              <Details data={details.data} />
+            {isNecklace ? (
+              <div className="flex">
+                <div className="pr-2">Chain length:</div>
+                <select
+                  className="w-20 mb-3 text-black text-sm"
+                  name="chainLengths"
+                  id="chainLengths"
+                  title="chainLengths"
+                  aria-label="chainLengths"
+                  onChange={(e) => setChainLength(e.target.value)}
+                >
+                  <option
+                    key={chainLengths[0]}
+                    value={chainLengths[0]}
+                    selected
+                  >
+                    {chainLengths[0]}
+                  </option>
+                  {chainLengths.slice(1).map((size) => (
+                    <option key={size} value={size}>
+                      {size}
+                    </option>
+                  ))}
+                </select>
+              </div>
             ) : null}
+
+            {isTop ? (
+              <div className="flex">
+                <div className="pr-2">Size:</div>
+                <select
+                  className="w-20 mb-3 text-black text-sm"
+                  name="topSizes"
+                  id="topSizes"
+                  title="topSizes"
+                  aria-label="topSizes"
+                  onChange={(e) => setTopSize(e.target.value)}
+                >
+                  <option key={topSizes[0]} value={topSizes[0]} selected>
+                    {topSizes[0]}
+                  </option>
+                  {topSizes.slice(1).map((size) => (
+                    <option key={size} value={size}>
+                      {size}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ) : null}
+
+            <Details data={details.data} />
           </div>
-          <AddToBasket product={product} size={size} uid={uid} />
+          <div className="pt-3">
+            <AddToBasket
+              product={product}
+              size={{
+                ringSize,
+                chainLength,
+                topSize,
+              }}
+              uid={uid}
+            />
+          </div>
         </div>
       </div>
     </Layout>

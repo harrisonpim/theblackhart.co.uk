@@ -1,6 +1,6 @@
 module.exports = {
   future: {},
-  purge: [
+  content: [
     './components/**/*.{html,js,ts,jsx,tsx}',
     './pages/**/*.{html,js,ts,jsx,tsx}',
   ],
@@ -14,7 +14,6 @@ module.exports = {
     },
     extend: {
       spacing: {
-        // idea pinched from https://www.youtube.com/watch?v=jl_tdhBxc_Y
         '1/2': '50%',
         '1/3': '33.333333%',
         '2/3': '66.666667%',
@@ -62,6 +61,5 @@ module.exports = {
       },
     },
   },
-  variants: {},
   plugins: [],
 }

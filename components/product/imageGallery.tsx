@@ -1,13 +1,14 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import { ImageType } from 'lib/types'
-
-// For now, we just return a single image.
-// Will add full gallery functionality at a later date
-// https://github.com/harrisonpim/theblackhart.co.uk/issues/43
 
 type Props = {
-  images: { image: ImageType }[]
+  images: {
+    image: {
+      url: string
+      alt: string
+      dimensions: { height: number; width: number }
+    }
+  }[]
 }
 
 const ImageGallery: FC<Props> = ({ images }) => {

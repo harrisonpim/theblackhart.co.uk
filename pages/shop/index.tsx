@@ -1,5 +1,6 @@
 import { Client, linkResolver } from '../../prismic.config'
 
+import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import Layout from '../../components/layout'
 import Link from 'next/link'
@@ -7,20 +8,34 @@ import { RichText } from 'prismic-reactjs'
 import { formatCurrencyString } from 'use-shopping-cart'
 import { queryRepeatableDocuments } from '../../lib/queries'
 
-const Shop = ({ index, products }) => {
+const Shop = ({ index, products, categories, category }) => {
   return (
     <Layout
       description={RichText.asText(index.data.description)}
       title={RichText.asText(index.data.title)}
     >
-      <ul className="grid grid-cols-2 row-gap-2 border-b border-t py-1 uppercase text-sm">
-        <div className="flex gap-3 mx-0 lg:text-left" key="categories"></div>
-        <li className="mx-0 text-right" key="basket">
-          <Link href="/shop/basket">
-            <a className="no-underline">Basket</a>
-          </Link>
-        </li>
-      </ul>
+      <div className="flex justify-between border-y justify py-1 uppercase text-xs">
+        <div className="flex gap-3" key="categories">
+          {categories.map((c) => {
+            return (
+              <Link href={`/shop?category=${c}`} key={c}>
+                <a
+                  className={`no-underline ${
+                    c === category ? null : 'text-silver'
+                  }`}
+                >
+                  {c}
+                </a>
+              </Link>
+            )
+          })}
+        </div>
+
+        <Link href="/shop/basket" key="basket">
+          <a className="no-underline ">Basket</a>
+        </Link>
+      </div>
+
       <ul
         className="grid gap-3 grid-cols-2 lg:grid-cols-4 pt-4"
         aria-label="products"
@@ -66,16 +81,39 @@ const Shop = ({ index, products }) => {
   )
 }
 
-export async function getStaticProps() {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { category } = query
   const index = await Client().getSingle('shop', {})
   const products = await queryRepeatableDocuments(
     (doc) => doc.type === 'product'
   )
 
+  const uniqueCategories = products
+    .flatMap((product) => {
+      return product.data.category.map((c) => c.id)
+    })
+    .filter((value, index, self) => {
+      return self.indexOf(value) === index
+    })
+    .filter((value) => value)
+    .sort()
+
+  const categoryIsValid = uniqueCategories.includes(category)
+
+  const filteredProducts = products.filter((product) => {
+    if (categoryIsValid) {
+      return product.data.category.map((c) => c.id).includes(category)
+    } else {
+      return true
+    } // if no category is selected, show all products
+  })
+
   return {
     props: {
       index,
-      products: products,
+      products: filteredProducts,
+      categories: uniqueCategories,
+      category: categoryIsValid ? category : null,
     },
   }
 }

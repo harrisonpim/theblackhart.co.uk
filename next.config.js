@@ -1,7 +1,5 @@
 module.exports = {
   images: {
-    // loader: 'imgix',
-    // path: '',
     domains: ['images.prismic.io'],
   },
   async redirects() {
@@ -20,7 +18,6 @@ module.exports = {
   },
   webpack: (config) => {
     require('./scripts/generate-sitemap')
-    require('./scripts/generate-products')
     return config
   },
 }
