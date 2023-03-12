@@ -55,15 +55,15 @@ export default function Index({ index }) {
                     backgroundImage: `url(${slice.primary.background_image.url})`,
                   }}
                 >
-                  <div className="flex flex-col h-screen justify-between text-center">
-                    <div className="my-auto text-left leading-tight px-16 lg:px-32">
-                      <h2 className="max-w-measure uppercase font-bold pb-2">
+                  <div className="flex flex-col h-screen justify-between text-center backdrop-blur-[5px]">
+                    <div className="my-auto text-left leading-tight px-16 lg:px-32  ">
+                      <h2 className="max-w-measure uppercase font-bold pb-2 drop-shadow-2xl">
                         <RichText
                           render={slice.primary.title}
                           linkResolver={linkResolver}
                         />
                       </h2>
-                      <p className="max-w-measure prose">
+                      <p className="max-w-measure prose drop-shadow-2xl">
                         <RichText
                           render={slice.primary.description}
                           linkResolver={linkResolver}
