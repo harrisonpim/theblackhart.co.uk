@@ -7,21 +7,29 @@ import { linkResolver } from 'prismic.config'
 
 type Props = {
   product
-  size: string
+  size: {
+    ringSize?: string
+    chainLength?: string
+    topSize?: string
+  }
   uid: string
 }
 
 const AddToBasket: FC<Props> = ({ product, size, uid }) => {
   const { addItem } = useShoppingCart()
   const name = RichText.asText(product.data.name)
-
+  const sizeString = size
+    ? Object.values(size)
+        .filter((s) => s !== null)
+        .join(' - ')
+    : null
   const productData = {
-    name: size ? `${name} - ${size}` : name,
+    name: size ? `${name} - ${sizeString}` : null,
     description: RichText.asText(product.data.description),
     price: product.data.price,
     image: product.data.body[0].items[0].image.url,
     currency: 'GBP',
-    sku: size ? `${uid}-${size}` : uid,
+    sku: size ? `${uid}-${sizeString.replace(/\s/g, '')}` : uid,
     metadata: {
       uid,
       url: linkResolver(product),

@@ -12,11 +12,9 @@ type Props = {
 
 const Details: FC<Props> = ({ data }) => {
   return (
-    <details className="pb-3">
-      <summary className="font-bold pb-2">
-        {RichText.asText(data.title)}
-      </summary>
-      <div className="text-sm ">
+    <details>
+      <summary className="font-bold">{RichText.asText(data.title)}</summary>
+      <div className="text-sm pt-2">
         <RichText render={data.text} linkResolver={linkResolver} />
       </div>
     </details>

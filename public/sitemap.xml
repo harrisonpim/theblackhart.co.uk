@@ -3,9 +3,9 @@
   <url><loc>http://localhost:3000</loc></url
   ><url><loc>http://localhost:3000/social</loc></url
   ><url><loc>http://localhost:3000/success</loc></url
+  ><url><loc>http://localhost:3000/commissions</loc></url
   ><url><loc>http://localhost:3000/legal</loc></url
   ><url><loc>http://localhost:3000/faq</loc></url
-  ><url><loc>http://localhost:3000/commissions</loc></url
   ><url><loc>http://localhost:3000/ring-sizing</loc></url
   ><url><loc>http://localhost:3000/contact</loc></url
   ><url><loc>http://localhost:3000/example-emails</loc></url
