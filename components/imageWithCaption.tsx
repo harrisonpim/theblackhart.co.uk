@@ -1,8 +1,21 @@
+import { RichText, RichTextBlock } from 'prismic-reactjs'
+
 import { FC } from 'react'
 import Image from 'next/image'
-import { ImageProps } from '../lib/types'
-import { RichText } from 'prismic-reactjs'
 import { linkResolver } from '../prismic.config'
+
+export type ImageProps = {
+  slice: {
+    primary: {
+      caption?: RichTextBlock[]
+      image: {
+        url: string
+        alt: string
+        dimensions: { height: number; width: number }
+      }
+    }
+  }
+}
 
 const ImageWithCaption: FC<ImageProps> = ({ slice }) => {
   return (

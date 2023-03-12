@@ -11,7 +11,8 @@
     "start": "next start",
     "test:mobile": "platform=mobile jest",
     "test": "jest",
-    "generate-products": "node scripts/generate-products.js"
+    "generate-products": "node scripts/generate-products.js",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@prismicio/client": "^4.0.0",
@@ -48,7 +49,7 @@
     "image-size": "0.9.3",
     "jest": "^26.6.3",
     "jest-playwright-preset": "^1.5.0",
-    "pa11y-ci": "^2.4.0",
+    "pa11y-ci": "^3.0.1",
     "playwright": "^1.30.0",
     "prettier": "2.2.1",
     "ts-jest": "^26.5.3",
