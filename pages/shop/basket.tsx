@@ -93,7 +93,7 @@ export default function Basket() {
             })}
           </ul>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div>
+            <div className="space-y-2">
               <p>
                 Shipping:{' '}
                 {formatCurrencyString({
@@ -107,6 +107,16 @@ export default function Basket() {
                   value: totalPrice + shippingCost,
                   currency: 'GBP',
                 })}
+              </p>
+              <p className="text-sm">
+                For orders within the UK, orders which include jewellery are
+                shipped by{' '}
+                <span className="italic">
+                  Royal Mail Special Delivery Guaranteed by 1pm
+                </span>
+                , at a cost of £6.70. All other orders are shipped by{' '}
+                <span className="italic">Royal Mail Tracked 48</span>, at a cost
+                of £3.50.
               </p>
             </div>
             <div className="space-y-3">
