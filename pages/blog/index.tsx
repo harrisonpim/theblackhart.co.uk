@@ -4,7 +4,7 @@ import Layout from '../../components/layout'
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
 import formatDate from '../../components/date'
-import { queryRepeatableDocuments } from '../../lib/queries'
+import { queryRepeatableDocuments } from '../../prismic'
 
 export default function Blog({ index, posts }) {
   const sortedPosts = posts.sort(
@@ -20,15 +20,13 @@ export default function Blog({ index, posts }) {
         {sortedPosts.map((post) => (
           <li key={RichText.asText(post.data.title)}>
             <Link as={linkResolver(post)} href={linkResolver(post)}>
-              <a className="no-underline">
-                <h2 className="font-operina-romano">
-                  {RichText.asText(post.data.title)}
-                </h2>
-                <p className="text-silver text-sm">
-                  {formatDate(post.data.date)}
-                </p>
-                <p>{RichText.render(post.data.description1)}</p>
-              </a>
+              <h2 className="font-operina-romano">
+                {RichText.asText(post.data.title)}
+              </h2>
+              <p className="text-silver text-sm">
+                {formatDate(post.data.date)}
+              </p>
+              <p>{RichText.render(post.data.description1)}</p>
             </Link>
           </li>
         ))}

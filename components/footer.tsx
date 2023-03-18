@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Social from './social'
 
 export default function Footer() {
   const thisYear = new Date().getFullYear()
@@ -15,8 +14,9 @@ export default function Footer() {
               'https://images.prismic.io/theblackhart/616f657c-82b5-4bc9-ae55-c44dc45a72ba_tbh.png?auto=compress,format'
             }
             alt="TBH"
-            layout="fill"
-            objectFit="contain"
+            className="object-contain"
+            fill
+            sizes="(max-width: 600px) 100vw, 600px"
             quality={100}
           />
         </div>
@@ -24,21 +24,43 @@ export default function Footer() {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 row-gap-2 pt-1 lg:pt-0">
         <div className="flex gap-5 mx-auto lg:mx-0 lg:text-left">
-          <Link href="/faq">
-            <a className="no-underline">FAQ</a>
-          </Link>
-          <Link href="/legal">
-            <a className="no-underline">Legal</a>
-          </Link>
-          <Link href="/contact">
-            <a className="no-underline">Contact</a>
-          </Link>
+          <Link href="/faq">FAQ</Link>
+          <Link href="/legal">Legal</Link>
+          <Link href="/contact">Contact</Link>
         </div>
         <div className="mx-auto lg:mx-0 lg:text-right">
           Copyright © The Black Hart {thisYear}
         </div>
       </div>
-      <Social />
+      <div className="flex space-x-4 justify-center py-3">
+        <a href="https://www.tiktok.com/@tbh_jewellery" title="TikTok">
+          <Image
+            width={24}
+            height={24}
+            src="/icons/social/tiktok.svg"
+            alt="TikTok"
+          />
+        </a>
+        <a href="https://www.instagram.com/tbh_jewellery/" title="Instagram">
+          <Image
+            width={24}
+            height={24}
+            src="/icons/social/instagram.svg"
+            alt="Instagram"
+          />
+        </a>
+        <a
+          href="https://www.youtube.com/channel/UCfUqXisYyNzQcRDPxP_SizQ"
+          title="YouTube"
+        >
+          <Image
+            width={24}
+            height={24}
+            src="/icons/social/youtube.svg"
+            alt="YouTube"
+          />
+        </a>
+      </div>
     </footer>
   )
 }

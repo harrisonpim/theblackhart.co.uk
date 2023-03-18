@@ -15,8 +15,7 @@ const ImageGallery: FC<Props> = ({ images }) => {
   const image = images[0].image
   return (
     <Image
-      className="rounded-sm"
-      objectFit="contain"
+      className="rounded-sm object-contain"
       src={image.url}
       alt={image.alt}
       height={image.dimensions.height}

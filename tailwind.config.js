@@ -56,6 +56,7 @@ module.exports = {
       colors: {
         silver: '#bbb',
         'dark-gray': '#404040',
+        black: 'rgb(27,27,27)',
       },
       letterSpacing: {
         tightest: '-.25rem',

@@ -1,4 +1,3 @@
 .debug * {
-  @apply border;
-  @apply border-yellow-500;
+  @apply border-[1px] border-yellow-500;
 }

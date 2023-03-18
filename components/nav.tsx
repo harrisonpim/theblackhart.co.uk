@@ -6,24 +6,16 @@ export default function Nav(props): ReactElement {
     <nav {...props}>
       <ul className="flex space-x-4 justify-center uppercase" aria-label="nav">
         <li key="shop">
-          <Link href="/shop">
-            <a className="no-underline">Shop</a>
-          </Link>
+          <Link href="/shop">Shop</Link>
         </li>
         <li key="commissions">
-          <Link href="/commissions">
-            <a className="no-underline">Commissions</a>
-          </Link>
+          <Link href="/commissions">Commissions</Link>
         </li>
         <li key="blog">
-          <Link href="/blog">
-            <a className="no-underline">Blog</a>
-          </Link>
+          <Link href="/blog">Blog</Link>
         </li>
         <li key="faq">
-          <Link href="/faq">
-            <a className="no-underline">FAQ</a>
-          </Link>
+          <Link href="/faq">FAQ</Link>
         </li>
       </ul>
     </nav>

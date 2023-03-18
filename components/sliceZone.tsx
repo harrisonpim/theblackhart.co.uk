@@ -1,4 +1,4 @@
-import Glyph from './glyph'
+import Image from 'next/image'
 import ImageWithCaption from './imageWithCaption'
 import { ReactElement } from 'react'
 import { RichText } from 'prismic-reactjs'
@@ -19,7 +19,16 @@ export default function SliceZone({ sliceZone }): ReactElement {
               />
             )
           case 'glyph':
-            return <Glyph slice={slice} />
+            return (
+              <figure className="relative mx-auto h-12">
+                <Image
+                  src={slice.primary.image.url}
+                  alt={slice.primary.image.alt}
+                  fill
+                  className="object-contain"
+                />
+              </figure>
+            )
           default:
             return null
         }

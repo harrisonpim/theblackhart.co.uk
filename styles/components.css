@@ -23,6 +23,12 @@
   @apply pl-4;
 }
 
+.prose a {
+  @apply underline;
+  @apply underline-offset-2;
+  @apply decoration-1;
+}
+
 .thornletter {
   @apply font-thornletter;
   @apply tracking-tightest;

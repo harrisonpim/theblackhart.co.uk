@@ -1,17 +1,12 @@
-import {
-  AddToBasket,
-  Details,
-  ImageGallery,
-  chainLengths,
-  ringSizes,
-  topSizes,
-} from '../../components/product'
 import { Client, linkResolver } from '../../prismic.config'
+import { chainLengths, ringSizes, topSizes } from '../../components/product'
 
+import ImageGallery from 'components/imageGallery'
 import Layout from '../../components/layout'
 import { RichText } from 'prismic-reactjs'
 import { formatCurrencyString } from 'use-shopping-cart'
-import { queryRepeatableDocuments } from '../../lib/queries'
+import { queryRepeatableDocuments } from '../../prismic'
+import { useShoppingCart } from 'use-shopping-cart'
 import { useState } from 'react'
 
 export default function ProductPage({ product, details, uid }) {
@@ -34,6 +29,52 @@ export default function ProductPage({ product, details, uid }) {
     isNecklace ? chainLengths[0] : null
   )
   const [topSize, setTopSize] = useState(isTop ? topSizes[0] : null)
+  const { addItem } = useShoppingCart()
+
+  const size = {
+    ringSize,
+    chainLength,
+    topSize,
+  }
+
+  const needsSize = Object.values(size).filter((s) => s !== null).length > 0
+  const sizeString = needsSize
+    ? Object.values(size)
+        .filter((s) => s !== null)
+        .join(' - ')
+    : ''
+
+  const needsTrackedShipping =
+    product.data.category
+      .map((c) => c.id)
+      .filter((value) =>
+        ['necklaces', 'earrings', 'rings', 'sets'].includes(value)
+      ).length > 0
+
+  const productData = {
+    id: product.uid,
+    name: RichText.asText(product.data.name),
+    description: RichText.asText(product.data.description),
+    price: product.data.price,
+    currency: 'GBP',
+    image: product.data.body[0].items[0].image.url,
+  }
+
+  const options = {
+    count: 1,
+    product_metadata: {
+      uid,
+      size: sizeString,
+      url: linkResolver(product),
+      image: product.data.body[0].items[0].image,
+      needsTrackedShipping,
+    },
+  }
+
+  const handleAddToBasket = () => {
+    addItem(productData, options)
+    window.location.href = '/shop/basket'
+  }
 
   return (
     <Layout title={title} description={description}>
@@ -51,12 +92,10 @@ export default function ProductPage({ product, details, uid }) {
               render={product.data.description}
               linkResolver={linkResolver}
             />
-
             {isRing ? (
               <div className="flex">
                 <div className="pr-2">Ring size:</div>
                 <select
-                  className="w-20 mb-3 text-black text-sm"
                   name="ringSizes"
                   id="ringSizes"
                   title="ringSizes"
@@ -74,12 +113,10 @@ export default function ProductPage({ product, details, uid }) {
                 </select>
               </div>
             ) : null}
-
             {isNecklace ? (
               <div className="flex">
                 <div className="pr-2">Chain length:</div>
                 <select
-                  className="w-20 mb-3 text-black text-sm"
                   name="chainLengths"
                   id="chainLengths"
                   title="chainLengths"
@@ -101,12 +138,10 @@ export default function ProductPage({ product, details, uid }) {
                 </select>
               </div>
             ) : null}
-
             {isTop ? (
               <div className="flex">
                 <div className="pr-2">Size:</div>
                 <select
-                  className="w-20 mb-3 text-black text-sm"
                   name="topSizes"
                   id="topSizes"
                   title="topSizes"
@@ -124,11 +159,21 @@ export default function ProductPage({ product, details, uid }) {
                 </select>
               </div>
             ) : null}
-
-            <Details data={details.data} />
+            <details>
+              <summary className="font-bold">
+                {RichText.asText(details.data.title)}
+              </summary>
+              <div className="text-sm pt-2">
+                <RichText
+                  render={details.data.text}
+                  linkResolver={linkResolver}
+                />
+              </div>
+            </details>{' '}
           </div>
           <div className="pt-3">
-            <AddToBasket
+            <button onClick={handleAddToBasket}>Add to basket</button>
+            {/* <AddToBasket
               product={product}
               size={{
                 ringSize,
@@ -136,7 +181,7 @@ export default function ProductPage({ product, details, uid }) {
                 topSize,
               }}
               uid={uid}
-            />
+            /> */}
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ import { RichText } from 'prismic-reactjs'
 
 export default function Index({ index }) {
   return (
-    <div className="">
+    <div>
       <Head>
         <title>{RichText.asText(index.data.title)}</title>
         <meta
@@ -31,8 +31,8 @@ export default function Index({ index }) {
                       <Image
                         src={slice.primary.title_image.url}
                         alt={slice.primary.title_image.alt}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        className="object-contain"
                         quality={100}
                         priority
                       />

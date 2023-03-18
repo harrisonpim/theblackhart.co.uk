@@ -6,7 +6,7 @@ import Layout from '../../components/layout'
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
 import { formatCurrencyString } from 'use-shopping-cart'
-import { queryRepeatableDocuments } from '../../lib/queries'
+import { queryRepeatableDocuments } from '../../prismic'
 
 const Shop = ({ index, products, categories, category }) => {
   return (
@@ -18,21 +18,19 @@ const Shop = ({ index, products, categories, category }) => {
         <div className="flex md:gap-3 justify-between" key="categories">
           {categories.map((c) => {
             return (
-              <Link href={`/shop?category=${c}`} key={c}>
-                <a
-                  className={`no-underline ${
-                    c === category ? null : 'text-silver'
-                  }`}
-                >
-                  {c}
-                </a>
+              <Link
+                href={`/shop?category=${c}`}
+                key={c}
+                className={` ${c === category ? null : 'text-silver'}`}
+              >
+                {c}
               </Link>
             )
           })}
         </div>
 
-        <Link href="/shop/basket" key="basket">
-          <a className="no-underline text-right">Basket</a>
+        <Link href="/shop/basket" key="basket" className="text-right">
+          Basket
         </Link>
       </div>
 
@@ -43,35 +41,33 @@ const Shop = ({ index, products, categories, category }) => {
         {products.map((product) => {
           const image = product.data.body[0].items[0].image
           return (
-            <li key={product.data.name}>
+            <li key={RichText.asText(product.data.name)}>
               <Link as={linkResolver(product)} href={linkResolver(product)}>
-                <a className="no-underline">
-                  <div className="relative pb-6/5">
-                    <Image
-                      className="absolute w-full h-full rounded-sm"
-                      src={image.url}
-                      alt={image.alt}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                    {product.data.one_of_a_kind ? (
-                      <div className="text-xs bg-dark-gray -mr-2 absolute top-0 right-0 rounded p-1 transform rotate-12">
-                        One of a kind
-                      </div>
-                    ) : null}
-                  </div>
-                  <div className="pt-1 text-center w-11/12 mx-auto">
-                    <h2 className="text-base font-crimson leading-4 py-1">
-                      {RichText.asText(product.data.name)}
-                    </h2>
-                    <p className="text-silver">
-                      {formatCurrencyString({
-                        value: product.data.price,
-                        currency: 'GBP',
-                      })}
-                    </p>
-                  </div>
-                </a>
+                <div className="relative pb-6/5">
+                  <Image
+                    className="absolute w-full h-full rounded-sm object-cover"
+                    src={image.url}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 600px) 100vw, 600px"
+                  />
+                  {product.data.one_of_a_kind ? (
+                    <div className="text-xs bg-dark-gray -mr-2 absolute top-0 right-0 rounded p-1 transform rotate-12">
+                      One of a kind
+                    </div>
+                  ) : null}
+                </div>
+                <div className="pt-1 text-center w-11/12 mx-auto">
+                  <h2 className="text-base font-crimson leading-4 py-1">
+                    {RichText.asText(product.data.name)}
+                  </h2>
+                  <p className="text-silver">
+                    {formatCurrencyString({
+                      value: product.data.price,
+                      currency: 'GBP',
+                    })}
+                  </p>
+                </div>
               </Link>
             </li>
           )

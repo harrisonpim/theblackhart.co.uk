@@ -3,7 +3,7 @@ import Layout from '../../components/layout'
 import { RichText } from 'prismic-reactjs'
 import SliceZone from '../../components/sliceZone'
 import formatDate from '../../components/date'
-import { queryRepeatableDocuments } from '../../lib/queries'
+import { queryRepeatableDocuments } from '../../prismic'
 
 export default function Post({ post }) {
   if (post && post.data) {
@@ -15,7 +15,7 @@ export default function Post({ post }) {
         title={title}
         description={RichText.asText(post.data.description1)}
       >
-        <div className="">
+        <div>
           <div className="mx-auto w-full pt-3">
             <h1 className="font-operina-romano pb-1">{title}</h1>
             <div className="text-sm text-silver pb-4">{date}</div>

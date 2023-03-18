@@ -12,9 +12,7 @@ const Linktree = ({ data }) => {
       <ul className="text-center thornletter">
         {data.body.map((link) => (
           <li className="align-middle py-6" key={link.primary.text[0].text}>
-            <Link href={link.primary.url.url}>
-              <a className="no-underline">{link.primary.text[0].text}</a>
-            </Link>
+            <Link href={link.primary.url.url}>{link.primary.text[0].text}</Link>
           </li>
         ))}
       </ul>

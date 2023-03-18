@@ -1,17 +1,18 @@
 import { baseUrl, blogUrl } from './urls'
+import { expect, test } from '@playwright/test'
 
-describe('As a researcher, I want to read the posts on the blog so that I can learn about jewellery and history', () => {
-  test('Nav works', async () => {
+test.describe('As a researcher, I want to read the posts on the blog so that I can learn about jewellery and history', () => {
+  test('Nav works', async ({page}) => {
     await page.goto(baseUrl)
     await page.click('[aria-label="nav"] >> text=blog')
     expect(await page.url()).toBe(blogUrl)
   })
-  test('Can see blog posts', async () => {
+  test('Can see blog posts', async ({page}) => {
     await page.goto(blogUrl)
     expect(await page.isVisible('[aria-label="posts"]')).toBeTruthy()
     expect(await page.isVisible('h2')).toBeTruthy()
   })
-  test('Links go to the correct blog posts', async () => {
+  test('Links go to the correct blog posts', async ({page}) => {
     await page.goto(blogUrl)
     const blogTitle = await page.textContent('[aria-label="posts"] >> h2')
     await page.click(`"${blogTitle}"`)

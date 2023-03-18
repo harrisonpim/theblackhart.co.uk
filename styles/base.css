@@ -3,9 +3,9 @@
 :root {
   font-family: 'Crimson Text', Georgia, serif;
   color: white;
-  background-color: rgba(0, 0, 0, 0.9);
   line-height: 1.15;
   font-size: 20px;
+  @apply bg-black;
 }
 
 @font-face {
@@ -35,9 +35,7 @@
 }
 
 a {
-  @apply underline;
-  @apply underline-offset-2;
-  @apply decoration-1;
+  @apply no-underline;
 }
 
 h1 {
@@ -54,4 +52,8 @@ h1,
 h2,
 h3 {
   @apply font-operina-romano;
+}
+
+select {
+  @apply w-20 mb-3 text-sm bg-black border-white border focus:outline-none;
 }
