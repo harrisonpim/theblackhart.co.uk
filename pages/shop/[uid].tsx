@@ -6,13 +6,16 @@ import Layout from '../../components/layout'
 import { RichText } from 'prismic-reactjs'
 import { formatCurrencyString } from 'use-shopping-cart'
 import { queryRepeatableDocuments } from '../../prismic'
+import { useRouter } from 'next/router'
 import { useShoppingCart } from 'use-shopping-cart'
 import { useState } from 'react'
 
 export default function ProductPage({ product, details, uid }) {
+  const router = useRouter()
   const title = RichText.asText(product.data.name)
   const description = RichText.asText(product.data.description)
-  const images = product.data.body[0].items
+  const images = product.data.images
+
   const displayPrice = formatCurrencyString({
     value: product.data.price,
     currency: 'GBP',
@@ -73,7 +76,7 @@ export default function ProductPage({ product, details, uid }) {
 
   const handleAddToBasket = () => {
     addItem(productData, options)
-    window.location.href = '/shop/basket'
+    router.push('/shop/basket')
   }
 
   return (
@@ -100,12 +103,10 @@ export default function ProductPage({ product, details, uid }) {
                   id="ringSizes"
                   title="ringSizes"
                   aria-label="ringSizes"
+                  defaultValue={ringSizes[0]}
                   onChange={(e) => setRingSize(e.target.value)}
                 >
-                  <option key={ringSizes[0]} value={ringSizes[0]} selected>
-                    {ringSizes[0]}
-                  </option>
-                  {ringSizes.slice(1).map((size) => (
+                  {ringSizes.map((size) => (
                     <option key={size} value={size}>
                       {size}
                     </option>
@@ -121,16 +122,10 @@ export default function ProductPage({ product, details, uid }) {
                   id="chainLengths"
                   title="chainLengths"
                   aria-label="chainLengths"
+                  defaultValue={chainLengths[0]}
                   onChange={(e) => setChainLength(e.target.value)}
                 >
-                  <option
-                    key={chainLengths[0]}
-                    value={chainLengths[0]}
-                    selected
-                  >
-                    {chainLengths[0]}
-                  </option>
-                  {chainLengths.slice(1).map((size) => (
+                  {chainLengths.map((size) => (
                     <option key={size} value={size}>
                       {size}
                     </option>
@@ -146,12 +141,10 @@ export default function ProductPage({ product, details, uid }) {
                   id="topSizes"
                   title="topSizes"
                   aria-label="topSizes"
+                  defaultValue={topSizes[0]}
                   onChange={(e) => setTopSize(e.target.value)}
                 >
-                  <option key={topSizes[0]} value={topSizes[0]} selected>
-                    {topSizes[0]}
-                  </option>
-                  {topSizes.slice(1).map((size) => (
+                  {topSizes.map((size) => (
                     <option key={size} value={size}>
                       {size}
                     </option>
@@ -173,15 +166,6 @@ export default function ProductPage({ product, details, uid }) {
           </div>
           <div className="pt-3">
             <button onClick={handleAddToBasket}>Add to basket</button>
-            {/* <AddToBasket
-              product={product}
-              size={{
-                ringSize,
-                chainLength,
-                topSize,
-              }}
-              uid={uid}
-            /> */}
           </div>
         </div>
       </div>

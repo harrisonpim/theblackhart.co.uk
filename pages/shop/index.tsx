@@ -104,10 +104,17 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     } // if no category is selected, show all products
   })
 
+  // sort products by first category
+  const sortedProducts = filteredProducts.sort((a, b) => {
+    const aCategory = a.data.category[0].id
+    const bCategory = b.data.category[0].id
+    return uniqueCategories.indexOf(aCategory) - uniqueCategories.indexOf(bCategory)
+  })
+  
   return {
     props: {
       index,
-      products: filteredProducts,
+      products: sortedProducts,
       categories: uniqueCategories,
       category: categoryIsValid ? category : null,
     },
