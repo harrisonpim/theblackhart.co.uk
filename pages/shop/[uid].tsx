@@ -39,7 +39,6 @@ export default function ProductPage({ product, details, uid }) {
     chainLength,
     topSize,
   }
-
   const needsSize = Object.values(size).filter((s) => s !== null).length > 0
   const sizeString = needsSize
     ? Object.values(size)
@@ -54,27 +53,27 @@ export default function ProductPage({ product, details, uid }) {
         ['necklaces', 'earrings', 'rings', 'sets'].includes(value)
       ).length > 0
 
-  const productData = {
-    id: product.uid,
-    name: RichText.asText(product.data.name),
-    description: RichText.asText(product.data.description),
-    price: product.data.price,
-    currency: 'GBP',
-    image: product.data.body[0].items[0].image.url,
-  }
-
-  const options = {
-    count: 1,
-    product_metadata: {
-      uid,
-      size: sizeString,
-      url: linkResolver(product),
-      image: product.data.body[0].items[0].image,
-      needsTrackedShipping,
-    },
-  }
-
   const handleAddToBasket = () => {
+    const productData = {
+      id: product.uid,
+      name: RichText.asText(product.data.name),
+      description: RichText.asText(product.data.description),
+      price: product.data.price,
+      currency: 'GBP',
+      image: images[0].url,
+    }
+
+    const options = {
+      count: 1,
+      product_metadata: {
+        uid,
+        size: sizeString,
+        url: linkResolver(product),
+        image: images[0].url,
+        needsTrackedShipping,
+      },
+    }
+
     addItem(productData, options)
     router.push('/shop/basket')
   }

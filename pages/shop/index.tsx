@@ -39,15 +39,14 @@ const Shop = ({ index, products, categories, category }) => {
         aria-label="products"
       >
         {products.map((product) => {
-          const image = product.data.body[0].items[0].image
           return (
             <li key={RichText.asText(product.data.name)}>
               <Link as={linkResolver(product)} href={linkResolver(product)}>
                 <div className="relative pb-6/5">
                   <Image
                     className="absolute w-full h-full rounded-sm object-cover"
-                    src={image.url}
-                    alt={image.alt}
+                    src={product.data.images[0].image.url}
+                    alt={product.data.images[0].image.alt}
                     fill
                     sizes="(max-width: 600px) 100vw, 600px"
                   />
@@ -108,9 +107,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const sortedProducts = filteredProducts.sort((a, b) => {
     const aCategory = a.data.category[0].id
     const bCategory = b.data.category[0].id
-    return uniqueCategories.indexOf(aCategory) - uniqueCategories.indexOf(bCategory)
+    return (
+      uniqueCategories.indexOf(aCategory) - uniqueCategories.indexOf(bCategory)
+    )
   })
-  
+
   return {
     props: {
       index,
