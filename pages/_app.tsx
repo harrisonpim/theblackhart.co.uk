@@ -6,7 +6,6 @@ import Head from 'next/head'
 export default function MyApp({ Component, pageProps }) {
   return (
     <CartProvider
-      // mode="payment"
       cartMode="checkout-session"
       stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
       currency="GBP"

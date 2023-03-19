@@ -10,12 +10,10 @@ import { useRouter } from 'next/router'
 
 type CartEntryWithMetadata = CartEntry & {
   product_data: {
-    url: string
-    image: {
-      url: string
-      alt: string
-    }
     size: string
+    url: string
+    image_url: string
+    image_alt: string
     needsTrackedShipping: boolean
   }
 }
@@ -25,6 +23,8 @@ export default function Basket() {
   const router = useRouter()
   const { totalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
     useShoppingCart()
+
+  // console.log(Object.values(cartDetails))
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount])
 
@@ -92,8 +92,8 @@ export default function Basket() {
                           className="absolute rounded-sm object-cover"
                           fill
                           sizes="(min-width: 1024px) 100px, (min-width: 768px) 100px, 100px"
-                          src={product.product_data.image.url}
-                          alt={product.product_data.image.alt}
+                          src={product.product_data.image_url}
+                          alt={product.product_data.image_alt}
                         />
                       </div>
                     </div>
