@@ -35,7 +35,7 @@ const Shop = ({ index, products, categories, category }) => {
       </div>
 
       <ul
-        className="grid gap-3 grid-cols-2 lg:grid-cols-4 pt-4"
+        className="grid gap-3 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-4"
         aria-label="products"
       >
         {products.map((product) => {

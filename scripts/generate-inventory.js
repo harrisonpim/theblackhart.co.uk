@@ -37,7 +37,7 @@ async function queryRepeatableDocuments(filter) {
       description: RichText.asText(product.data.description),
       price: product.data.price,
       currency: 'GBP',
-      image: product.data.body[0].items[0].image.url,
+      image: product.data.images[0].url,
     }
   })
 
