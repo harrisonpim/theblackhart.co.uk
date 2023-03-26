@@ -15,6 +15,27 @@ export default function Index({ index }) {
           name="description"
           content={RichText.asText(index.data.description)}
         />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'JewelryStore',
+            name: 'The Black Hart',
+            url: 'https://theblackhart.co.uk',
+            sameAs: [
+              'https://www.instagram.com/tbh_jewellery/',
+              'https://www.tiktok.com/@tbh_jewellery',
+              'https://www.youtube.com/channel/UCfUqXisYyNzQcRDPxP_SizQ',
+            ],
+            logo: 'https://images.prismic.io/theblackhart/2a87552d-c62d-436c-b449-68ce32869d2e_tbh-inverted.jpg',
+            image: [
+              'https://images.prismic.io/theblackhart/d503a6cb-67d2-436d-8ab0-a93fd7e23c61_IMG_7694.JPG',
+            ],
+            areaServed: {
+              '@type': 'Country',
+              name: 'United Kingdom',
+            },
+          })}
+        </script>
       </Head>
       <div className="pb-40 lg:pb-32">
         {index.data.body.map((slice) => {
