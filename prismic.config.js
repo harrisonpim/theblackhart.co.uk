@@ -33,6 +33,9 @@ export const linkResolver = (doc) => {
   if (doc.type === 'shop') {
     return '/shop'
   }
+  if (doc.type === 'gallery') {
+    return '/gallery'
+  }
   if (doc.type === 'blog-home') {
     return '/blog'
   }
