@@ -24,8 +24,6 @@ export default function Basket() {
   const { totalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
     useShoppingCart()
 
-  // console.log(Object.values(cartDetails))
-
   useEffect(() => setCartEmpty(!cartCount), [cartCount])
 
   const basketNeedsTrackedShipping =
