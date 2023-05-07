@@ -96,12 +96,7 @@ export default function Basket() {
                       </div>
                     </div>
                     <div className="pl-3 text-left">
-                      <h2 className="text-base font-crimson">
-                        {product.name}
-                        {product.product_data.size
-                          ? ` - ${product.product_data.size}`
-                          : ''}
-                      </h2>
+                      <h2 className="text-base font-crimson">{product.name}</h2>
                       <div className="text-sm">
                         <div>x{product.quantity}</div>
                         <div>{product.formattedValue}</div>

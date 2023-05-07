@@ -54,8 +54,14 @@ export default function ProductPage({ product, details }) {
       ).length > 0
 
   const productData = {
-    id: product.uid,
-    name: RichText.asText(product.data.name),
+    id: needsSize
+      ? `${product.uid}-${sizeString
+          .toLowerCase()
+          .replace(' ', '')
+          .replace(' ', '')
+          .replace('"', '')}`
+      : product.uid,
+    name: needsSize ? `${title} - ${sizeString}` : title,
     description: RichText.asText(product.data.description),
     price: product.data.price,
     currency: 'GBP',
