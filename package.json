@@ -12,7 +12,8 @@
     "test": "playwright test",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "generate-inventory": "node scripts/generate-inventory.js",
-    "postbuild": "yarn generate-sitemap && yarn generate-inventory"
+    "postbuild": "yarn generate-sitemap",
+    "prebuild": "yarn generate-inventory"
   },
   "dependencies": {
     "@prismicio/client": "^4.0.0",
