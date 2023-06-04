@@ -38,7 +38,7 @@ yarn-error.log*
 
 package-lock.json
 .DS_Store
-tbh_jewellery/
 /test-results/
 /playwright-report/
 /playwright/.cache/
+pages/api/*.json

@@ -35,14 +35,8 @@
   ><url><loc>http://localhost:3000/shop/hand-of-fortune</loc></url
   ><url><loc>http://localhost:3000/shop/small-skull-set</loc></url
   ><url><loc>http://localhost:3000/shop/unbound-necklace</loc></url
-  ><url
-    ><loc
-      >http://localhost:3000/shop/theyll-find-our-bones.-an-original-illustration-based1</loc
-    ></url
-  ><url
-    ><loc
-      >http://localhost:3000/shop/theyll-find-our-bones.-an-original-illustration-based</loc
-    ></url
+  ><url><loc>http://localhost:3000/shop/bones-hoodie</loc></url
+  ><url><loc>http://localhost:3000/shop/bones-sweatshirt</loc></url
   ><url><loc>http://localhost:3000/shop/pumpkin-stud</loc></url
   ><url><loc>http://localhost:3000/shop/thorn-ring</loc></url
   ><url><loc>http://localhost:3000/shop/bones-t-shirt</loc></url

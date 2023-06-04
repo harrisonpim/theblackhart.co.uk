@@ -10,6 +10,11 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta charSet="utf-8" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
           <link rel="icon" href="/icons/favicon/32.ico" type="image/png" />
           <link rel="icon" href="/icons/favicon/tbh.svg" type="image/svg+xml" />
           <link
@@ -18,7 +23,7 @@ class MyDocument extends Document {
           />
           <link rel="manifest" href="/manifest.webmanifest" />
         </Head>
-        <body >
+        <body>
           <Main />
           <NextScript />
         </body>
