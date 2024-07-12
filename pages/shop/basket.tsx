@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 type CartEntryWithMetadata = CartEntry & {
   product_data: {
     size: string
+    colour: string
     url: string
     image_url: string
     image_alt: string

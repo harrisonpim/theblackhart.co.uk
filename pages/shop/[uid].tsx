@@ -1,5 +1,10 @@
 import { Client, linkResolver } from '../../prismic.config'
-import { chainLengths, ringSizes, topSizes } from '../../components/product'
+import {
+  capColours,
+  chainLengths,
+  ringSizes,
+  topSizes,
+} from '../../components/product'
 
 import Head from 'next/head'
 import ImageGallery from 'components/imageGallery'
@@ -27,12 +32,14 @@ export default function ProductPage({ product, details }) {
     .map((size) => size.id)
     .includes('necklaces')
   const isTop = product.data.sizing.map((size) => size.id).includes('tops')
+  const isCap = product.data.sizing.map((size) => size.id).includes('caps')
 
   const [ringSize, setRingSize] = useState(isRing ? ringSizes[0] : null)
   const [chainLength, setChainLength] = useState(
     isNecklace ? chainLengths[0] : null
   )
   const [topSize, setTopSize] = useState(isTop ? topSizes[0] : null)
+  const [capColour, setCapColour] = useState(isCap ? capColours[0] : null)
 
   const size = {
     ringSize,
@@ -45,6 +52,7 @@ export default function ProductPage({ product, details }) {
         .filter((s) => s !== null)
         .join(' - ')
     : ''
+  const colourString = capColour ? capColour : ''
 
   const needsTrackedShipping =
     product.data.category
@@ -53,14 +61,12 @@ export default function ProductPage({ product, details }) {
         ['necklaces', 'earrings', 'rings', 'sets'].includes(value)
       ).length > 0
 
+  const productId = [product.uid, sizeString, colourString]
+    .filter(Boolean)
+    .join('-')
+    .toLowerCase()
   const productData = {
-    id: needsSize
-      ? `${product.uid}-${sizeString
-          .toLowerCase()
-          .replace(' ', '')
-          .replace(' ', '')
-          .replace('"', '')}`
-      : product.uid,
+    id: productId,
     name: needsSize ? `${title} - ${sizeString}` : title,
     description: RichText.asText(product.data.description),
     price: product.data.price,
@@ -72,6 +78,7 @@ export default function ProductPage({ product, details }) {
     count: 1,
     product_metadata: {
       size: sizeString,
+      colour: colourString,
       url: linkResolver(product),
       image_url: product.data.images[0].image.url,
       image_alt: product.data.images[0].image.alt,
@@ -171,6 +178,25 @@ export default function ProductPage({ product, details }) {
                     {topSizes.map((size) => (
                       <option key={size} value={size}>
                         {size}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              ) : null}
+              {isCap ? (
+                <div className="flex">
+                  <div className="pr-2">Colour:</div>
+                  <select
+                    name="capColours"
+                    id="capColours"
+                    title="capColours"
+                    aria-label="capColours"
+                    defaultValue={capColours[0]}
+                    onChange={(e) => setCapColour(e.target.value)}
+                  >
+                    {capColours.map((colour) => (
+                      <option key={colour} value={colour}>
+                        {colour}
                       </option>
                     ))}
                   </select>

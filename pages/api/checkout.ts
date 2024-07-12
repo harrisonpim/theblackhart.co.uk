@@ -19,7 +19,9 @@ export default async function handler(
       try {
         line_items = validateCartItems(inventory, req.body)
       } catch (err) {
+        console.error(err)
         res.status(400).json({ statusCode: 400, message: err.message })
+        return
       }
       
       const session: Stripe.Checkout.Session =
