@@ -1,6 +1,6 @@
 import '../styles/app.css'
 
-import { CartProvider } from'use-shopping-cart'
+import { CartProvider } from 'use-shopping-cart'
 import Head from 'next/head'
 import { PostHogProvider } from 'posthog-js/react'
 import posthog from 'posthog-js'
@@ -21,17 +21,6 @@ if (typeof window !== 'undefined') {
 export default function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="icon" href="/icons/favicon/32.ico" type="image/png" />
-        <link rel="icon" href="/icons/favicon/tbh.svg" type="image/svg+xml" />
-        <link
-          rel="apple-touch-icon"
-          href="/icons/favicon/apple-touch-icon.png"
-        />
-        <link rel="manifest" href="/manifest.webmanifest" />
-      </Head>
       <PostHogProvider client={posthog}>
         <CartProvider
           cartMode="checkout-session"
@@ -39,6 +28,12 @@ export default function MyApp({ Component, pageProps }) {
           currency="GBP"
           shouldPersist={true}
         >
+          <Head>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
           <Component {...pageProps} />
         </CartProvider>
       </PostHogProvider>
