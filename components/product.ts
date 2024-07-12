@@ -1,6 +1,6 @@
 import Stripe from 'stripe'
 
-const ringSizes: string[] = [
+export const ringSizes: string[] = [
   'G',
   'G½',
   'H',
@@ -33,11 +33,17 @@ const ringSizes: string[] = [
   'U½',
 ]
 
-const chainLengths: string[] = ['16"', '20"', '24"']
+export const chainLengths: string[] = ['16"', '20"', '24"']
 
-const topSizes: string[] = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL']
+export const topSizes: string[] = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL']
 
-const allowed_countries: Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[] =
+export const capColours: string[] = [
+  'Acid wash black',
+  'Acid wash green',
+  'Acid wash denim',
+]
+
+export const allowed_countries: Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[] =
   [
     'AU',
     'AT',
@@ -80,5 +86,3 @@ const allowed_countries: Stripe.Checkout.SessionCreateParams.ShippingAddressColl
     'GB',
     'US',
   ]
-
-export { ringSizes, chainLengths, topSizes, allowed_countries }
