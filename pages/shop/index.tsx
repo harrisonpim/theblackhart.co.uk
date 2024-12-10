@@ -55,6 +55,11 @@ const Shop = ({ index, products, categories, category }) => {
                       One of a kind
                     </div>
                   ) : null}
+                  {product.data.ships_in_time_for_christmas ? (
+                    <div className="text-xs bg-red-900 -mr-2 absolute top-0 right-0 rounded p-1 transform rotate-12">
+                      Ships in time for Christmas
+                    </div>
+                  ) : null}
                 </div>
                 <div className="pt-1 text-center w-11/12 mx-auto">
                   <h2 className="text-base font-crimson leading-4 py-1">
