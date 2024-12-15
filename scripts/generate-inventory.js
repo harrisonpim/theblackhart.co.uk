@@ -96,11 +96,7 @@ async function queryRepeatableDocuments(filter) {
           .map((x) => x.join(' - '))
 
         const combinations = possibleSizes.map((sizeString) => ({
-          id: `${product.uid}-${sizeString
-            .toLowerCase()
-            .replace(' ', '')
-            .replace(' ', '')
-            .replace('"', '')}`,
+          id: `${product.uid}-${sizeString.toLowerCase().replace(' ', '')}`,
           name: `${RichText.asText(product.data.name)} - ${sizeString}`,
           description: RichText.asText(product.data.description),
           price: product.data.price,
