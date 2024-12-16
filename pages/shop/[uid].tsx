@@ -65,6 +65,9 @@ export default function ProductPage({ product, details }) {
     .filter(Boolean)
     .join('-')
     .toLowerCase()
+    .replace(' ', '')
+    .replace('"', '')
+
   const productData = {
     id: productId,
     name: needsSize ? `${title} - ${sizeString}` : title,
@@ -72,6 +75,7 @@ export default function ProductPage({ product, details }) {
     price: product.data.price,
     currency: 'GBP',
     image: product.data.images[0].image.url,
+    needsTrackedShipping,
   }
 
   const options = {
