@@ -3,7 +3,6 @@ import { FC, ReactNode } from 'react'
 import Footer from './footer'
 import Head from 'next/head'
 import Header from './header'
-import Banner from './banner'
 
 type Props = {
   children?: ReactNode
@@ -25,7 +24,6 @@ const Layout: FC<Props> = ({
       <title>{title}</title>
       {description ? <meta name="description" content={description} /> : null}
     </Head>
-    <Banner />
     <div className="lg:w-4/5 xl:w-7/12 lg:px-0 px-4 mx-auto antialiased">
       <div className="min-h-screen relative">
         {includeHeader ? <Header key="header" /> : null}

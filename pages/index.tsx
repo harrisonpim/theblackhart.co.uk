@@ -1,6 +1,5 @@
 import { Client, linkResolver } from '../prismic.config'
 
-import Banner from '../components/banner'
 import Footer from '../components/footer'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -38,7 +37,6 @@ export default function Index({ index }) {
           })}
         </script>
       </Head>
-      <Banner />
 
       <div className="pb-40 lg:pb-32">
         {index.data.body.map((slice) => {
