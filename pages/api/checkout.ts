@@ -7,7 +7,7 @@ import { queryRepeatableDocuments } from 'prismic'
 import { validateCartItems } from 'use-shopping-cart/utilities'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2020-08-27',
+  apiVersion: '2023-10-16',
 })
 
 const ringSizes = [
@@ -147,7 +147,7 @@ export default async function handler(
       const session: Stripe.Checkout.Session =
         await stripe.checkout.sessions.create({
           mode: 'payment',
-          payment_method_types: ['card'],
+          payment_method_types: ['card', 'klarna', 'afterpay_clearpay'],
           shipping_address_collection: {
             allowed_countries: allowed_countries,
           },
