@@ -7,7 +7,7 @@ import { queryRepeatableDocuments } from 'prismic'
 import { validateCartItems } from 'use-shopping-cart/utilities'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2023-10-16',
+  apiVersion: '2024-12-18.acacia',
 })
 
 const ringSizes = [
@@ -82,7 +82,7 @@ export default async function handler(
             const sizeArrays = Object.entries(size).filter((s) => s[1] !== null)
             const possibleSizes = sizeArrays
               .reduce(
-                (acc, [key, value]) => {
+                (acc, [, value]) => {
                   return acc.flatMap((x) => value.map((y) => [...x, y]))
                 },
                 [[]]
