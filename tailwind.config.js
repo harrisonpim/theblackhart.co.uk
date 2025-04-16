@@ -14,6 +14,9 @@ module.exports = {
       bold: 600,
     },
     extend: {
+      textShadow: {
+        hard: '1px 1px 0 rgb(0 0 0)',
+      },
       spacing: {
         '1/2': '50%',
         '1/3': '33.333333%',
@@ -65,5 +68,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-textshadow')],
 }
