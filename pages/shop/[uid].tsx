@@ -10,12 +10,15 @@ import Head from 'next/head'
 import ImageGallery from 'components/imageGallery'
 import Layout from '../../components/layout'
 import { RichText } from 'prismic-reactjs'
+import { calculateSalePrice } from '../../utils/pricing'
 import { formatCurrencyString } from 'use-shopping-cart'
 import { queryRepeatableDocuments } from '../../prismic'
 import { useShoppingCart } from 'use-shopping-cart'
 import { useState } from 'react'
 
-export default function ProductPage({ product, details }) {
+const salePercentage = parseFloat(process.env.SALE_PERCENTAGE) || 0
+
+export default function ProductPage({ product, details, salePercentage }) {
   const { addItem } = useShoppingCart()
 
   const title = RichText.asText(product.data.name)
@@ -24,6 +27,13 @@ export default function ProductPage({ product, details }) {
 
   const displayPrice = formatCurrencyString({
     value: product.data.price,
+    currency: 'GBP',
+  })
+
+  const salePrice = calculateSalePrice(product.data.price, salePercentage)
+
+  const displaySalePrice = formatCurrencyString({
+    value: salePrice,
     currency: 'GBP',
   })
 
@@ -72,7 +82,7 @@ export default function ProductPage({ product, details }) {
     id: productId,
     name: needsSize ? `${title} - ${sizeString}` : title,
     description: RichText.asText(product.data.description),
-    price: product.data.price,
+    price: salePrice,
     currency: 'GBP',
     image: product.data.images[0].image.url,
     needsTrackedShipping,
@@ -109,7 +119,7 @@ export default function ProductPage({ product, details }) {
               '@type': 'Offer',
               url: `https://theblackhart.co.uk/shop/${product.uid}`,
               priceCurrency: 'GBP',
-              price: product.data.price / 100,
+              price: salePrice / 100,
               availability: 'https://schema.org/InStock',
             },
           })}
@@ -123,7 +133,14 @@ export default function ProductPage({ product, details }) {
           <div>
             <h1 className="leading-none lg:pt-2">{title}</h1>
             <h2 className="text-silver pb-4 text-lg font-crimson">
-              {displayPrice}
+              {salePercentage > 0 ? (
+                <>
+                  <span className="line-through mr-2">{displayPrice}</span>
+                  <span>{displaySalePrice}</span>
+                </>
+              ) : (
+                displayPrice
+              )}
             </h2>
             <div className="prose">
               <RichText
@@ -244,6 +261,7 @@ export async function getStaticProps({ params }) {
     props: {
       product,
       details,
+      salePercentage,
     },
   }
 }

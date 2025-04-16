@@ -3,8 +3,11 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { RichText } from 'prismic-reactjs'
 import Stripe from 'stripe'
 import { allowed_countries } from 'components/product'
+import { calculateSalePrice } from '../../utils/pricing'
 import { queryRepeatableDocuments } from 'prismic'
 import { validateCartItems } from 'use-shopping-cart/utilities'
+
+const salePercentage = parseFloat(process.env.SALE_PERCENTAGE) || 0
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2024-12-18.acacia',
@@ -78,6 +81,9 @@ export default async function handler(
           const needsSize =
             Object.values(size).filter((s) => s !== null).length > 0
 
+          const price = product.data.price
+          const salePrice = calculateSalePrice(price, salePercentage)
+
           if (needsSize) {
             const sizeArrays = Object.entries(size).filter((s) => s[1] !== null)
             const possibleSizes = sizeArrays
@@ -96,7 +102,7 @@ export default async function handler(
                 .replace('"', ''),
               name: `${RichText.asText(product.data.name)} - ${sizeString}`,
               description: RichText.asText(product.data.description),
-              price: product.data.price,
+              price: salePrice,
               currency: 'GBP',
               image: product.data.images[0].url,
             }))
@@ -107,7 +113,7 @@ export default async function handler(
               id: product.uid,
               name: RichText.asText(product.data.name),
               description: RichText.asText(product.data.description),
-              price: product.data.price,
+              price: salePrice,
               currency: 'GBP',
               image: product.data.images[0].url,
             }
