@@ -13,14 +13,13 @@ Built and deployed with:
 ## Developing
 
 - Clone this repo
-- Run `yarn` to install dependencies.
-- Run `yarn link` to link your local repo to the project on vercel
-- Run `yarn env` to populate a local `.env` file with dev versions of all of the project's secrets.
-- Finally, run `yarn dev` to get a local version of the site running.
+- Run `npm install` to install dependencies.
+- Run `npm run env` to link your local repo to the project on vercel and populate a local `.env` file with dev versions of all of the project's secrets.
+- Finally, run `npm run dev` to get a local version of the site running.
 
 ## Testing
 
-Follow the instructions above to get the site running locally. Then run `yarn test` to run integration tests, or `yarn pa11y` to run the accessibility tests.
+Follow the instructions above to get the site running locally. Then run `npm test` to run integration tests, or `npm run pa11y` to run the accessibility tests.
 
 These tests are automatically run in a github action for each PR, ensuring that we never deploy a broken site.
 

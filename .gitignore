@@ -35,8 +35,6 @@ yarn-error.log*
 .vercel
 .netlify
 
-
-package-lock.json
 .DS_Store
 /test-results/
 /playwright-report/

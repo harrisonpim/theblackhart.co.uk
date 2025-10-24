@@ -46,6 +46,7 @@ export default function Basket() {
       value: shipping.price,
       currency: shipping.currency,
     }),
+    timestamp: Date.now().toString(),
   }
 
   const shippingCost = !cartEmpty ? shippingItem.price : 0
