@@ -59,12 +59,12 @@ export default function Index({ index }) {
                         priority
                       />
                     </div>
-                    <p className="uppercase font-bold lg:text-xl leading-none block [text-shadow:_1px_1px_0_rgb(0_0_0)]">
+                    <div className="uppercase font-bold lg:text-xl leading-none block [text-shadow:_1px_1px_0_rgb(0_0_0)]">
                       <RichText
                         render={slice.primary.description}
                         linkResolver={linkResolver}
                       />
-                    </p>
+                    </div>
                   </div>
                 </header>
               )
@@ -79,18 +79,18 @@ export default function Index({ index }) {
                 >
                   <div className="flex flex-col h-screen justify-between text-center backdrop-blur-[5px]">
                     <div className="my-auto text-left leading-tight px-16 lg:px-32">
-                      <h2 className="max-w-measure uppercase font-bold pb-2 [text-shadow:_1px_1px_0_rgb(0_0_0)]">
+                      <div className="max-w-measure uppercase font-bold pb-2 [text-shadow:_1px_1px_0_rgb(0_0_0)]">
                         <RichText
                           render={slice.primary.title}
                           linkResolver={linkResolver}
                         />
-                      </h2>
-                      <p className="max-w-measure prose [text-shadow:_1px_1px_0_rgb(0_0_0)]">
+                      </div>
+                      <div className="max-w-measure prose [text-shadow:_1px_1px_0_rgb(0_0_0)]">
                         <RichText
                           render={slice.primary.description}
                           linkResolver={linkResolver}
                         />
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </div>
