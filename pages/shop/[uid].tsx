@@ -10,15 +10,17 @@ import Head from 'next/head'
 import ImageGallery from 'components/imageGallery'
 import Layout from '../../components/layout'
 import { RichText } from 'prismic-reactjs'
-import { calculateSalePrice } from '../../utils/pricing'
+import { calculateSalePrice, getSalePercentageForProduct } from '../../utils/pricing'
 import { formatCurrencyString } from 'use-shopping-cart'
 import { queryRepeatableDocuments } from '../../prismic'
 import { useShoppingCart } from 'use-shopping-cart'
 import { useState } from 'react'
 
 const salePercentage = parseFloat(process.env.SALE_PERCENTAGE) || 0
+const salePercentageJewellery = parseFloat(process.env.SALE_PERCENTAGE_JEWELLERY)
+const salePercentageNonJewellery = parseFloat(process.env.SALE_PERCENTAGE_NON_JEWELLERY)
 
-export default function ProductPage({ product, details, salePercentage }) {
+export default function ProductPage({ product, details, salePercentage, salePercentageJewellery, salePercentageNonJewellery }) {
   const { addItem } = useShoppingCart()
 
   const title = RichText.asText(product.data.name)
@@ -30,7 +32,14 @@ export default function ProductPage({ product, details, salePercentage }) {
     currency: 'GBP',
   })
 
-  const salePrice = calculateSalePrice(product.data.price, salePercentage)
+  const productSalePercentage = getSalePercentageForProduct(
+    product.data.category,
+    salePercentageJewellery,
+    salePercentageNonJewellery,
+    salePercentage
+  )
+
+  const salePrice = calculateSalePrice(product.data.price, productSalePercentage)
 
   const displaySalePrice = formatCurrencyString({
     value: salePrice,
@@ -133,7 +142,7 @@ export default function ProductPage({ product, details, salePercentage }) {
           <div>
             <h1 className="leading-none lg:pt-2">{title}</h1>
             <h2 className="text-silver pb-4 text-lg font-crimson">
-              {salePercentage > 0 ? (
+              {productSalePercentage > 0 ? (
                 <>
                   <span className="line-through mr-2">{displayPrice}</span>
                   <span>{displaySalePrice}</span>
@@ -262,6 +271,8 @@ export async function getStaticProps({ params }) {
       product,
       details,
       salePercentage,
+      salePercentageJewellery,
+      salePercentageNonJewellery,
     },
   }
 }

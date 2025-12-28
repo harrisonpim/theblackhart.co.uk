@@ -5,13 +5,15 @@ import Image from 'next/image'
 import Layout from '../../components/layout'
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
-import { calculateSalePrice } from '../../utils/pricing'
+import { calculateSalePrice, getSalePercentageForProduct } from '../../utils/pricing'
 import { formatCurrencyString } from 'use-shopping-cart'
 import { queryRepeatableDocuments } from '../../prismic'
 
 const salePercentage = parseFloat(process.env.SALE_PERCENTAGE) || 0
+const salePercentageJewellery = parseFloat(process.env.SALE_PERCENTAGE_JEWELLERY)
+const salePercentageNonJewellery = parseFloat(process.env.SALE_PERCENTAGE_NON_JEWELLERY)
 
-const Shop = ({ index, products, categories, category, salePercentage }) => {
+const Shop = ({ index, products, categories, category, salePercentage, salePercentageJewellery, salePercentageNonJewellery }) => {
   return (
     <Layout
       description={RichText.asText(index.data.description)}
@@ -69,30 +71,38 @@ const Shop = ({ index, products, categories, category, salePercentage }) => {
                     {RichText.asText(product.data.name)}
                   </h2>
                   <p className="text-silver">
-                    {salePercentage > 0 ? (
-                      <>
-                        <span className="line-through mr-2">
-                          {formatCurrencyString({
-                            value: product.data.price,
-                            currency: 'GBP',
-                          })}
-                        </span>
-                        <span>
-                          {formatCurrencyString({
-                            value: calculateSalePrice(
-                              product.data.price,
-                              salePercentage
-                            ),
-                            currency: 'GBP',
-                          })}
-                        </span>
-                      </>
-                    ) : (
-                      formatCurrencyString({
-                        value: product.data.price,
-                        currency: 'GBP',
-                      })
-                    )}
+                    {(() => {
+                      const productSalePercentage = getSalePercentageForProduct(
+                        product.data.category,
+                        salePercentageJewellery,
+                        salePercentageNonJewellery,
+                        salePercentage
+                      )
+                      return productSalePercentage > 0 ? (
+                        <>
+                          <span className="line-through mr-2">
+                            {formatCurrencyString({
+                              value: product.data.price,
+                              currency: 'GBP',
+                            })}
+                          </span>
+                          <span>
+                            {formatCurrencyString({
+                              value: calculateSalePrice(
+                                product.data.price,
+                                productSalePercentage
+                              ),
+                              currency: 'GBP',
+                            })}
+                          </span>
+                        </>
+                      ) : (
+                        formatCurrencyString({
+                          value: product.data.price,
+                          currency: 'GBP',
+                        })
+                      )
+                    })()}
                   </p>
                 </div>
               </Link>
@@ -147,6 +157,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       categories: uniqueCategories,
       category: categoryIsValid ? category : null,
       salePercentage,
+      salePercentageJewellery,
+      salePercentageNonJewellery,
     },
   }
 }

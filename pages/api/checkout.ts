@@ -1,13 +1,22 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import {
+  calculateSalePrice,
+  getSalePercentageForProduct,
+} from '../../utils/pricing'
 
 import { RichText } from 'prismic-reactjs'
 import Stripe from 'stripe'
 import { allowed_countries } from 'components/product'
-import { calculateSalePrice } from '../../utils/pricing'
 import { queryRepeatableDocuments } from 'prismic'
 import { validateCartItems } from 'use-shopping-cart/utilities'
 
 const salePercentage = parseFloat(process.env.SALE_PERCENTAGE) || 0
+const salePercentageJewellery = parseFloat(
+  process.env.SALE_PERCENTAGE_JEWELLERY
+)
+const salePercentageNonJewellery = parseFloat(
+  process.env.SALE_PERCENTAGE_NON_JEWELLERY
+)
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2025-02-24.acacia',
@@ -82,7 +91,13 @@ export default async function handler(
             Object.values(size).filter((s) => s !== null).length > 0
 
           const price = product.data.price
-          const salePrice = calculateSalePrice(price, salePercentage)
+          const productSalePercentage = getSalePercentageForProduct(
+            product.data.category,
+            salePercentageJewellery,
+            salePercentageNonJewellery,
+            salePercentage
+          )
+          const salePrice = calculateSalePrice(price, productSalePercentage)
 
           if (needsSize) {
             const sizeArrays = Object.entries(size).filter((s) => s[1] !== null)
